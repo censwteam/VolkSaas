@@ -8,14 +8,14 @@
   <body>
     <!-- Required JS files to enable this page to embed within an MPage -->
     <script src='https://cdnjs.cloudflare.com/ajax/libs/babel-polyfill/6.26.0/polyfill.min.js'></script>
-    <script src='./js/cerner-smart-embeddable-lib-1.0.0.min.js'></script>
+    <script src='https://github.com/cerner/smart-on-fhir-tutorial/blob/gh-pages/example-smart-app/lib/js/cerner-smart-embeddable-lib-1.0.0.min.js'></script>
 
     <!-- FHIR Client JS Library -->
-    <!--<script src='./js/fhir-client-v0.1.12.js'></script> -->
+    <script src='https://github.com/cerner/smart-on-fhir-tutorial/blob/gh-pages/example-smart-app/lib/js/fhir-client-v0.1.12.js'></script>
 
     <!-- Prevent session bleed caused by single threaded embedded browser and sessionStorage API -->
     <!-- https://github.com/cerner/fhir-client-cerner-additions -->
-    <script src='./js/fhir-client-cerner-additions-1.0.0.js'></script>
+    <script src='https://github.com/cerner/smart-on-fhir-tutorial/blob/gh-pages/example-smart-app/lib/js/fhir-client-cerner-additions-1.0.0.js'></script>
      <script>
     FHIR.oauth2.authorize({
       'client_id': 'dd11278c-c430-4c7f-9598-2e3a590c2479',
