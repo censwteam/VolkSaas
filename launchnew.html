@@ -38,7 +38,7 @@
         var redirectUri = launchUri.replace("launchnew.html","index.html");
 
         // FHIR Service Conformance Statement URL
-        var conformanceUri = serviceUri + "/metadata"
+        var conformanceUri = "https://fhir-myrecord.sandboxcerner.com/dstu2/0e885770-571b-4c0c-b30f-21df9a058d0d" + "/metadata"
         // Let's request the conformance statement from the SMART on FHIR API server and
         // find out the endpoint URLs for the authorization server
         $.get(conformanceUri, function(r){
