@@ -11,9 +11,10 @@
             clearAuthToken();
             refreshApp();
         }
-    
+    alert("called hasAuthToken");
         if (! hasAuthToken()) {
             if (urlParam("code")) {
+                alert("get code");
                 completeAuth();
             } else {
                 document.body.innerHTML += "<p>Not yet authorized</p>";
