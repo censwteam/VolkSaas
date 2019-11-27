@@ -159,7 +159,7 @@ function authorize() {
                 "aud=" + encodeURIComponent(settings.api_server_uri) + "&" +
                 "launch=" + settings.launch_id + "&" +
                 "state=" + state;
-
+            alert("redirect_to -" + redirect_to);
             location.href = redirect_to;
         },
         "json"
