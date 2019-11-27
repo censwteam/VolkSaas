@@ -2,37 +2,27 @@
 <html>
   <head>
      <title>User Profile</title>
-     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-     <script src="app.js"></script>
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <script src='./lib/js/fhir-client-v0.1.12.js'></script>
   </head>
   <body>
-    <script type="text/javascript">
-        function signout () {
-            clearAuthToken();
-            refreshApp();
-        }
-    alert("called hasAuthToken");
-        if (! hasAuthToken()) {
-            if (urlParam("code")) {
-                alert("get code");
-                completeAuth();
-            } else {
-                document.body.innerHTML += "<p>Not yet authorized</p>";
-                document.body.innerHTML += "<p><input type='submit' value='Sign In' onClick='authorize()'></p>";
+     <pre></pre>
+        <script type="text/javascript">
+            function log(txt) {
+                document.getElementsByTagName("pre")[0].innerText += txt + "\n";
             }
-        } else {
-            $.when(getPatientName())
-             .then(function (name) {
-                document.body.innerHTML += "<p>" + new Date() + "</p>";
-                document.body.innerHTML += "<p>Current patient: " + name + "</p>";
-                document.body.innerHTML += "<p><input type='submit' value='Sign Out' onClick='signout()'></p>";
-             })
-             .fail(function () {
-                clearAuthToken();
-                document.body.innerHTML += "<p>Authorization token appears to be invalid</p>";
-                document.body.innerHTML += "<p><input type='submit' value='Sign In' onClick='authorize()'></p>";
-             });
-        }
-    </script>
+
+            FHIR.oauth2.ready(function(client) {
+                $.when(client.user.read()).then(
+                    function(user){
+                        log("User:\n" + JSON.stringify(user, null, 4) + "\n");
+                        log("Token Response:\n" + JSON.stringify(client.tokenResponse, null, 4));
+                    },
+                    function(error){
+                        log("Error:\n" + error);
+                    }
+                );
+            });
+        </script>
   </body>
 </html>
