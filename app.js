@@ -60,7 +60,6 @@ function getAuthToken() {
 }
 
 function setAuthToken(data) {
-        alert("called setAuthToken -" + data);
     writeData("auth-token", data);
 }
 
@@ -173,7 +172,7 @@ function getPatientName() {
     var patient_id     = getAuthToken().patient_id;
     var access_token   = getAuthToken().access_token;
     var url            = api_server_uri + '/Patient/' + patient_id;
-    alert(access_token);
+    alert(url);
     return $.ajax({
         type    : 'GET',
         url     : url,
