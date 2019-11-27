@@ -35,10 +35,10 @@
         // To keep things flexible, let's construct the launch URL by taking the base of the
         // current URL and replace "launch.html" with "indexnew.html".
         var launchUri = window.location.protocol + "//" + window.location.host + window.location.pathname;
-        var redirectUri = launchUri.replace("launchnew.html","index.html");
+        var redirectUri = launchUri.replace("launchnew.html","indexnew.html");
 
         // FHIR Service Conformance Statement URL
-        var conformanceUri = "https://fhir-myrecord.sandboxcerner.com/dstu2/0e885770-571b-4c0c-b30f-21df9a058d0d" + "/metadata"
+        var conformanceUri = "https://fhir-myrecord.sandboxcerner.com/dstu2/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca" + "/metadata"
         // Let's request the conformance statement from the SMART on FHIR API server and
         // find out the endpoint URLs for the authorization server
         $.get(conformanceUri, function(r){
