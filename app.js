@@ -141,7 +141,7 @@ function authorize() {
 
             smartExtension[0].extension.forEach(function(arg, index, array) {
                 if (arg.url === "authorize") {
-                    authorize_uri = arg.valueUri;
+                    authorize_uri = "https://authorization.sandboxcerner.com/tenants/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/protocols/oauth2/profiles/smart-v1/personas/provider/authorize";//arg.valueUri;
                 }
                 else if (arg.url === "token") {
                     token_uri = arg.valueUri;
