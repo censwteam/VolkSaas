@@ -168,11 +168,12 @@ function authorize() {
 }
 
 function getPatientName() {
+    alert("getpatientName");
     var api_server_uri = getSettings().api_server_uri;
     var patient_id     = getAuthToken().patient_id;
     var access_token   = getAuthToken().access_token;
     var url            = api_server_uri + '/Patient/' + patient_id;
-
+    alert(access_token);
     return $.ajax({
         type    : 'GET',
         url     : url,
