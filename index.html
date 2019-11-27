@@ -11,9 +11,8 @@
             function log(txt) {
                 document.getElementsByTagName("pre")[0].innerText += txt + "\n";
             }
-
-            FHIR.oauth2.ready(function(client) {
-                alert(client);
+            alert(client);  
+            FHIR.oauth2.ready(function(client) {                
                 $.when(client.user.read()).then(
                     function(user){
                         log("User:\n" + JSON.stringify(user, null, 4) + "\n");
