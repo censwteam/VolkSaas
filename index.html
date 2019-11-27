@@ -22,8 +22,7 @@
 		
         if (! hasAuthToken()) {
             if (urlParam("code")) {
-		alert("called code");
-                completeAuth();
+	        completeAuth();
             } else {
                 document.body.innerHTML += "<p>Not yet authorized</p>";
                 document.body.innerHTML += "<p><input type='submit' value='Sign In' onClick='authorize()'></p>";
