@@ -13,6 +13,7 @@
             }
 
             FHIR.oauth2.ready(function(client) {
+                alert(client);
                 $.when(client.user.read()).then(
                     function(user){
                         log("User:\n" + JSON.stringify(user, null, 4) + "\n");
