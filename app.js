@@ -60,6 +60,7 @@ function getAuthToken() {
 }
 
 function setAuthToken(data) {
+        alert("called setAuthToken -" + data);
     writeData("auth-token", data);
 }
 
