@@ -181,6 +181,7 @@ function getPatientName() {
         }
     }).then(
         function(pt) {
+            alert(pt);
             return pt.name[0].given.join(" ") + " " + pt.name[0].family.join(" ");
         },
         function() {
