@@ -8,7 +8,7 @@
     <body>
         <script>
             FHIR.oauth2.authorize({
-
+              "client": {
               // The client_id that you should have obtained after registering a client at
               // the EHR.
               clientId: "421c9059-3bd6-4007-836d-2435c347e313",
@@ -24,6 +24,9 @@
               // ".". However, some servers do not support directory indexes so "." and "./"
               // will not automatically map to the "index.html" file in that directory.
               redirectUri: "https://censwteam.github.io/VolkSaas/"
+              },
+                "server": "https://fhir-ehr.sandboxcerner.com/dstu2/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca"
+                
             });
           
         </script>
