@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Example FHIR App Redirected</title>
+    
+    <script src="js/jquery.js"></script>
+    <script src="js/underscore.js"></script>
+    <script src="js/fhir-client.js"></script>
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/main.css">
+
+    <style>
+      
+      html {box-sizing: border-box;}
+      *, *:before, *:after {box-sizing: inherit;}
+      footer{position:fixed; bottom:0.5vw; right:0.5vw;}
+
+    </style>
+
+
+  </head>
+  <body>
+
+  <div id="main" class="container"></div>
+
+  <script>
+
+    var myApp = {}
+
+
+    $(document).ready(function(){
+
+      getFHIR()
+
+    })
+
+    function getFHIR(){
+        FHIR.oauth2.ready(function (fhirClient) {
+            myApp.smart = fhirClient;
+            getAllFHIR()
+          }, function(){ alert("error") })
+    }
+
+    function getAllFHIR(){
+           
+           $("#main").html("<div class='alert alert-info'>Getting your Conditions, please be patient</div>")
+
+           $.when( 
+              myApp.smart.patient.api.fetchAll({type: "Condition", query:{"category":"diagnosis"}}) 
+            ).then(function (data) {
+              render(data)
+            }, function(error){ console.log(error) })
+    }
+
+
+    function render(data){
+      
+      console.log(data)
+
+      $("#main").html("<div class='alert alert-success'>Got your medical history, now processing ...</div>")
+
+      var toInsert = ""
+      
+      _.each(data, function(val,index){
+        toInsert += "<div class='row alert'>"+val.code.text+"</div>"
+      })
+
+      $("#main").html(toInsert)
+    }
+
+  
+  </script>
+
+
+
+  </body>
+</html>
