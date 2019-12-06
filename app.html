@@ -38,12 +38,14 @@
     function getFHIR(){
         FHIR.oauth2.ready(function (fhirClient) {
             myApp.smart = fhirClient;
+          alert("before getallfhir");
             getAllFHIR()
+          alert("after getallfhir");
           }, function(){ alert("error") })
     }
 
     function getAllFHIR(){
-           
+           alert("inside getallfhir");
            $("#main").html("<div class='alert alert-info'>Getting your Observation, please be patient</div>")
           var patient =  myApp.smart.patient;
           var pt = patient.read();
