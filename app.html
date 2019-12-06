@@ -3,9 +3,12 @@
   <head>
     <title>Example FHIR App Redirected</title>
     
+    <script src='./src/js/example-smart-app.js'></script>
+     <script src='./lib/js/fhir-client-cerner-additions-1.0.0.js'></script>
     <script src="js/jquery.js"></script>
     <script src="js/underscore.js"></script>
     <script src="js/fhir-client.js"></script>
+    
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/main.css">
 
@@ -24,45 +27,19 @@
   <div id="main" class="container"></div>
 
   <script>
-FHIR.oauth2.ready().then(function(client) {
-                
-                // Render the current patient (or any error)
-                client.patient.read().then(
-                    function(pt) {
-                        document.getElementById("patient").innerText = JSON.stringify(pt, null, 4);
-                    },
-                    function(error) {
-                        document.getElementById("patient").innerText = error.stack;
-                    }
-                );
-                
-                // Get MedicationRequests for the selected patient
-                client.request("/MedicationRequest?patient=" + client.patient.id, {
-                    resolveReferences: [ "medicationReference" ],
-                    graph: true
-                })
-                
-                // Reject if no MedicationRequests are found
-                .then(function(data) {
-                    if (!data.entry || !data.entry.length) {
-                        throw new Error("No medications found for the selected patient");
-                    }
-                    return data.entry;
-                })
-                
-                // Render the current patient's medications (or any error)
-                .then(
-                    function(meds) {
-                        document.getElementById("meds").innerText = JSON.stringify(meds, null, 4);
-                    },
-                    function(error) {
-                        document.getElementById("meds").innerText = error.stack;
-                    }
-                );
-            }).catch(console.error);
+      extractData().then(
+        //Display Patient Demographics and Observations if extractData was success
+        function(p) {
+          drawVisualization(p);
+        },
 
-  
-  </script>
+        //Display 'Failed to call FHIR Service' if extractData failed
+        function() {
+          $('#loading').hide();
+          $('#errors').html('<p> Failed to call FHIR Service </p>');
+        }
+      );
+    </script>
 
 
 
