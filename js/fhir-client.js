@@ -17153,10 +17153,11 @@ function providers(fhirServiceUrl, provider, callback, errback){
         });
 
         smartExtension[0].extension.forEach(function(arg, index, array){
-		alert(arg.url);
+		
           if (arg.url === "register") {
             res.oauth2.registration_uri = arg.valueUri;
           } else if (arg.url === "authorize") {
+		  alert(arg.valueUri);
             res.oauth2.authorize_uri = "https://authorization.sandboxcerner.com/tenants/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/protocols/oauth2/profiles/smart-v1/personas/provider/authorize"; //arg.valueUri;
           } else if (arg.url === "token") {
             res.oauth2.token_uri = arg.valueUri;
