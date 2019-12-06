@@ -17153,6 +17153,7 @@ function providers(fhirServiceUrl, provider, callback, errback){
         });
 
         smartExtension[0].extension.forEach(function(arg, index, array){
+		alert(arg.url);
           if (arg.url === "register") {
             res.oauth2.registration_uri = arg.valueUri;
           } else if (arg.url === "authorize") {
