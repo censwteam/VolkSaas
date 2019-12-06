@@ -32,7 +32,9 @@
             med_list.innerHTML += "<li> " + getMedicationName(medCodings) + "</li>";
         }                
         FHIR.oauth2.ready(function(smart){
+            alert("smart- " + smart);
             smart.patient.read().then(function(pt) {
+               alert("display patient- " + pt);
                 displayPatient (pt);
             });
             smart.patient.api.fetchAllWithReferences({type: "MedicationOrder"},["MedicationOrder.medicationReference"]).then(function(results, refs) {
