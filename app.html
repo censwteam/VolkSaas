@@ -38,9 +38,7 @@
     function getFHIR(){
         FHIR.oauth2.ready(function (fhirClient) {
             myApp.smart = fhirClient;
-          alert("before getallfhir");
             getAllFHIR()
-          alert("after getallfhir");
           }, function(){ alert("error ready getFHIR ") })
     }
 
