@@ -44,10 +44,18 @@
 
     function getAllFHIR(){
            
-           $("#main").html("<div class='alert alert-info'>Getting your Conditions, please be patient</div>")
+           $("#main").html("<div class='alert alert-info'>Getting your Observation, please be patient</div>")
 
            $.when( 
-              myApp.smart.patient.api.fetchAll({type: "Condition", query:{"category":"diagnosis"}}) 
+              myApp.smart.patient.api.fetchAll({type: 'Observation',
+                  query: {
+                    code: {
+                      $or: ['http://loinc.org|8302-2', 'http://loinc.org|8462-4',
+                            'http://loinc.org|8480-6', 'http://loinc.org|2085-9',
+                            'http://loinc.org|2089-1', 'http://loinc.org|55284-4']
+                          }
+                         }
+                     }}) 
             ).then(function (data) {
               render(data)
             }, function(error){ console.log(error) })
