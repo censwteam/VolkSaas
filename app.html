@@ -25,110 +25,42 @@
   <div id="main" class="container"></div>
 
   <script>
-
-    var myApp = {}
-
-
-    $(document).ready(function(){
-
-      getFHIR()
-
-    })
-
-    function getFHIR(){
-        FHIR.oauth2.ready(function (fhirClient) {
-            myApp.smart = fhirClient;
-            getAllFHIR()
-          }, function(){ alert("error ready getFHIR ") })
-    }
-
-    function getAllFHIR(){
-           alert("inside getallfhir");
-           $("#main").html("<div class='alert alert-info'>Getting your Observation, please be patient</div>")
-          var patient =  myApp.smart.patient;
-          var pt = patient.read();
-          var obv =  myApp.smart.patient.api.fetchAll({
-                        type: 'Observation',
-                        query: {
-                          code: {
-                            $or: ['http://loinc.org|8302-2', 'http://loinc.org|8462-4',
-                                  'http://loinc.org|8480-6', 'http://loinc.org|2085-9',
-                                  'http://loinc.org|2089-1', 'http://loinc.org|55284-4']
-                                }
-                               }
-                      });
-
-          $.when(pt, obv).fail(onError);
-
-         $.when(pt, obv).done(function(patient, obv) {
-          var byCodes = myApp.smart.byCodes(obv, 'code');
-          var gender = patient.gender;
-          var dob = new Date(patient.birthDate);
-          var day = dob.getDate();
-          var monthIndex = dob.getMonth() + 1;
-          var year = dob.getFullYear();
-          alert(byCodes + "," + gender);
-          var dobStr = monthIndex + '/' + day + '/' + year;
-          var fname = '';
-          var lname = '';
-
-          if(typeof patient.name[0] !== 'undefined') {
-            fname = patient.name[0].given.join(' ');
-            lname = patient.name[0].family.join(' ');
-          }
-
-          var height = byCodes('8302-2');
-          var systolicbp = getBloodPressureValue(byCodes('55284-4'),'8480-6');
-          var diastolicbp = getBloodPressureValue(byCodes('55284-4'),'8462-4');
-          var hdl = byCodes('2085-9');
-          var ldl = byCodes('2089-1');
-
-          var p = defaultPatient();
-          p.birthdate = dobStr;
-          p.gender = gender;
-          p.fname = fname;
-          p.lname = lname;
-          p.age = parseInt(calculateAge(dob));
-
-          if(typeof height[0] != 'undefined' && typeof height[0].valueQuantity.value != 'undefined' && typeof height[0].valueQuantity.unit != 'undefined') {
-            p.height = height[0].valueQuantity.value + ' ' + height[0].valueQuantity.unit;
-          }
-
-          if(typeof systolicbp != 'undefined')  {
-            p.systolicbp = systolicbp;
-          }
-
-          if(typeof diastolicbp != 'undefined') {
-            p.diastolicbp = diastolicbp;
-          }
-
-          if(typeof hdl[0] != 'undefined' && typeof hdl[0].valueQuantity.value != 'undefined' && typeof hdl[0].valueQuantity.unit != 'undefined') {
-            p.hdl = hdl[0].valueQuantity.value + ' ' + hdl[0].valueQuantity.unit;
-          }
-
-          if(typeof ldl[0] != 'undefined' && typeof ldl[0].valueQuantity.value != 'undefined' && typeof ldl[0].valueQuantity.unit != 'undefined') {
-            p.ldl = ldl[0].valueQuantity.value + ' ' + ldl[0].valueQuantity.unit;
-          }
-          ret.resolve(p);
-        });
-     
-    }
-
-
-    function render(data){
-      
-      console.log(data)
-
-      $("#main").html("<div class='alert alert-success'>Got your medical history, now processing ...</div>")
-
-      var toInsert = ""
-      
-      _.each(data, function(val,index){
-        toInsert += "<div class='row alert'>"+val.code.text+"</div>"
-      })
-
-      $("#main").html(toInsert)
-    }
+FHIR.oauth2.ready().then(function(client) {
+                
+                // Render the current patient (or any error)
+                client.patient.read().then(
+                    function(pt) {
+                        document.getElementById("patient").innerText = JSON.stringify(pt, null, 4);
+                    },
+                    function(error) {
+                        document.getElementById("patient").innerText = error.stack;
+                    }
+                );
+                
+                // Get MedicationRequests for the selected patient
+                client.request("/MedicationRequest?patient=" + client.patient.id, {
+                    resolveReferences: [ "medicationReference" ],
+                    graph: true
+                })
+                
+                // Reject if no MedicationRequests are found
+                .then(function(data) {
+                    if (!data.entry || !data.entry.length) {
+                        throw new Error("No medications found for the selected patient");
+                    }
+                    return data.entry;
+                })
+                
+                // Render the current patient's medications (or any error)
+                .then(
+                    function(meds) {
+                        document.getElementById("meds").innerText = JSON.stringify(meds, null, 4);
+                    },
+                    function(error) {
+                        document.getElementById("meds").innerText = error.stack;
+                    }
+                );
+            }).catch(console.error);
 
   
   </script>
