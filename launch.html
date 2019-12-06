@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <script src="app.js"></script>
+    <script src='js/fhir-client.js'></script>
     <script>
-        initialize({
-          client_id: "421c9059-3bd6-4007-836d-2435c347e313",
-          scope: "patient/Patient.read patient/Observation.read launch/patient online_access openid profile"
-        });
-    </script>
+      FHIR.oauth2.authorize({
+        'client_id': '421c9059-3bd6-4007-836d-2435c347e313',
+        'scope':  'patient/Patient.read patient/Observation.read launch/patient online_access openid profile',
+        'redirect_uri': 'https://censwteam.github.io/VolkSaas/app.html'
+      });
+    </script>  
   </head>
-  <body>Loading...</body>
+  <body>
+      <div>Trying to launch.html ...</div>
+    </body>
 </html>
