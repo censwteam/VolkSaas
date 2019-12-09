@@ -47,7 +47,7 @@
            $("#main").html("<div class='alert alert-info'>Getting your Conditions, please be patient</div>")
 
            $.when( 
-              myApp.smart.patient.api.fetchAll({type: "Patient", query:{"active":"name"}}) 
+              myApp.smart.patient.api.fetchAll({type: "Patient", query:{"entry":"entry"}}) 
             ).then(function (data) {
               render(data)
             }, function(error){ console.log(error) })
@@ -63,7 +63,7 @@
       var toInsert = ""
       
       _.each(data, function(val,index){
-        toInsert += "<div class='row alert'>"+val.code.text+"</div>"
+        toInsert += "<div class='row alert'>"+val+"</div>"
       })
 
       $("#main").html(toInsert)
