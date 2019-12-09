@@ -3,13 +3,10 @@
   <head>
     <title>Example FHIR App Redirected</title>
     
-  
     <script src="js/jquery.js"></script>
     <script src="js/underscore.js"></script>
-    <script src='./src/js/example-smart-app.js'></script>     
     <script src="js/fhir-client.js"></script>
-    <script src='./lib/js/fhir-client-cerner-additions-1.0.0.js'></script>
-    
+
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/main.css">
 
@@ -26,68 +23,54 @@
   <body>
 
   <div id="main" class="container"></div>
-    <div id='holder' >
-      <h2>Example-SMART-App</h2>
-
-      <h2>Patient Resource</h2>
-      <table>
-        <tr>
-          <th>First Name:</th>
-          <td id='fname'></td>
-        </tr>
-        <tr>
-          <th>Last Name:</th>
-          <td id='lname'></td>
-        </tr>
-        <tr>
-          <th>Gender:</th>
-          <td id='gender'></td>
-        </tr>
-        <tr>
-          <th>Date of Birth:</th>
-          <td id='birthdate'></td>
-        </tr>
-      </table>
-      <h2>Observation Resource</h2>
-      <table>
-        <tr>
-          <th>Height:</th>
-          <td id='height'></td>
-        </tr>
-        <tr>
-          <th>Systolic Blood Pressure:</th>
-          <td id='systolicbp'></td>
-
-        </tr>
-        <tr>
-          <th>Diastolic Blood Pressure:</th>
-          <td id='diastolicbp'></td>
-        </tr>
-        <tr>
-          <th>LDL:</th>
-          <td id='ldl'></td>
-        </tr>
-        <tr>
-          <th>HDL:</th>
-          <td id='hdl'></td>
-        </tr>
-      </table>
-    </div>
 
   <script>
-      extractData().then(
-        //Display Patient Demographics and Observations if extractData was success
-        function(p) {
-          drawVisualization(p);
-        },
 
-        //Display 'Failed to call FHIR Service' if extractData failed
-        function() {
-          $('#loading').hide();
-          $('#errors').html('<p> Failed to call FHIR Service </p>');
-        }
-      );
-    </script>
+    var myApp = {}
+
+
+    $(document).ready(function(){
+
+      getFHIR()
+
+    })
+
+    function getFHIR(){
+        FHIR.oauth2.ready(function (fhirClient) {
+            myApp.smart = fhirClient;
+            getAllFHIR()
+          }, function(){ alert("error") })
+    }
+
+    function getAllFHIR(){
+           
+           $("#main").html("<div class='alert alert-info'>Getting your Conditions, please be patient</div>")
+
+           $.when( 
+              myApp.smart.patient.api.fetchAll({type: "Condition", query:{"category":"diagnosis"}}) 
+            ).then(function (data) {
+              render(data)
+            }, function(error){ console.log(error) })
+    }
+
+
+    function render(data){
+      
+      console.log(data)
+
+      $("#main").html("<div class='alert alert-success'>Got your medical history, now processing ...</div>")
+
+      var toInsert = ""
+      
+      _.each(data, function(val,index){
+        toInsert += "<div class='row alert'>"+val.code.text+"</div>"
+      })
+
+      $("#main").html(toInsert)
+    }
+
+  
+  </script>
 
 
 
