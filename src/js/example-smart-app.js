@@ -1,13 +1,15 @@
 (function(window){
   window.extractData = function() {
     var ret = $.Deferred();
-alert(ret);
+
     function onError() {
       console.log('Loading main error', arguments);
       ret.reject();
     }
 
     function onReady(smart)  {
+      alert(smart);
+      
       if (smart.hasOwnProperty('patient')) {
         var patient = smart.patient;
         var pt = patient.read();
