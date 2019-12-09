@@ -47,7 +47,7 @@
            $("#main").html("<div class='alert alert-info'>Getting your Conditions, please be patient</div>")
 
            $.when( 
-              myApp.smart.patient.api.fetchAll({type: "Condition", query:{"category":"diagnosis"}}) 
+              myApp.smart.patient.api.fetchAll({type: "Patient", query:{"Patient":"identifier"}}) 
             ).then(function (data) {
               render(data)
             }, function(error){ console.log(error) })
