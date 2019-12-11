@@ -1,15 +1,28 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <script src='js/fhir-client.js'></script>
+    <script src="https://cdn.jsdelivr.net/npm/fhirclient/build/fhir-client.js"></script>
     <script>
-     FHIR.oauth2.authorize({
-          client_id: "421c9059-3bd6-4007-836d-2435c347e313",
-         'scope':  'patient/Patient.read patient/Observation.read',
-	 'state':  '7883a9c7-c724-7c86-b641-c47393ab2429',    
-	 'redirect_uri': 'https://censwteam.github.io/VolkSaas/appProvider.html'
-        });
-    </script>  
+            FHIR.oauth2.authorize({
+
+              // The client_id that you should have obtained after registering a client at
+              // the EHR.
+              clientId: "421c9059-3bd6-4007-836d-2435c347e313",
+
+              // The scopes that you request from the EHR. In this case we want to:
+              // launch            - Get the launch context
+              // openid & fhirUser - Get the current user
+              // patient/*.read    - Read patient data
+              scope: "launch openid fhirUser patient/*.read",
+
+              // Typically, if your redirectUri points to the root of the current directory
+              // (where the launchUri is), you can omit this option because the default value is
+              // ".". However, some servers do not support directory indexes so "." and "./"
+              // will not automatically map to the "index.html" file in that directory.
+              redirectUri: "https://censwteam.github.io/VolkSaas/appProvider.html"
+            });
+          }
+        </script>
   </head>
   <body>
       <div>Trying to launch.html ...</div>
