@@ -25,6 +25,7 @@
         $.when(pt, obv).fail(onError);
 
         $.when(pt, obv).done(function(patient, obv) {
+          document.getElementById("patientInfo").innerText = JSON.stringify(pt, null, 4);
           var byCodes = smart.byCodes(obv, 'code');
           var gender = patient.gender;
 
