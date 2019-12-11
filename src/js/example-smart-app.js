@@ -11,6 +11,7 @@
       if (smart.hasOwnProperty('patient')) {
         var patient = smart.patient;
         var pt = patient.read();
+        alert(JSON.stringify(pt, null, 4));
         var obv = smart.patient.api.fetchAll({
                     type: 'Observation',
                     query: {
