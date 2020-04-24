@@ -68,14 +68,7 @@
 
             // finally, redirect the browser to the authorizatin server and pass the needed
             // parameters for the authorization request in the URL
-            alert(authUri + "?" +
-                "response_type=code&" +
-                "client_id=" + encodeURIComponent(clientId) + "&" +
-                "scope=" + encodeURIComponent(scope) + "&" +
-                "redirect_uri=" + encodeURIComponent(redirectUri) + "&" +
-                "aud=" + encodeURIComponent(serviceUri) + "&" +
-                "launch=" + launchContextId + "&" +
-                "state=" + state);
+           
             window.location.href = authUri + "?" +
                 "response_type=code&" +
                 "client_id=" + encodeURIComponent(clientId) + "&" +
