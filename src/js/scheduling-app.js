@@ -25,7 +25,7 @@ function slotSearch() {
 
   FHIR.oauth2.ready(function(smart) {
     // Query the FHIR server for Slots
-    smart.api.fetchAll({type: 'Appointment', query: slotParams}).then(
+    smart.api.fetchAll({type: 'Slot', query: slotParams}).then(
 
       // Display Appointment information if the call succeeded
       function(slots) {
