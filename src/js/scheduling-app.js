@@ -24,20 +24,10 @@ function slotSearch() {
   slotParams['start'] = {$ge: form.elements['date-start'].value, $lt: form.elements['date-end'].value};
 
   FHIR.oauth2.ready(function(smart) {
-    
-    if (smart.hasOwnProperty('patient')) {
-      var patient = smart.patient;
-        var pt = patient.read();
-        var obv = smart.patient.api.fetchAll({ type: 'Slot', query: slotParams });
-
-        $.when(pt, obv).fail(onError);
-       $.when(pt, obv).done(function(patient, obv) {
-         
-       });
-      
-    }
+ 
     // Query the FHIR server for Slots
-    smart.patient.api.fetchAll({type: 'Slot', query: slotParams}).then(
+    //smart.patient.api.fetchAll({type: 'Slot', query: slotParams}).then(
+    smart.fetchAll({type: 'Slot', query: slotParams}).then(
 
       // Display Appointment information if the call succeeded
       function(slots) {
