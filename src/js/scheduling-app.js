@@ -28,7 +28,7 @@ function slotSearch() {
     // Query the FHIR server for Slots
     //smart.patient.api.fetchAll({type: 'Slot', query: slotParams}).then(
     //smart.fetchAll({type: 'Slot', query: slotParams}).then(
-    smart.request("ObSlotservation?" + slotParams,{pageLimit: 0,flat: true }).then(
+    smart.request("Slot?" + slotParams,{pageLimit: 0,flat: true }).then(
 
       // Display Appointment information if the call succeeded
       function(slots) {
