@@ -35,7 +35,7 @@ function slotSearch() {
          
        });
       
-    });
+    }
     // Query the FHIR server for Slots
     smart.patient.api.fetchAll({type: 'Slot', query: slotParams}).then(
 
