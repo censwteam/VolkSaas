@@ -27,8 +27,24 @@
             <div class='form-group row'>
               <label for='practitioner' class='col-sm-2 col-form-label'>Practitioner</label>
               <div class='col-sm-10'>
-                <select class='form-control' id='practitioner' name='schedule.actor' required>
+             <!--   <select class='form-control' id='practitioner' name='schedule.actor' required>
                   <option value='Practitioner/605926'>Kristen Cerner Carter</option>
+                </select> -->
+                <select class='form-control' id='practitioner' name='schedule.actor' required>
+                  <option value='Practitioner/1672007'>Andrew Robertson</option>
+                  <option value='Practitioner/1418008'>Phil V Brewer</option>
+                  <option value='Practitioner/937933'>Bryce Barney Burns</option>
+                  <option value='Practitioner/937934'>Christine Carly Chambers</option>
+                  <option value='Practitioner/605926'>Kristen Cerner Carter</option>
+                </select>
+              </div>
+            </div>
+            <div class='form-group row'>
+              <label for='location' class='col-sm-2 col-form-label'>Location</label>
+              <div class='col-sm-10'>
+                <select class='form-control' id='location' name='-location' required>
+                  <option value='4048128'>Baseline East Medical Center</option>
+                  <option value='4048296'>Family Practice Clinic</option>
                 </select>
               </div>
             </div>
@@ -36,8 +52,13 @@
             <div class='form-group row'>
               <label for='slot-type' class='col-sm-2 col-form-label'>Slot Type</label>
               <div class='col-sm-10'>
-                <select class='form-control' id='slot-type' name='slot-type' required>
+              <!--  <select class='form-control' id='slot-type' name='slot-type' required>
                   <option value='http://snomed.info/sct|408443003'>Fundus Photography</option>
+                </select> -->
+                  <select class='form-control' id='slot-type' name='slot-type' required>
+                  <option value='http://snomed.info/sct|394581000'>Community medicine</option>
+                  <option value='https://fhir.cerner.com/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/codeSet/14249|21265426'>Same day</option>
+                  <option value='https://fhir.cerner.com/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/codeSet/14249|5038365'>Office Visit - New</option>
                 </select>
               </div>
             </div>
