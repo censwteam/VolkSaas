@@ -56,7 +56,10 @@ function slotSearch() {
       }
     );
   });
-}
+},
+   function() {
+      $('#errors-row').show();
+   }
 
 function slotHTML(id, type, start, end) {
   console.log('Slot: id:[' + id + '] type:[' + type + '] start:[' + start + '] end:[' + end + ']');
