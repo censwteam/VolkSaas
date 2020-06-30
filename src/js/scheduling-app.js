@@ -9,6 +9,7 @@ $('#clear-slots').on('click', function(e) {
 });
 
 function slotSearch() {
+  var ret = $.Deferred();
   clearUI();
   $('#loading-row').show();
 
@@ -56,6 +57,7 @@ function slotSearch() {
       }
     );
   });
+  return ret.promise();
 }
 
 function slotHTML(id, type, start, end) {
