@@ -13,14 +13,19 @@
       <script>
         $(function () {
             $('#slot-search').click(function(e) {
-                $.ajax({
-                        type: "POST", 
-                        url: "https://authorization.sandboxcerner.com/tenants/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/protocols/oauth2/profiles/smart-v1/personas/provider/authorize?client_id=9283c310-51b9-4104-9fa6-958b78e54ac9&response_type=code&redirect_uri=https%3A%2F%2Fcenswteam.github.io%2FVolkSaas%2FscheduleIndex.html&scope=user%2FAppointment.write%20user%2FAppointment.read%20%20user%2FPatient.read%20user%2FPatient.write%20user%2FSlot.read%20online_access%20openid%20profile&aud=https%3A%2F%2Ffhir-ehr.sandboxcerner.com%2Fdstu2%2F0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca%2F&state=a4c16a46-2c46-482c-8d66-4cc4a2990bda",
-                        dataType: "json",
-                        success: function (response) {
-                           var stringfyJsonResponse = JSON.stringify(response);
-                        }
-                });
+              $.ajax({
+                          type: "POST",
+                          url: "https://authorization.sandboxcerner.com/tenants/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/protocols/oauth2/profiles/smart-v1/personas/provider/authorize",
+                          async: false,
+                          data: JSON.stringify({ client_id: "9283c310-51b9-4104-9fa6-958b78e54ac9", response_type: "code",redirect_uri: "https://censwteam.github.io%/VolkSaas/scheduleIndex.html",
+						                                     scope: "user/Appointment.write user/Appointment.read user/Patient.read user/Patient.write user/Slot.read online_access openid profile",
+						                                     aud: "https://fhir-ehr.sandboxcerner.com/dstu2/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/",state: "a4c16a46-2c46-482c-8d66-4cc4a2990bda"}),
+                          contentType: "application/json",
+                          complete: function (data) {
+                             var stringfyJsonResponse = JSON.stringify(data);
+                          }   
+                  });
+               
             });
           });
     </script>
