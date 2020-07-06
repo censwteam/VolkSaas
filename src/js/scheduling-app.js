@@ -25,7 +25,7 @@ function slotSearch() {
   slotParams['start'] = {$ge: form.elements['date-start'].value, $lt: form.elements['date-end'].value};
 
   FHIR.oauth2.ready(function(smart) {
- 
+ var authToken = smart.server.auth.token;
     // Query the FHIR server for Slots
     smart.api.fetchAll({type: 'Slot', query: slotParams}).then(
     //smart.fetchAll({type: 'Slot', query: slotParams}).then(
