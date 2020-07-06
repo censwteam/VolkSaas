@@ -16,7 +16,7 @@
                 $.ajax({
                         headers: {
                             Accept: "application/json+fhir",
-                            "Content-Type": "application/json+fhir"
+                            Content-Type: "application/json+fhir"
                         },
                         url: "https://authorization.sandboxcerner.com/tenants/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/protocols/oauth2/profiles/smart-v1/personas/provider/authorize?response_type=code&client_id=9283c310-51b9-4104-9fa6-958b78e54ac9&scope=user%2FAppointment.write%20user%2FAppointment.read%20%20user%2FPatient.read%20user%2FPatient.write%20user%2FSlot.read%20online_access%20openid%20profile&redirect_uri=https%3A%2F%2Fcenswteam.github.io%2FVolkSaas%2FscheduleIndex.html&aud=https%3A%2F%2Ffhir-ehr.sandboxcerner.com%2Fdstu2%2F0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca%2F&state=zNi28K5xfDQLJO8J",
                         dataType: "json",
