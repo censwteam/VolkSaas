@@ -27,35 +27,24 @@ function slotSearch() {
   FHIR.oauth2.ready(function(smart) {
  var authToken = smart.state.tokenResponse.access_token; //smart.server.auth.token;
     // Query the FHIR server for Slots
-    smart.api.fetchAll({type: 'Slot', query: slotParams}).then(
-    //smart.fetchAll({type: 'Slot', query: slotParams}).then(
-    //smart.request("Slot?" + slotParams).then(
+    $.ajax({
+            type: "GET",
+            url: "https://fhir-ehr.sandboxcerner.com/dstu2/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/" + "Appointment?date=ge2020-03-01T00:00:00.000Z&date=lt2020-03-19T23:59:59.000Z&practitioner=2578010",
+            headers: {
+            "Authorization":"Bearer " + authToken
+            },
+            //data: JSON.stringify(json),
+            success: function (data) {
+               var stringfyJsonResponse = JSON.stringify(data);
+            },
+            error: function (data){
+              var stringfyErrorJsonResponse = JSON.stringify(data);  	
+              }
 
-      // Display Appointment information if the call succeeded
-      function(slots) {
-        // If any Slots matched the criteria, display them
-        if (slots.length) {
-          var slotsHTML = '';
-
-          slots.forEach(function(slot) {
-            slotsHTML = slotsHTML + slotHTML(slot.id, slot.type.text, slot.start, slot.end);
-          });
-
-          renderSlots(slotsHTML);
-        }
-        // If no Slots matched the criteria, inform the user
-        else {
-          renderSlots('<p>No Slots found for the selected query parameters.</p>');
-        }
-      },
-
-      // Display 'Failed to read Slots from FHIR server' if the call failed
-      function() {
-        clearUI();
-        $('#errors').html('<p>Failed to read Slots from FHIR server</p>');
-        $('#errors-row').show();
-      }
-    );
+         });
+    
+    
+    
   });
   //return ret.promise();
 }
