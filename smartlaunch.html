@@ -13,17 +13,26 @@
       <script>
         $(function () {
             $('#slot-search').click(function(e) {
+		    var postData = {
+			client_id: "9283c310-51b9-4104-9fa6-958b78e54ac9", 
+			response_type: "code",redirect_uri: "https://censwteam.github.io/VolkSaas/scheduleIndex.html",
+			scope: "user/Appointment.write user/Appointment.read user/Patient.read user/Patient.write user/Slot.read online_access openid profile",
+			aud: "https://fhir-ehr.sandboxcerner.com/dstu2/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/",
+			state: "a4c16a46-2c46-482c-8d66-4cc4a2990bda"
+		    }
               $.ajax({
                           type: "POST",
                           url: "https://authorization.sandboxcerner.com/tenants/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/protocols/oauth2/profiles/smart-v1/personas/provider/authorize",
                           async: true,
-                          data: JSON.stringify({ client_id: "9283c310-51b9-4104-9fa6-958b78e54ac9", response_type: "code",redirect_uri: "https://censwteam.github.io/VolkSaas/scheduleIndex.html",
-						 scope: "user/Appointment.write user/Appointment.read user/Patient.read user/Patient.write user/Slot.read online_access openid profile",
-						 aud: "https://fhir-ehr.sandboxcerner.com/dstu2/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/",state: "a4c16a46-2c46-482c-8d66-4cc4a2990bda"}),
+                          data: JSON.stringify(postData),
+		      	  dataType: "json",
                           contentType: "application/json",
                           complete: function (data) {
                              var stringfyJsonResponse = JSON.stringify(data);
-                          }   
+                          },
+		      	  error: function (data){
+				var stringfyErrorJsonResponse = JSON.stringify(data);  	
+			  }
                   });
                
             });
