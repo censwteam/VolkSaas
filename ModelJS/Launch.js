@@ -65,7 +65,7 @@ function Authenticate()
 	//window.open(location, "authorize", params);
        // e.preventDefault();
 	FHIR.oauth2.authorize({
-		target: "popup",
+		target: "samepage",
 		width: 400,
 		height: 450,
 		completeInTarget: true,
