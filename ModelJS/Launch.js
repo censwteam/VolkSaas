@@ -68,16 +68,16 @@ function Authenticate()
 		target: "popup",
 		width: 400,
 		height: 450,
-		completeInTarge: true,
+		completeInTarget: true,
 		"client_id": "9283c310-51b9-4104-9fa6-958b78e54ac9",
 		"iss":  "https://fhir-ehr.sandboxcerner.com/dstu2/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/",
 		"scope": "user/Appointment.write user/Appointment.read user/Patient.read user/Patient.write user/Slot.read online_access openid profile",
 		"serverUrl": "https://fhir-ehr.sandboxcerner.com/dstu2/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/",
 		"fhirServiceUrl": "https://fhir-ehr.sandboxcerner.com/dstu2/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/",
 		"redirectUri": "https://censwteam.github.io/VolkSaas/SmartApp.html"
-	}).then(ready(function(smart){
+	}).then().ready().then(function(smart) {
 		var authToken = smart.state.tokenResponse.access_token;
-	}));
+	});
 	
 	//FHIR.oauth2.ready(function(smart) {
 	//	  var authToken = smart.state.tokenResponse.access_token;
