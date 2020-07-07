@@ -75,8 +75,8 @@ function Authenticate()
 	//  location = build_code_request(code_params);
 	//window.open(location, "authorize", params);
        // e.preventDefault();
-	if(authToken == "")
-	{
+	//if(authToken == "")
+	//{
 		FHIR.oauth2.authorize({
 			target: "samepage",
 			width: 400,
@@ -89,7 +89,7 @@ function Authenticate()
 			"fhirServiceUrl": "https://fhir-ehr.sandboxcerner.com/dstu2/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/",
 			"redirectUri": "https://censwteam.github.io/VolkSaas/SmartApp.html"
 		});
-	}
+	//}
 	//FHIR.oauth2.ready(function(smart) {
 	//	  var authToken = smart.state.tokenResponse.access_token;
 	//	  if(authToken != "")
