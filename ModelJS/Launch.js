@@ -71,6 +71,7 @@ function Authenticate()
 
 function GetFundusPhotographyScheduledPatient() {
     ClearAllData();
+	Authenticate();
     haveMedicalData = 0;
     var fromDate = $("#searchStartDate").val();
     var toDate = $("#searchEndDate").val();
