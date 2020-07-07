@@ -38,17 +38,7 @@ $(function () {
 });
 function Authenticate()
 {
-	    $("#authDialog").dialog({
-		    modal: true,
-		    open: function ()
-		    {
-			$(this).load('https://censwteam.github.io/VolkSaas/launchCoverage.html');
-		    },         
-		    height: 400,
-		    width: 400,
-		    title: 'Authentication'
-		});
-	    
+	   
 	//FHIR.oauth2.authorize({
 	//	"client_id": "9283c310-51b9-4104-9fa6-958b78e54ac9",
 	//	"iss":  "https://fhir-ehr.sandboxcerner.com/dstu2/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/",
