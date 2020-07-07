@@ -10,7 +10,7 @@ var patientBasicInformation = {
     resourcePatientEthnicity: ''
 }
 var haveMedicalData = 0;
-var authToken;
+//var authToken;
 $(function () {
     $("#sandBoxPatientUrl").val("https://fhir-open.sandboxcerner.com/dstu2/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/");
     $("#sandBoxInsuranceUrl").val("https://fhir-open.sandboxcerner.com/r4/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/");
