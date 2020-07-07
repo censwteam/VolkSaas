@@ -10,6 +10,7 @@ var patientBasicInformation = {
     resourcePatientEthnicity: ''
 }
 var haveMedicalData = 0;
+var authToken;
 $(function () {
     $("#sandBoxPatientUrl").val("https://fhir-open.sandboxcerner.com/dstu2/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/");
     $("#sandBoxInsuranceUrl").val("https://fhir-open.sandboxcerner.com/r4/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/");
@@ -44,7 +45,7 @@ oauth2ReadyErrback = (error) => {
 oauth2ReadyCallback = (smartClient) => {
     //Make use of the API exposed by the smartClient object to perform FHIR API interactions
     //Examples can be found at https://github.com/DefinitelyTyped/DefinitelyTyped/blob/master/types/fhir-js-client/fhir-js-client-tests.ts
-	var authToken = smartClient.state.tokenResponse.access_token;   
+	authToken = smartClient.state.tokenResponse.access_token;   
 }
 function build_code_request(params) {
     'use strict';
@@ -74,19 +75,21 @@ function Authenticate()
 	//  location = build_code_request(code_params);
 	//window.open(location, "authorize", params);
        // e.preventDefault();
-	FHIR.oauth2.authorize({
-		target: "samepage",
-		width: 400,
-		height: 450,
-		completeInTarget: true,
-		"client_id": "9283c310-51b9-4104-9fa6-958b78e54ac9",
-		"iss":  "https://fhir-ehr.sandboxcerner.com/dstu2/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/",
-		"scope": "user/Appointment.write user/Appointment.read user/Patient.read user/Patient.write user/Slot.read online_access openid profile",
-		"serverUrl": "https://fhir-ehr.sandboxcerner.com/dstu2/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/",
-		"fhirServiceUrl": "https://fhir-ehr.sandboxcerner.com/dstu2/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/",
-		"redirectUri": "https://censwteam.github.io/VolkSaas/SmartApp.html"
-	});
-	
+	if(authToken == "")
+	{
+		FHIR.oauth2.authorize({
+			target: "samepage",
+			width: 400,
+			height: 450,
+			completeInTarget: true,
+			"client_id": "9283c310-51b9-4104-9fa6-958b78e54ac9",
+			"iss":  "https://fhir-ehr.sandboxcerner.com/dstu2/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/",
+			"scope": "user/Appointment.write user/Appointment.read user/Patient.read user/Patient.write user/Slot.read online_access openid profile",
+			"serverUrl": "https://fhir-ehr.sandboxcerner.com/dstu2/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/",
+			"fhirServiceUrl": "https://fhir-ehr.sandboxcerner.com/dstu2/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/",
+			"redirectUri": "https://censwteam.github.io/VolkSaas/SmartApp.html"
+		});
+	}
 	//FHIR.oauth2.ready(function(smart) {
 	//	  var authToken = smart.state.tokenResponse.access_token;
 	//	  if(authToken != "")
@@ -115,6 +118,8 @@ function GetFundusPhotographyScheduledPatient() {
     ClearAllData();
 	Authenticate();
     haveMedicalData = 0;
+	if(authToken != "")
+	{
     var fromDate = $("#searchStartDate").val();
     var toDate = $("#searchEndDate").val();
     var practitionerID = $("#searchPractitionerID").val();
@@ -698,7 +703,7 @@ function GetFundusPhotographyScheduledPatient() {
     else {
         alert("Practioner ID or From Date or To Date should not be empty!");
     }
-
+	}
 }
 
 function ClearAllData() {
