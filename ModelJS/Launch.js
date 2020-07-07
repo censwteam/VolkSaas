@@ -12,8 +12,8 @@ var patientBasicInformation = {
 var haveMedicalData = 0;
 //var authToken;
 $(function () {
-    $("#sandBoxPatientUrl").val("https://fhir-open.sandboxcerner.com/dstu2/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/");
-    $("#sandBoxInsuranceUrl").val("https://fhir-open.sandboxcerner.com/r4/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/");
+    $("#sandBoxPatientUrl").val("https://fhir-ehr.sandboxcerner.com/dstu2/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/");
+    $("#sandBoxInsuranceUrl").val("https://fhir-ehr.sandboxcerner.com/r4/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/");
     $("#resourcePatient").val("Patient");
     $("#resourceCoverage").val("Coverage");
     $("#resourceObservation").val("Observation");
@@ -531,28 +531,28 @@ function GetFundusPhotographyScheduledPatient(authToken) {
                                                             Glaucoma = parseInfo.verificationStatus;
                                                            }
                                                            
-                                                           if(parseInfo.entry[0].fullUrl == "https://fhir-open.sandboxcerner.com/dstu2/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/Condition/p14813891")
+                                                           if(parseInfo.entry[0].fullUrl == "https://fhir-ehr.sandboxcerner.com/dstu2/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/Condition/p14813891")
                                                            { //visual acuity right
                                                             VisualAcuityRight = parseInfo.verificationStatus;
                                                            }
-                                                           if(parseInfo.entry[0].fullUrl == "https://fhir-open.sandboxcerner.com/dstu2/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/Condition/p14813883")
+                                                           if(parseInfo.entry[0].fullUrl == "https://fhir-ehr.sandboxcerner.com/dstu2/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/Condition/p14813883")
                                                            { //visual acuity left
                                                             VisualAcuityLeft = parseInfo.verificationStatus;
                                                            }
-                                                           if(parseInfo.entry[0].fullUrl == "https://fhir-open.sandboxcerner.com/dstu2/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/Condition/p14817861")
+                                                           if(parseInfo.entry[0].fullUrl == "https://fhir-ehr.sandboxcerner.com/dstu2/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/Condition/p14817861")
                                                            { //DiabetesTypes
                                                             DiabetesType = "TYPE 1";
                                                            }
-                                                           if(parseInfo.entry[0].fullUrl == "https://fhir-open.sandboxcerner.com/dstu2/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/Condition/p11838179")
+                                                           if(parseInfo.entry[0].fullUrl == "https://fhir-ehr.sandboxcerner.com/dstu2/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/Condition/p11838179")
                                                            { //DiabetesTypes
                                                             DiabetesType = "TYPE 2";
                                                            }
-                                                           if(parseInfo.entry[0].fullUrl == "https://fhir-open.sandboxcerner.com/dstu2/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/Condition/p14813863")
+                                                           if(parseInfo.entry[0].fullUrl == "https://fhir-ehr.sandboxcerner.com/dstu2/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/Condition/p14813863")
                                                            { //IntraOcularPressureLeft
                                                             IOPLeft = parseInfo.verificationStatus;
                                                            }
                                                            
-                                                           if(parseInfo.entry[0].fullUrl == "https://fhir-open.sandboxcerner.com/dstu2/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/Condition/p14813899")
+                                                           if(parseInfo.entry[0].fullUrl == "https://fhir-ehr.sandboxcerner.com/dstu2/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/Condition/p14813899")
                                                            { //IntraOcularPressureRight
                                                             IOPRight = parseInfo.verificationStatus;
                                                            }
