@@ -35,7 +35,7 @@ $(function () {
         "format": "YYYY-MM-DD"
     });
 	
-	FHIR.oauth2.ready(oauth2ReadyCallback, oauth2ReadyErrback);
+	//FHIR.oauth2.ready(oauth2ReadyCallback, oauth2ReadyErrback);
 	
 });
 oauth2ReadyErrback = (error) => {
