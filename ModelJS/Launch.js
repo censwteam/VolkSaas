@@ -36,17 +36,46 @@ $(function () {
 	
 	
 });
+function build_code_request(params) {
+    'use strict';
+
+    return params.auth_server + "?" +
+        "client_id=" + encodeURIComponent('9283c310-51b9-4104-9fa6-958b78e54ac9') + "&" +
+        "response_type=" + encodeURIComponent(params.response_type) + "&" +
+        "redirect_uri=" + encodeURIComponent(params.redirect_uri) + "&" +
+        "scope=" + encodeURIComponent(params.oauth_scope) + "&" +
+        "launch=" + encodeURIComponent(params.launch) + "&" +
+        "aud=" + encodeURIComponent(params.aud) + "&" +
+        "state=" + encodeURIComponent(params.state);
+}
 function Authenticate()
 {
-	   
-	//FHIR.oauth2.authorize({
-	//	"client_id": "9283c310-51b9-4104-9fa6-958b78e54ac9",
-	//	"iss":  "https://fhir-ehr.sandboxcerner.com/dstu2/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/",
-	//	"scope": "user/Appointment.write user/Appointment.read user/Patient.read user/Patient.write user/Slot.read online_access openid profile",
-	//	"serverUrl": "https://fhir-ehr.sandboxcerner.com/dstu2/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/",
-	//	"fhirServiceUrl": "https://fhir-ehr.sandboxcerner.com/dstu2/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/",
-	//	"redirectUri": "https://censwteam.github.io/VolkSaas/scheduleIndex.html"
-	//});
+	//var width,height,left,top,params,location;
+	// width = 780;
+        //            height = 550;
+        //            left = (screen.width - width) / 2;
+        //            top = (screen.height - height) / 2;
+        //            if (top > 20) {
+         //               top = top - 20;
+         //           }
+	//params = 'width=' + width + ', height=' + height;
+       //          params += ', top=' + top + ', left=' + left;
+        //            params += 'titlebar=no, location=yes';
+	//  location = build_code_request(code_params);
+	//window.open(location, "authorize", params);
+       // e.preventDefault();
+	FHIR.oauth2.authorize({
+		target: "popup",
+		width: 400,
+		height: 450,
+		completeInTarge: true,
+		"client_id": "9283c310-51b9-4104-9fa6-958b78e54ac9",
+		"iss":  "https://fhir-ehr.sandboxcerner.com/dstu2/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/",
+		"scope": "user/Appointment.write user/Appointment.read user/Patient.read user/Patient.write user/Slot.read online_access openid profile",
+		"serverUrl": "https://fhir-ehr.sandboxcerner.com/dstu2/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/",
+		"fhirServiceUrl": "https://fhir-ehr.sandboxcerner.com/dstu2/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/",
+		"redirectUri": "https://censwteam.github.io/VolkSaas/scheduleIndex.html"
+	});
 	
 	//FHIR.oauth2.ready(function(smart) {
 	//	  var authToken = smart.state.tokenResponse.access_token;
