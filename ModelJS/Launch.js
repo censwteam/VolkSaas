@@ -33,6 +33,29 @@ $(function () {
         "showTodayButton": true,
         "format": "YYYY-MM-DD"
     });
+	FHIR.oauth2.ready(function(smart) {
+		  var authToken = smart.state.tokenResponse.access_token;
+		  if(authToken != "")
+		  {
+			  $.ajax({
+				type: "GET",
+				url: "https://fhir-ehr.sandboxcerner.com/dstu2/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/" + "Appointment?date=ge2020-03-01T00:00:00.000Z&date=lt2020-03-19T23:59:59.000Z&practitioner=2578010",
+				headers: {
+				Accept: "application/json+fhir",  
+				"Authorization":"Bearer " + authToken
+				},
+				//data: JSON.stringify(json),
+				success: function (data) {
+				   var stringfyJsonResponse = JSON.stringify(data);
+				},
+				error: function (data){
+				  var stringfyErrorJsonResponse = JSON.stringify(data);  	
+				}
+
+			 });
+		 }
+	});
+	
 });
 function Authenticate()
 {
@@ -47,14 +70,14 @@ function Authenticate()
 		    title: 'Authentication'
 		});
 	    });
-	FHIR.oauth2.authorize({
-		"client_id": "9283c310-51b9-4104-9fa6-958b78e54ac9",
-		"iss":  "https://fhir-ehr.sandboxcerner.com/dstu2/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/",
-		"scope": "user/Appointment.write user/Appointment.read user/Patient.read user/Patient.write user/Slot.read online_access openid profile",
-		"serverUrl": "https://fhir-ehr.sandboxcerner.com/dstu2/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/",
-		"fhirServiceUrl": "https://fhir-ehr.sandboxcerner.com/dstu2/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/",
-		"redirectUri": "https://censwteam.github.io/VolkSaas/scheduleIndex.html"
-	});
+	//FHIR.oauth2.authorize({
+	//	"client_id": "9283c310-51b9-4104-9fa6-958b78e54ac9",
+	//	"iss":  "https://fhir-ehr.sandboxcerner.com/dstu2/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/",
+	//	"scope": "user/Appointment.write user/Appointment.read user/Patient.read user/Patient.write user/Slot.read online_access openid profile",
+	//	"serverUrl": "https://fhir-ehr.sandboxcerner.com/dstu2/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/",
+	//	"fhirServiceUrl": "https://fhir-ehr.sandboxcerner.com/dstu2/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/",
+	//	"redirectUri": "https://censwteam.github.io/VolkSaas/scheduleIndex.html"
+	//});
 	
 	FHIR.oauth2.ready(function(smart) {
 		  var authToken = smart.state.tokenResponse.access_token;
