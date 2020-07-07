@@ -78,7 +78,7 @@ function Authenticate()
 	//if(authToken == "")
 	//{
 		FHIR.oauth2.authorize({
-			target: "samepage",
+			target: "_self",
 			width: 400,
 			height: 450,
 			completeInTarget: true,
@@ -113,10 +113,18 @@ function Authenticate()
 	//	 }
 	//});
 }
-
-function GetFundusPhotographyScheduledPatient() {
+function GetToken()
+{
+	FHIR.oauth2.ready(function(smart) {
+		  var authToken = smart.state.tokenResponse.access_token;
+		  if(authToken != "")
+		  {
+			GetFundusPhotographyScheduledPatient(authToken);
+		 }
+	});
+}
+function GetFundusPhotographyScheduledPatient(authToken) {
     ClearAllData();
-	Authenticate();
     haveMedicalData = 0;
 	if(authToken != "")
 	{
@@ -149,7 +157,8 @@ function GetFundusPhotographyScheduledPatient() {
         $.ajax({
             headers: {
                 Accept: "application/json+fhir",
-                "Content-Type": "application/json+fhir"
+                "Content-Type": "application/json+fhir",
+		"Authorization":"Bearer " + authToken
             },
             beforeSend: function () {
                 $('#loadingimage').show();
