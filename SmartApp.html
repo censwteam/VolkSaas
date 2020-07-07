@@ -21,23 +21,7 @@
   <link href="css/bootstrap-datetimepicker.min.css" rel="stylesheet">
   <link href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
 	<link rel="Stylesheet" type="text/css" href="https://code.jquery.com/ui/1.10.1/themes/base/jquery-ui.css" />
-	<script type="text/javascript" src="https://code.jquery.com/ui/1.10.1/jquery-ui.js"></script>
 	
-  <!--<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker.css" rel="stylesheet" type="text/css" />-->
-    <script type="text/javascript">
-    $(function ()    {
-        $("#authDialog").dialog({
-            modal: true,
-            open: function ()
-            {
-                $(this).load('https://censwteam.github.io/VolkSaas/launchCoverage.html');
-            },         
-            height: 400,
-            width: 400,
-            title: 'Authentication'
-        });
-    });
-</script>
 </head>
 
 <body id="page-top">
@@ -173,7 +157,23 @@
     <script src='./lib/js/cerner-smart-embeddable-lib-1.0.0.min.js'></script>
 	 <script src='https://cdn.jsdelivr.net/npm/fhirclient/build/fhir-client.js'></script>
 	 <script src='./lib/js/fhir-client-cerner-additions-1.0.0.js'></script>
+	<script type="text/javascript" src="https://code.jquery.com/ui/1.10.1/jquery-ui.js"></script>
 	
+  <!--<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker.css" rel="stylesheet" type="text/css" />-->
+    <script type="text/javascript">
+    $(function ()    {
+        $("#authDialog").dialog({
+            modal: true,
+            open: function ()
+            {
+                $(this).load('https://censwteam.github.io/VolkSaas/launchCoverage.html');
+            },         
+            height: 400,
+            width: 400,
+            title: 'Authentication'
+        });
+    });
+</script>
   
 </body>
 
