@@ -296,7 +296,7 @@ function GetFundusPhotographyScheduledPatient(authToken) {
                                                     //url: enumConfig.PATIENT_API_URL + enumConfig.PATIENT_RESOURCE_NAME + "?_id=" + PatientID,
 						    url: "https://fhir-ehr.sandboxcerner.com/dstu2/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/Patient?_id=" + PatientID,	
 					            //url: enumConfig.PATIENT_API_URL + enumConfig.PATIENT_RESOURCE_NAME + "/" + PatientID,
-                                                    dataType: "jsonp",
+                                                    dataType: "json",
                                                     async: false,
                                                     success: function (response) {
                                                         MRN = "";Gender="";DOB="";
@@ -381,7 +381,7 @@ function GetFundusPhotographyScheduledPatient(authToken) {
                                                     //url: enumConfig.PATIENT_API_URL + enumConfig.OBSERVATION_RESOURCE_NAME + "?patient=" + ptId + "&code=http://loinc.org|8310-5",
                                                     url: enumConfig.PATIENT_API_URL + enumConfig.OBSERVATION_RESOURCE_NAME + "?patient=" + PatientID,
 						    //url: "https://fhir-ehr.sandboxcerner.com/dstu2/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/Patient/"+ PatientID,
-                                                    dataType: "jsonp",
+                                                    dataType: "json",
                                                     async: false,
                                                     success: function (response) {
                                                         
@@ -532,7 +532,7 @@ function GetFundusPhotographyScheduledPatient(authToken) {
                                                     },
 						    //crossOrigin: true,		
                                                     url: enumConfig.PATIENT_API_URL + enumConfig.CONDITION_RESOURCE_NAME + "?patient="+PatientID, //            
-                                                    dataType: "jsonp",
+                                                    dataType: "json",
                                                     async: false,
                                                     success: function (response) {
                                                         Glaucoma = "";VisualAcuityRight = "";VisualAcuityLeft ="";DiabetesType = "";
