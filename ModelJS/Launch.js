@@ -150,8 +150,11 @@ function GetFundusPhotographyScheduledPatient(authToken) {
     var jsonData = "";
     var data = new Array();
     var isLastElement = 0;
-    var DOB, Gender, MRN, Ethnicity, Address, City, State, District, PostalCode, Country, Phone, MaritalStatus, TemperatureOral, Weight, Height, BloodPressure, IOPLeft, Glaucoma, VisualAcuityRight, VisualAcuityLeft, GlucoseFasting, RBC, WBC, HGB, DiabetesType, IOPRight, Cholesterol, Subscriber, Beneficiary, CoverageStartDate, CoverageEndDate, Payor, GroupName, GroupValue;
-    HGB = ""; Cholesterol = ""; Subscriber=""; Beneficiary=""; CoverageStartDate=""; CoverageEndDate=""; Payor=""; GroupName=""; GroupValue="";IOPLeft="";IOPRight="";
+    var DOB, Gender, MRN, Ethnicity, Address, City, State, District, PostalCode, Country, Phone, MaritalStatus, TemperatureOral, Weight, Height, BloodPressure, IOPLeft, 
+	Glaucoma, VisualAcuityRight, VisualAcuityLeft, GlucoseFasting, RBC, WBC, HGB, DiabetesType, IOPRight, Cholesterol, Subscriber, Beneficiary, CoverageStartDate, 
+	CoverageEndDate, Payor, GroupName, GroupValue;
+    HGB = ""; Cholesterol = ""; Subscriber=""; Beneficiary=""; CoverageStartDate=""; 
+    CoverageEndDate=""; Payor=""; GroupName=""; GroupValue="";IOPLeft="";IOPRight="";
     if (practitionerID !== "" && fromDate !== "" && toDate !== "") {
       //  console.log("url - " + "https://fhir-open.sandboxcerner.com/r4/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/Appointment?date=ge" + fromFullFormat + "&date=lt" + toFullFormat + "&practitioner=" + practitionerID + "");
         $.ajax({
