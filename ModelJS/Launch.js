@@ -542,7 +542,7 @@ function GetFundusPhotographyScheduledPatient(authToken) {
                                                     //url: enumConfig.PATIENT_API_URL + enumConfig.CONDITION_RESOURCE_NAME + "?patient="+PatientID, //   
 						    url: "https://fhir-ehr.sandboxcerner.com/dstu2/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/Condition?patient=" + PatientID,			
                                                     dataType: "json",
-                                                    async: false,
+                                                    async: true,
                                                     success: function (response) {
                                                         Glaucoma = "";VisualAcuityRight = "";VisualAcuityLeft ="";DiabetesType = "";
                                                         IOPLeft ="";IOPRight = "";
