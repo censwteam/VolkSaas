@@ -353,7 +353,7 @@ function GetFundusPhotographyScheduledPatient(authToken) {
 
                                                     },
                                                     error: function (response) {
-
+							var error = response;
                                                     }
                                                 });
 												// // medical history
