@@ -166,7 +166,7 @@ function GetFundusPhotographyScheduledPatient(authToken) {
             beforeSend: function () {
                 $('#loadingimage').show();
             },
-            url: "https://fhir-ehr.sandboxcerner.com/dstu2/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/Appointment?practitioner=" + practitionerID + "&code=http://snomed.info/sct| 408443003" + "&date=ge" + fromFullFormat + "&date=lt" + toFullFormat  ,
+            url: "https://fhir-ehr.sandboxcerner.com/dstu2/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/Appointment?practitioner=" + practitionerID + "&date=ge" + fromFullFormat + "&date=lt" + toFullFormat  ,
             //url: "https://fhir-open.sandboxcerner.com/r4/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/Appointment?date=ge" + fromFullFormat + "&date=lt" + toFullFormat + "&practitioner=" + practitionerID + "&code=http://snomed.info/sct%7C408443003" ,
             dataType: "json",
             //async: false,
