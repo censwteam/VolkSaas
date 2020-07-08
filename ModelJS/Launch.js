@@ -173,6 +173,7 @@ function GetFundusPhotographyScheduledPatient(authToken) {
             success: function (response) {
 
                 var stringfyJsonResponse = JSON.stringify(response);
+		    console.log("appointments " + stringfyJsonResponse);
                 var parsePatientInfo = JSON.parse(stringfyJsonResponse);
                 if ( parsePatientInfo.entry !== undefined) {
                     //data.push(["Appointment ID", "Appointment Status", "Standard Code", "Service Type", "Start", "End", "Duration Min", "Patient ID", "Patient Name", "Practitioner ID", "Practitioner Name", "Location ID", "Location"]);
