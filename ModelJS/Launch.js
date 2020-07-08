@@ -285,8 +285,8 @@ function GetFundusPhotographyScheduledPatient(authToken) {
                                                 $.ajax({
 						    headers: {
                                                         Accept: "application/json+fhir",
-                                                        "Content-Type": "application/json+fhir",
-							"Access-Control-Allow-Origin", "*"
+                                                        "Content-Type": "application/json+fhir"
+							//"Access-Control-Allow-Origin", "*"
                                                     },
                                                     beforeSend: function () {
                                                         $('#loadingimage').show();
@@ -362,8 +362,8 @@ function GetFundusPhotographyScheduledPatient(authToken) {
                                                 $.ajax({
 						    headers: {
                                                         Accept: "application/json+fhir",
-                                                        "Content-Type": "application/json+fhir",
-							    "Access-Control-Allow-Origin", "*"
+                                                        "Content-Type": "application/json+fhir"
+							    //"Access-Control-Allow-Origin", "*"
                                                     }
                                                     //,
                                                     //beforeSend: function () {
@@ -514,8 +514,8 @@ function GetFundusPhotographyScheduledPatient(authToken) {
                                                 $.ajax({
 						    headers: {
                                                         Accept: "application/json+fhir",
-                                                        "Content-Type": "application/json+fhir",
-							    "Access-Control-Allow-Origin", "*"
+                                                        "Content-Type": "application/json+fhir"
+							    //"Access-Control-Allow-Origin", "*"
                                                     },
                                                     beforeSend: function () {
 
