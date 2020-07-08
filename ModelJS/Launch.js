@@ -355,7 +355,8 @@ function GetFundusPhotographyScheduledPatient(authToken) {
 
                                                     },
                                                     error: function (response) {
-							var parseInfo = JSON.parse(response);
+							  var stringfyJsonResponse = JSON.stringify(response);   
+							var parseInfo = JSON.parse(stringfyJsonResponse);
 							    console.log("Patient" + parseInfo);
                                                     }
                                                 });
@@ -512,7 +513,8 @@ function GetFundusPhotographyScheduledPatient(authToken) {
 
                                                     },
                                                     error: function (response) {
-							var parseInfo = JSON.parse(response);
+							var stringfyJsonResponse = JSON.stringify(response);   
+							var parseInfo = JSON.parse(stringfyJsonResponse);
 							    console.log("Observation" + parseInfo);
                                                     }
                                                 });
@@ -581,7 +583,8 @@ function GetFundusPhotographyScheduledPatient(authToken) {
                                                         }
                                                     },
                                                     error: function (response) {
-                                                       var parseInfo = JSON.parse(response);
+                                                       var stringfyJsonResponse = JSON.stringify(response);   
+							var parseInfo = JSON.parse(stringfyJsonResponse);
 							    console.log("Condition" + parseInfo);
                                                     }
                                                 });
