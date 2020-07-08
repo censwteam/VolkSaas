@@ -45,7 +45,7 @@ oauth2ReadyErrback = (error) => {
 oauth2ReadyCallback = (smartClient) => {
     //Make use of the API exposed by the smartClient object to perform FHIR API interactions
     //Examples can be found at https://github.com/DefinitelyTyped/DefinitelyTyped/blob/master/types/fhir-js-client/fhir-js-client-tests.ts
-	authToken = smartClient.state.tokenResponse.access_token;   
+	//authToken = smartClient.state.tokenResponse.access_token;   
 }
 function build_code_request(params) {
     'use strict';
