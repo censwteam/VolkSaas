@@ -152,7 +152,7 @@ function GetFundusPhotographyScheduledPatient(authToken) {
     var isLastElement = 0;
     var DOB, Gender, MRN, Ethnicity, Address, City, State, District, PostalCode, Country, Phone, MaritalStatus, TemperatureOral, Weight, Height, BloodPressure, IOPLeft, 
 	Glaucoma, VisualAcuityRight, VisualAcuityLeft, GlucoseFasting, RBC, WBC, HGB, DiabetesType, IOPRight, Cholesterol, Subscriber, Beneficiary, CoverageStartDate, 
-	CoverageEndDate, Payor, GroupName, GroupValue;
+	CoverageEndDate, Payor, GroupName, GroupValue,TemperatureOral;SystolicBP;DiastolicBP;
     HGB = ""; Cholesterol = ""; Subscriber=""; Beneficiary=""; CoverageStartDate=""; 
     CoverageEndDate=""; Payor=""; GroupName=""; GroupValue="";IOPLeft="";IOPRight="";
     if (practitionerID !== "" && fromDate !== "" && toDate !== "") {
