@@ -290,8 +290,8 @@ function GetFundusPhotographyScheduledPatient(authToken) {
                                                     beforeSend: function () {
                                                         $('#loadingimage').show();
                                                     },
-                                                    url: enumConfig.PATIENT_API_URL + enumConfig.PATIENT_RESOURCE_NAME + "?_id=" + PatientID,
-					            //url: enumConfig.PATIENT_API_URL + enumConfig.PATIENT_RESOURCE_NAME + "/" + PatientID,
+                                                    //url: enumConfig.PATIENT_API_URL + enumConfig.PATIENT_RESOURCE_NAME + "?_id=" + PatientID,
+					            url: enumConfig.PATIENT_API_URL + enumConfig.PATIENT_RESOURCE_NAME + "/" + PatientID,
                                                     dataType: "json",
                                                     async: false,
                                                     success: function (response) {
