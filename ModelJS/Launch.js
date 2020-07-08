@@ -294,7 +294,7 @@ function GetFundusPhotographyScheduledPatient(authToken) {
                                                     //url: enumConfig.PATIENT_API_URL + enumConfig.PATIENT_RESOURCE_NAME + "?_id=" + PatientID,
 					            url: enumConfig.PATIENT_API_URL + enumConfig.PATIENT_RESOURCE_NAME + "/" + PatientID,
                                                     dataType: "json",
-                                                    //async: false,
+                                                    async: false,
                                                     success: function (response) {
                                                         MRN = "";Gender="";DOB="";
                                                         Ethnicity="";Address="";City="";
@@ -376,7 +376,7 @@ function GetFundusPhotographyScheduledPatient(authToken) {
                                                     //url: enumConfig.PATIENT_API_URL + enumConfig.OBSERVATION_RESOURCE_NAME + "?patient=" + ptId + "&code=http://loinc.org|8310-5",
                                                     url: enumConfig.PATIENT_API_URL + enumConfig.OBSERVATION_RESOURCE_NAME + "?patient=" + PatientID,
                                                     dataType: "json",
-                                                    //async: false,
+                                                    async: false,
                                                     success: function (response) {
                                                         
                                                         var stringfyJsonResponse = JSON.stringify(response);
@@ -525,7 +525,7 @@ function GetFundusPhotographyScheduledPatient(authToken) {
                                                     },
                                                     url: enumConfig.PATIENT_API_URL + enumConfig.CONDITION_RESOURCE_NAME + "?patient="+PatientID+"", //            
                                                     dataType: "json",
-                                                    //async: false,
+                                                    async: false,
                                                     success: function (response) {
                                                         Glaucoma = "";VisualAcuityRight = "";VisualAcuityLeft ="";DiabetesType = "";
                                                         IOPLeft ="";IOPRight = "";
