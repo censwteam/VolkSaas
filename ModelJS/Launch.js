@@ -375,10 +375,11 @@ function GetFundusPhotographyScheduledPatient(authToken) {
                                                     complete: function () {
 
                                                     },
+						    crossOrigin: true,	
                                                     //url: enumConfig.PATIENT_API_URL + enumConfig.OBSERVATION_RESOURCE_NAME + "?patient=" + ptId + "&code=http://loinc.org|8310-5",
                                                     url: enumConfig.PATIENT_API_URL + enumConfig.OBSERVATION_RESOURCE_NAME + "?patient=" + PatientID,
 						    //url: "https://fhir-ehr.sandboxcerner.com/dstu2/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/Patient/"+ PatientID,
-                                                    dataType: "json",
+                                                    dataType: "jsonp",
                                                     async: false,
                                                     success: function (response) {
                                                         
@@ -526,8 +527,9 @@ function GetFundusPhotographyScheduledPatient(authToken) {
                                                     complete: function () {
 
                                                     },
-                                                    url: enumConfig.PATIENT_API_URL + enumConfig.CONDITION_RESOURCE_NAME + "?patient="+PatientID+"", //            
-                                                    dataType: "json",
+						    crossOrigin: true,		
+                                                    url: enumConfig.PATIENT_API_URL + enumConfig.CONDITION_RESOURCE_NAME + "?patient="+PatientID, //            
+                                                    dataType: "jsonp",
                                                     async: false,
                                                     success: function (response) {
                                                         Glaucoma = "";VisualAcuityRight = "";VisualAcuityLeft ="";DiabetesType = "";
