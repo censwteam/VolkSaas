@@ -283,8 +283,7 @@ function GetFundusPhotographyScheduledPatient(authToken) {
                                             if (PatientID > 0) {
                                                 console.log("PatientID - " + PatientID);
                                                 $.ajax({
-							type: "GET",
-                                                    headers: {
+						    headers: {
                                                         Accept: "application/json+fhir",
                                                         "Content-Type": "application/json+fhir"
                                                     },
@@ -293,7 +292,7 @@ function GetFundusPhotographyScheduledPatient(authToken) {
                                                     },
                                                     url: enumConfig.PATIENT_API_URL + enumConfig.PATIENT_RESOURCE_NAME + "?_id=" + PatientID,
 					            //url: enumConfig.PATIENT_API_URL + enumConfig.PATIENT_RESOURCE_NAME + "/" + PatientID,
-                                                    dataType: "json",
+                                                    dataType: "jsonp",
                                                     async: false,
                                                     success: function (response) {
                                                         MRN = "";Gender="";DOB="";
