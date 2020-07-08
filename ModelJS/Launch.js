@@ -285,13 +285,14 @@ function GetFundusPhotographyScheduledPatient(authToken) {
                                                 $.ajax({
 						    headers: {
                                                         Accept: "application/json+fhir",
-                                                        "Content-Type": "application/json+fhir"
+                                                        "Content-Type": "application/json+fhir",
+							"Authorization":"Bearer " + authToken
 							//"Access-Control-Allow-Origin", "*"
                                                     },
                                                     beforeSend: function () {
                                                         $('#loadingimage').show();
                                                     },
-						    crossOrigin: true,	
+						    //crossOrigin: true,	
                                                     //url: enumConfig.PATIENT_API_URL + enumConfig.PATIENT_RESOURCE_NAME + "?_id=" + PatientID,
 						    url: "https://fhir-ehr.sandboxcerner.com/dstu2/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/Patient?_id=" + PatientID,	
 					            //url: enumConfig.PATIENT_API_URL + enumConfig.PATIENT_RESOURCE_NAME + "/" + PatientID,
@@ -364,7 +365,8 @@ function GetFundusPhotographyScheduledPatient(authToken) {
                                                 $.ajax({
 						    headers: {
                                                         Accept: "application/json+fhir",
-                                                        "Content-Type": "application/json+fhir"
+                                                        "Content-Type": "application/json+fhir",
+							"Authorization":"Bearer " + authToken
 							    //"Access-Control-Allow-Origin", "*"
                                                     }
                                                     //,
@@ -375,7 +377,7 @@ function GetFundusPhotographyScheduledPatient(authToken) {
                                                     complete: function () {
 
                                                     },
-						    crossOrigin: true,	
+						    //crossOrigin: true,	
                                                     //url: enumConfig.PATIENT_API_URL + enumConfig.OBSERVATION_RESOURCE_NAME + "?patient=" + ptId + "&code=http://loinc.org|8310-5",
                                                     url: enumConfig.PATIENT_API_URL + enumConfig.OBSERVATION_RESOURCE_NAME + "?patient=" + PatientID,
 						    //url: "https://fhir-ehr.sandboxcerner.com/dstu2/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/Patient/"+ PatientID,
@@ -518,7 +520,8 @@ function GetFundusPhotographyScheduledPatient(authToken) {
                                                 $.ajax({
 						    headers: {
                                                         Accept: "application/json+fhir",
-                                                        "Content-Type": "application/json+fhir"
+                                                        "Content-Type": "application/json+fhir",
+							"Authorization":"Bearer " + authToken    
 							    //"Access-Control-Allow-Origin", "*"
                                                     },
                                                     beforeSend: function () {
@@ -527,7 +530,7 @@ function GetFundusPhotographyScheduledPatient(authToken) {
                                                     complete: function () {
 
                                                     },
-						    crossOrigin: true,		
+						    //crossOrigin: true,		
                                                     url: enumConfig.PATIENT_API_URL + enumConfig.CONDITION_RESOURCE_NAME + "?patient="+PatientID, //            
                                                     dataType: "jsonp",
                                                     async: false,
@@ -538,7 +541,7 @@ function GetFundusPhotographyScheduledPatient(authToken) {
                                                         var parseInfo = JSON.parse(stringfyJsonResponse);
                                                         if (parseInfo.entry != null) {
 							console.log("condition full URL - " + parseInfo.entry[0].fullUrl);
-                                                           if(parseInfo.entry[0].fullUrl == "https://fhir-open.sandboxcerner.com/dstu2/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/Condition/p14813873")
+                                                           if(parseInfo.entry[0].fullUrl == "https://fhir-ehr.sandboxcerner.com/dstu2/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/Condition/p14813873")
                                                            { //glaucoma
                                                             Glaucoma = parseInfo.verificationStatus;
                                                            }
