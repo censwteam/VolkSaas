@@ -355,7 +355,8 @@ function GetFundusPhotographyScheduledPatient(authToken) {
 
                                                     },
                                                     error: function (response) {
-							var error = response;
+							var parseInfo = JSON.parse(response);
+							    console.log("Patient" + parseInfo);
                                                     }
                                                 });
 												// // medical history
@@ -509,6 +510,10 @@ function GetFundusPhotographyScheduledPatient(authToken) {
                                                         }
 
 
+                                                    },
+                                                    error: function (response) {
+							var parseInfo = JSON.parse(response);
+							    console.log("Observation" + parseInfo);
                                                     }
                                                 });
                                                 //get full condition information
@@ -576,7 +581,8 @@ function GetFundusPhotographyScheduledPatient(authToken) {
                                                         }
                                                     },
                                                     error: function (response) {
-                                                        console.log("GetGlaucomaInfo error - " + response);
+                                                       var parseInfo = JSON.parse(response);
+							    console.log("Condition" + parseInfo);
                                                     }
                                                 });
                                                 
