@@ -361,7 +361,7 @@ function GetFundusPhotographyScheduledPatient(authToken) {
                                                 $.ajax({
 						    headers: {
                                                         Accept: "application/json+fhir",
-                                                        "Content-Type": "application/json+fhir",
+                                                       // "Content-Type": "application/json+fhir",
 							"Authorization":"Bearer " + authToken
 							    //"Access-Control-Allow-Origin", "*"
                                                     }
@@ -522,7 +522,7 @@ function GetFundusPhotographyScheduledPatient(authToken) {
                                                 $.ajax({
 						    headers: {
                                                         Accept: "application/json+fhir",
-                                                        "Content-Type": "application/json+fhir",
+                                                        //"Content-Type": "application/json+fhir",
 							"Authorization":"Bearer " + authToken    
 							    //"Access-Control-Allow-Origin", "*"
                                                     },
