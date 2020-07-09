@@ -721,6 +721,8 @@ function GetFundusPhotographyScheduledPatient(authToken) {
                 $('#loadingimage').hide();
             },
             error: function (response) {
+		    var stringfyJsonResponse = JSON.stringify(response);   
+					                console.log("error Condition" + stringfyJsonResponse);
                 $('#loadingimage').hide();
             }
         });
