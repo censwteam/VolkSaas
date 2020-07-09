@@ -113,7 +113,7 @@ function GetToken()
 		  {
 			GetFundusPhotographyScheduledPatient(authToken);
 		 }
-	}, function(){ alert("Please (re)launch the app.") }));
+	}, function(){ alert("Please (re)launch the app.")});
 }
 function GetFundusPhotographyScheduledPatient(authToken) {
     ClearAllData();
