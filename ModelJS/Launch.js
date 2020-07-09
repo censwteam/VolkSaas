@@ -38,15 +38,7 @@ $(function () {
 	//FHIR.oauth2.ready(oauth2ReadyCallback, oauth2ReadyErrback);
 	
 });
-oauth2ReadyErrback = (error) => {
-	    console.log(error);
-	}
 
-oauth2ReadyCallback = (smartClient) => {
-    //Make use of the API exposed by the smartClient object to perform FHIR API interactions
-    //Examples can be found at https://github.com/DefinitelyTyped/DefinitelyTyped/blob/master/types/fhir-js-client/fhir-js-client-tests.ts
-	//authToken = smartClient.state.tokenResponse.access_token;   
-}
 function build_code_request(params) {
     'use strict';
 
