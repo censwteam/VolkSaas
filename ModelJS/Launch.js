@@ -363,7 +363,7 @@ function GetFundusPhotographyScheduledPatient(authToken) {
 						    headers: {
                                                         Accept: "application/json+fhir",
                                                         "Content-Type": "application/json+fhir",
-							"Access-Control-Allow-Origin": "https://censwteam.github.io/",    
+							//"Access-Control-Allow-Origin": "https://censwteam.github.io/",    
 							"Authorization": authToken
 							    //"Access-Control-Allow-Origin", "*"
                                                     }
