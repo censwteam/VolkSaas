@@ -359,6 +359,7 @@ function GetFundusPhotographyScheduledPatient(authToken) {
                                                         GlucoseFasting = "";BloodPressure="";RBC="";
                                                         WBC="";HGB="";SystolicBP="";DiastolicBP="";
                                                 $.ajax({
+							type: "GET",
 						    headers: {
                                                         Accept: "application/json+fhir",
                                                        // "Content-Type": "application/json+fhir",
@@ -376,7 +377,7 @@ function GetFundusPhotographyScheduledPatient(authToken) {
                                                     },
 						    //url: enumConfig.PATIENT_API_URL + enumConfig.OBSERVATION_RESOURCE_NAME + "?patient=" + ptId + "&code=http://loinc.org|8310-5",
                                                     //url: enumConfig.PATIENT_API_URL + enumConfig.OBSERVATION_RESOURCE_NAME + "?patient=" + PatientID,
-						    url: "https://fhir-ehr.sandboxcerner.com/dstu2/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/MedicationStatement?patient=" + PatientID,
+						    url: "https://fhir-ehr.sandboxcerner.com/dstu2/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/Observation?patient=" + PatientID,
 						    //url: "https://fhir-ehr.sandboxcerner.com/dstu2/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/Patient/"+ PatientID,
                                                     dataType: "json",
                                                     async: false,
@@ -520,6 +521,7 @@ function GetFundusPhotographyScheduledPatient(authToken) {
                                                 IOPLeft="";
                                                 IOPRight="";
                                                 $.ajax({
+							type: "GET",
 						    headers: {
                                                         Accept: "application/json+fhir",
                                                         //"Content-Type": "application/json+fhir",
