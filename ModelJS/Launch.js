@@ -76,7 +76,7 @@ function Authenticate()
 			completeInTarget: true,
 			"client_id": "9283c310-51b9-4104-9fa6-958b78e54ac9",
 			"iss":  "https://fhir-ehr.sandboxcerner.com/dstu2/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/",
-			"scope": "user/Appointment.write user/Appointment.read user/Patient.read user/Patient.write user/Slot.read user/Condition.read User/Observation.read patient/Condition.read patient/Observation.read online_access openid profile",
+			"scope": "user/Appointment.write user/Appointment.read user/Patient.read user/Patient.write user/Slot.read Patient/Condition.read Patient/Observation.read online_access openid profile",
 			"serverUrl": "https://fhir-ehr.sandboxcerner.com/dstu2/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/",
 			"fhirServiceUrl": "https://fhir-ehr.sandboxcerner.com/dstu2/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/",
 			"redirectUri": "https://censwteam.github.io/VolkSaas/SmartApp.html"
