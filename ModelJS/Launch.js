@@ -359,7 +359,7 @@ function GetFundusPhotographyScheduledPatient(authToken) {
                                                         GlucoseFasting = "";BloodPressure="";RBC="";
                                                         WBC="";HGB="";SystolicBP="";DiastolicBP="";
                                                 $.ajax({
-							type: "OPTIONS",
+							type: "GET",
 						    headers: {
                                                         Accept: "application/json+fhir",
                                                         "Content-Type": "application/json+fhir",
