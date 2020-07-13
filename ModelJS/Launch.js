@@ -142,6 +142,8 @@ function GetFundusPhotographyScheduledPatient(authToken) {
                                 ServiceTypeText = "";
                                 AppointmentID = entryResItems.id;
                                 AppointmentStatus = entryResItems.status;
+			      if(AppointmentStatus == "booked" || AppointmentStatus == "arrived")
+			      {	      
                                 if (entryResItems.serviceType != null) {
                                     $.each(entryResItems.serviceType, function (entryService, entryServiceItems) {
                                         if (entryServiceItems.coding != null) {
@@ -323,12 +325,12 @@ function GetFundusPhotographyScheduledPatient(authToken) {
                                 //data.push([jsonData]);  "Temperature Oral", "Weight", "Height", "Systolic BP", "Diastolic BP", "Glucose Fasting", "RBC", "WBC", "HGB"
 
                             }
-
+                          
                         });
                         //console.log("*********END********"); 
                         //console.log("isLastElement" + isLastElement);
 
-
+			}
                         //data.push(jsonData);
 
                     });
