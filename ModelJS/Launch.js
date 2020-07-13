@@ -64,10 +64,11 @@ function GetToken()
 	}, function(response)
 	{
 		console.log("error response" + response);
-		var errorMessage = response.split(":");
-		if(errorMessage != null)
+		var errorMessage = response.toString();
+		var arr = errorMessage.split(":");
+		if(arr != null)
 		{
-			if(errorMessage[0] == "Error")
+			if(arr[0] == "Error")
 			{
 				alert("App session ends / not Authenticated. Please click to Authenticate / refresh the session.")
 			}
