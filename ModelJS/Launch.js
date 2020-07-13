@@ -61,7 +61,11 @@ function GetToken()
 		  {
 			GetFundusPhotographyScheduledPatient(authToken);
 		 }
-	}, function(){ alert("App session ends / not Authenticated. Please click to Authenticate / refresh the session.")});
+	}, function(response)
+	{
+		console.log("error response" + response);
+		alert("App session ends / not Authenticated. Please click to Authenticate / refresh the session.")
+	});
 }
 function GetFundusPhotographyScheduledPatient(authToken) {
     ClearAllData();
