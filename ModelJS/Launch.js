@@ -325,12 +325,12 @@ function GetFundusPhotographyScheduledPatient(authToken) {
                                 //data.push([jsonData]);  "Temperature Oral", "Weight", "Height", "Systolic BP", "Diastolic BP", "Glucose Fasting", "RBC", "WBC", "HGB"
 
                             }
-                          
+                          }
                         });
                         //console.log("*********END********"); 
                         //console.log("isLastElement" + isLastElement);
 
-			}
+			
                         //data.push(jsonData);
 
                     });
