@@ -64,7 +64,15 @@ function GetToken()
 	}, function(response)
 	{
 		console.log("error response" + response);
-		alert("App session ends / not Authenticated. Please click to Authenticate / refresh the session.")
+		var errorMessage = response.Split(':');
+		if(errorMessage != null)
+		{
+			if(errorMessage[0] == "Error")
+			{
+				alert("App session ends / not Authenticated. Please click to Authenticate / refresh the session.")
+			}
+		}
+		
 	});
 }
 function GetFundusPhotographyScheduledPatient(authToken) {
