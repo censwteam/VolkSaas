@@ -64,7 +64,7 @@ function GetToken()
 	}, function(response)
 	{
 		console.log("error response" + response);
-		var errorMessage = response.split(':');
+		var errorMessage = response.split(":");
 		if(errorMessage != null)
 		{
 			if(errorMessage[0] == "Error")
