@@ -55,14 +55,17 @@ function Authenticate()
 }
 function GetToken()
 {
+	 $('#loadingimage').show();
 	FHIR.oauth2.ready(function(smart) {
 		  var authToken = smart.state.tokenResponse.access_token;
 		  if(authToken != "")
 		  {
 			GetFundusPhotographyScheduledPatient(authToken);
 		 }
+		 $('#loadingimage').hide();
 	}, function(response)
 	{
+		$('#loadingimage').hide();
 		console.log("error response" + response);
 		var errorMessage = response.toString();
 		var arr = errorMessage.split(":");
