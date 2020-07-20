@@ -322,6 +322,33 @@ function GetFundusPhotographyScheduledPatient(authToken) {
                                                 WBC="";HGB="";SystolicBP="";DiastolicBP="";
 						Glaucoma ==""; VisualAcuityRight="";VisualAcuityLeft="";
                                                 DiabetesType="";IOPLeft="";IOPRight="";    
+						    $.ajax({
+							type: "GET",
+						    headers: {
+                                                        Accept: "application/json+fhir",
+                                                        //"Content-Type": "application/json+fhir",
+							//"Access-Control-Allow-Origin": "https://censwteam.github.io",
+							"Authorization":"Bearer " + authToken    
+							    //"Access-Control-Allow-Origin", "*"
+                                                    },
+						    beforeSend: function () {
+
+                                                    },
+                                                    complete: function () {
+
+                                                    },
+						    //url: enumConfig.PATIENT_API_URL + enumConfig.CONDITION_RESOURCE_NAME + "?patient="+PatientID, //   
+						    url: "https://fhir-ehr.sandboxcerner.com/dstu2/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/Condition?patient=" + PatientID + "&code=http://hl7.org/fhir/sid/icd-10-cm|E10.9",			
+                                                    dataType: "json",
+                                                    async: false,
+                                                    success: function (response) {
+							    console.log("condition response" + response);
+						    },
+                                                    error: function (response) {
+                                                       var stringfyJsonResponse = JSON.stringify(response);   
+					                console.log("error Condition" + stringfyJsonResponse);
+                                                    }
+                                                });
                                                 
                                             }
                                         });
