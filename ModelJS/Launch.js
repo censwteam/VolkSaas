@@ -314,8 +314,8 @@ function GetFundusPhotographyScheduledPatient(authToken) {
                                                     },
                                                     error: function (response) {
 							  var stringfyJsonResponse = JSON.stringify(response);   
-							var parseInfo = JSON.parse(stringfyJsonResponse);
-							    console.log("Patient" + parseInfo);
+							//var parseInfo = JSON.parse(stringfyJsonResponse);
+							    console.log("Patient" + stringfyJsonResponse);
                                                     }
                                                 });
 												// // medical history
