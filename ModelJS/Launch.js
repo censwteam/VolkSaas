@@ -322,17 +322,171 @@ function GetFundusPhotographyScheduledPatient(authToken) {
                                                 TemperatureOral = "";Height="";Weight="";
                                                 GlucoseFasting = "";BloodPressure="";RBC="";
                                                 WBC="";HGB="";SystolicBP="";DiastolicBP="";
+						$.ajax({
+							type: "GET",
+						    headers: {
+                                                        Accept: "application/json+fhir",
+                                                        "Content-Type": "application/json+fhir",
+							//"Access-Control-Allow-Origin": "https://censwteam.github.io/",    
+							"Authorization":"Bearer " + authToken
+							    //"Access-Control-Allow-Origin", "*"
+                                                    }
+                                                    //,
+                                                    //beforeSend: function () {
+                                                    //    $('#loadingimage').show();
+                                                    //}
+                                                    ,
+						    complete: function () {
+
+                                                    },
+						    //url: enumConfig.PATIENT_API_URL + enumConfig.OBSERVATION_RESOURCE_NAME + "?patient=" + ptId + "&code=http://loinc.org|8310-5",
+                                                    //url: enumConfig.PATIENT_API_URL + enumConfig.OBSERVATION_RESOURCE_NAME + "?patient=" + PatientID,
+						    url: "https://fhir-ehr.sandboxcerner.com/dstu2/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/Observation?patient=" + PatientID,
+						    //url: "https://fhir-ehr.sandboxcerner.com/dstu2/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/Patient/"+ PatientID,
+                                                    dataType: "json",
+                                                    async: false,
+                                                    success: function (response) {
+                                                        
+                                                        var stringfyJsonResponse = JSON.stringify(response);
+                                                        var headerText;
+                                                        var headerValue;
+                                                        var parsePatientMedicalHistoryInfo = JSON.parse(stringfyJsonResponse);
+                                                        if (parsePatientMedicalHistoryInfo != null) {
+                                                            $.each(parsePatientMedicalHistoryInfo, function (index, value) {
+                                                                headerText = "";
+                                                                headerValue = "";
+
+                                                                if (index == "entry") { // entry array
+                                                                    $.each(value, function (entryHeader, entryItems) {
+                                                                        $.each(entryItems, function (resourceHeader, resourceItems) {
+                                                                            if (resourceHeader != null) {
+                                                                                if (resourceHeader == "resource") //resource array
+                                                                                {
+                                                                                    $.each(resourceItems, function (resourceHeader, resourceItems) {
+                                                                                        if (resourceHeader == "valueQuantity") {
+                                                                                            $.each(resourceItems, function (valueQuantityheader, valueQuantityitems) {
+                                                                                                console.log("valueQuantityheader" + valueQuantityheader + "valueQuantityitems" + valueQuantityitems);
+                                                                                                if (valueQuantityheader != null) {
+                                                                                                    if (headerText == "Temperature Oral" && valueQuantityheader == "value") {
+                                                                                                        TemperatureOral = valueQuantityitems;
+                                                                                                    }
+                                                                                                    else{
+                                                                                                        TemperatureOral = "";
+                                                                                                    }
+                                                                                                    if (headerText == "Usual Height" && valueQuantityheader == "value") {
+                                                                                                        Height = valueQuantityitems;
+                                                                                                    }
+                                                                                                    else{
+                                                                                                        Height = "";
+                                                                                                    }
+                                                                                                    if (headerText == "Weight Measured" && valueQuantityheader == "value") {
+                                                                                                        Weight = valueQuantityitems;
+                                                                                                    }
+                                                                                                    else{
+                                                                                                        Weight = "";
+                                                                                                    }
+                                                                                                    if (headerText == "Glucose Fasting" && valueQuantityheader == "value") {
+                                                                                                        GlucoseFasting = valueQuantityitems;
+                                                                                                    }
+                                                                                                    else{
+                                                                                                        GlucoseFasting = "";
+                                                                                                    }
+                                                                                                    
+                                                                                                    if (headerText == "Blood pressure" && valueQuantityheader == "value") {
+                                                                                                        BloodPressure = valueQuantityitems;
+                                                                                                    }
+                                                                                                    else{
+                                                                                                        BloodPressure="";
+                                                                                                    }
+                                                                                                    if (headerText == "RBC" && valueQuantityheader == "value") {
+                                                                                                        RBC = valueQuantityitems;
+                                                                                                    }
+                                                                                                    else{
+                                                                                                        RBC = "";
+                                                                                                    }
+                                                                                                    if (headerText == "WBC" && valueQuantityheader == "value") {
+                                                                                                        WBC = valueQuantityitems;
+                                                                                                    }
+                                                                                                    else{
+                                                                                                        WBC="";
+                                                                                                    }
+                                                                                                    if (headerText == "Hgb" && valueQuantityheader == "value") {
+                                                                                                        HGB = valueQuantityitems;
+                                                                                                    }
+                                                                                                    else{
+                                                                                                        HGB = "";
+                                                                                                    }
+                                                                                                }
+                                                                                                else {
+
+                                                                                                }
+
+                                                                                            });
+                                                                                        }
+                                                                                        if (resourceHeader == "component") {
+                                                                                            $.each(resourceItems, function (componentheader, componentitems) {
+                                                                                                //console.log("component - " + header7 + ": " + items7);
+                                                                                                $.each(componentitems, function (componentheader, componentitems) {
+                                                                                                    //console.log("componentSub - " + header8 + ": " + items8);
+                                                                                                    if (componentheader == "code") {
+                                                                                                        $.each(componentitems, function (codeheader, codeitems) {
+                                                                                                            //console.log("componentInnerSub - " + header9 + ": " + items9);
+                                                                                                            headerText = codeitems;
+
+                                                                                                        });
+                                                                                                    }
+                                                                                                    if (componentheader == "valueQuantity") {
+                                                                                                        $.each(componentitems, function (componentValueQuantityheader, componentValueQuantityitems) {
+
+                                                                                                            if (headerText == "Systolic Blood Pressure" && componentValueQuantityheader == "value") {
+                                                                                                                SystolicBP = componentValueQuantityitems;
+                                                                                                            }
+                                                                                                            if (headerText == "Diastolic Blood Pressure" && componentValueQuantityheader == "value") {
+                                                                                                                DiastolicBP = componentValueQuantityitems;
+                                                                                                            }
+                                                                                                        });
+
+
+                                                                                                    }
+                                                                                                });
+                                                                                            });
+
+                                                                                        }
+
+                                                                                    });
+                                                                                }
+                                                                            }
+
+                                                                        });
+                                                                    });
+                                                                }
+                                                                else {
+
+                                                                }
+                                                            });
+                                                        }
+                                                        else {
+
+                                                        }
+
+
+                                                    },
+                                                    error: function (response) {
+							var stringfyJsonResponse = JSON.stringify(response);   
+							//var parseInfo = JSON.parse(stringfyJsonResponse);
+							    console.log("error Observation" + stringfyJsonResponse);
+                                                    }
+                                                });    
 						Glaucoma ==""; VisualAcuityRight="";VisualAcuityLeft="";
                                                 DiabetesType="";IOPLeft="";IOPRight="";    
 						    $.ajax({
 							type: "GET",
 						    headers: {
-                                                         Accept: "application/json+fhir",
+                                                        Accept: "application/json+fhir",
                                                         "Content-Type": "application/json+fhir",
-							Authorization:"Bearer " + authToken
-							//"Access-Control-Allow-Origin": "https://censwteam.github.io/",
-							//"Authorization":"Bearer " + authToken    
-							//"Access-Control-Allow-Origin": "*"
+							//"Access-Control-Allow-Origin": "https://censwteam.github.io",
+							"Authorization":"Bearer " + authToken
+							    //"Access-Control-Allow-Origin", "*"
                                                     },
 						    beforeSend: function () {
 
@@ -342,12 +496,47 @@ function GetFundusPhotographyScheduledPatient(authToken) {
                                                     },
 						    //url: enumConfig.PATIENT_API_URL + enumConfig.CONDITION_RESOURCE_NAME + "?patient="+PatientID, //   
 						    url: "https://fhir-ehr.sandboxcerner.com/dstu2/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/Condition?patient=" + PatientID,			
-						    //url: "https://fhir-ehr.sandboxcerner.com/dstu2/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/Patient?_id=" + PatientID + "&code=http://loinc.org|8302-2",	    
                                                     dataType: "json",
                                                     async: false,
                                                     success: function (response) {
-							    console.log("condition response" + response);
-						    },
+                                                        Glaucoma = "";VisualAcuityRight = "";VisualAcuityLeft ="";DiabetesType = "";
+                                                        IOPLeft ="";IOPRight = "";
+                                                        var stringfyJsonResponse = JSON.stringify(response);
+                                                        var parseInfo = JSON.parse(stringfyJsonResponse);
+                                                        if (parseInfo.entry != null) {
+							console.log("condition full URL - " + parseInfo.entry[0].fullUrl);
+                                                           if(parseInfo.entry[0].fullUrl == "https://fhir-ehr.sandboxcerner.com/dstu2/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/Condition/p14813873")
+                                                           { //glaucoma
+                                                            Glaucoma = parseInfo.verificationStatus;
+                                                           }
+                                                           
+                                                           if(parseInfo.entry[0].fullUrl == "https://fhir-ehr.sandboxcerner.com/dstu2/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/Condition/p14813891")
+                                                           { //visual acuity right
+                                                            VisualAcuityRight = parseInfo.verificationStatus;
+                                                           }
+                                                           if(parseInfo.entry[0].fullUrl == "https://fhir-ehr.sandboxcerner.com/dstu2/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/Condition/p14813883")
+                                                           { //visual acuity left
+                                                            VisualAcuityLeft = parseInfo.verificationStatus;
+                                                           }
+                                                           if(parseInfo.entry[0].fullUrl == "https://fhir-ehr.sandboxcerner.com/dstu2/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/Condition/p14817861")
+                                                           { //DiabetesTypes
+                                                            DiabetesType = "TYPE 1";
+                                                           }
+                                                           if(parseInfo.entry[0].fullUrl == "https://fhir-ehr.sandboxcerner.com/dstu2/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/Condition/p11838179")
+                                                           { //DiabetesTypes
+                                                            DiabetesType = "TYPE 2";
+                                                           }
+                                                           if(parseInfo.entry[0].fullUrl == "https://fhir-ehr.sandboxcerner.com/dstu2/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/Condition/p14813863")
+                                                           { //IntraOcularPressureLeft
+                                                            IOPLeft = parseInfo.verificationStatus;
+                                                           }
+                                                           
+                                                           if(parseInfo.entry[0].fullUrl == "https://fhir-ehr.sandboxcerner.com/dstu2/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/Condition/p14813899")
+                                                           { //IntraOcularPressureRight
+                                                            IOPRight = parseInfo.verificationStatus;
+                                                           }
+                                                        }
+                                                    },
                                                     error: function (response) {
                                                        var stringfyJsonResponse = JSON.stringify(response);   
 					                console.log("error Condition" + stringfyJsonResponse);
