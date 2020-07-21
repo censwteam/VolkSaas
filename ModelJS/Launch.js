@@ -367,7 +367,7 @@ function GetFundusPhotographyScheduledPatient(authToken) {
                                                                                             $.each(resourceItems, function (valueQuantityheader, valueQuantityitems) {
                                                                                                 
                                                                                                 if (valueQuantityheader != null) {
-												console.log("headerText" + headerText + "valueQuantityheader" + valueQuantityheader);	
+												//console.log("headerText" + headerText + "valueQuantityheader" + valueQuantityheader);	
                                                                                                     if (headerText == "Temperature Oral" && valueQuantityheader == "value") {
                                                                                                         TemperatureOral = valueQuantityitems;
                                                                                                     }
@@ -505,7 +505,8 @@ function GetFundusPhotographyScheduledPatient(authToken) {
                                                         var stringfyJsonResponse = JSON.stringify(response);
                                                         var parseInfo = JSON.parse(stringfyJsonResponse);
                                                         if (parseInfo.entry != null) {
-							console.log("condition full URL - " + parseInfo.entry[0].fullUrl);
+								console.log("Condition res - " + stringfyJsonResponse);
+							//console.log("condition full URL - " + parseInfo.entry[0].fullUrl);
                                                            if(parseInfo.entry[0].fullUrl == "https://fhir-ehr.sandboxcerner.com/dstu2/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/Condition/p14813873")
                                                            { //glaucoma
                                                             Glaucoma = parseInfo.verificationStatus;
