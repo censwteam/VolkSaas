@@ -330,7 +330,7 @@ function GetFundusPhotographyScheduledPatient(authToken) {
 							Authorization:"Bearer " + authToken,
 							//"Access-Control-Allow-Origin": "https://censwteam.github.io/",
 							//"Authorization":"Bearer " + authToken    
-							"Access-Control-Allow-Origin", "*"
+							"Access-Control-Allow-Origin": "*"
                                                     },
 						    beforeSend: function () {
 
