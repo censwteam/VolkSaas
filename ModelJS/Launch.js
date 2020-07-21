@@ -51,7 +51,7 @@ function Authenticate()
 			"serverUrl": "https://fhir-ehr.sandboxcerner.com/dstu2/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/",
 			"fhirServiceUrl": "https://fhir-ehr.sandboxcerner.com/dstu2/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/",
 			"redirectUri": "https://censwteam.github.io/VolkSaas/SmartApp.html"
-	});
+	}); 
 	
 }
 function GetToken()
