@@ -365,8 +365,9 @@ function GetFundusPhotographyScheduledPatient(authToken) {
                                                                                     $.each(resourceItems, function (resourceHeader, resourceItems) {
                                                                                         if (resourceHeader == "valueQuantity") {
                                                                                             $.each(resourceItems, function (valueQuantityheader, valueQuantityitems) {
-                                                                                                console.log("valueQuantityheader" + valueQuantityheader + "valueQuantityitems" + valueQuantityitems);
+                                                                                                
                                                                                                 if (valueQuantityheader != null) {
+												console.log("headerText" + headerText + "valueQuantityheader" + valueQuantityheader);	
                                                                                                     if (headerText == "Temperature Oral" && valueQuantityheader == "value") {
                                                                                                         TemperatureOral = valueQuantityitems;
                                                                                                     }
