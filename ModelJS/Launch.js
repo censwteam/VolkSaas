@@ -244,7 +244,7 @@ function GetFundusPhotographyScheduledPatient(authToken) {
 						    headers: {
                                                         Accept: "application/json+fhir",
                                                         "Content-Type": "application/json+fhir",
-							"Authorization":"Bearer " + authToken
+							"Authorization":"Basic " + authToken
 							//"Access-Control-Allow-Origin", "*"
                                                     },
                                                     beforeSend: function () {
@@ -329,7 +329,7 @@ function GetFundusPhotographyScheduledPatient(authToken) {
 						    headers: {
                                                          Accept: "application/json+fhir",
                                                         "Content-Type": "application/json+fhir",
-							Authorization:"Bearer " + authToken
+							Authorization:"Basic " + authToken
 							//"Access-Control-Allow-Origin": "https://censwteam.github.io/",
 							//"Authorization":"Bearer " + authToken    
 							//"Access-Control-Allow-Origin": "*"
