@@ -325,11 +325,12 @@ function GetFundusPhotographyScheduledPatient(authToken) {
 						    $.ajax({
 							type: "GET",
 						    headers: {
-                                                        Accept: "application/json+fhir",
-                                                        //"Content-Type": "application/json+fhir",
-							"Access-Control-Allow-Origin": "https://censwteam.github.io/",
-							"Authorization":"Bearer " + authToken    
-							    //"Access-Control-Allow-Origin", "*"
+                                                         Accept: "application/json+fhir",
+                                                        "Content-Type": "application/json+fhir",
+							Authorization:"Bearer " + authToken,
+							//"Access-Control-Allow-Origin": "https://censwteam.github.io/",
+							//"Authorization":"Bearer " + authToken    
+							"Access-Control-Allow-Origin", "*"
                                                     },
 						    beforeSend: function () {
 
