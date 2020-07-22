@@ -9,6 +9,7 @@ var patientBasicInformation = {
     resourcePatientGender: '',
     resourcePatientEthnicity: ''
 }
+var authToken = "";
 var haveMedicalData = 0;
 $(function () {
     $("#sandBoxPatientUrl").val("https://fhir-open.sandboxcerner.com/dstu2/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/");
@@ -104,7 +105,7 @@ function Authenticate()
 function GetToken()
 {
 	FHIR.oauth2.ready(function(smart) {
-		  var authToken = smart.state.tokenResponse.access_token;
+		  authToken = smart.state.tokenResponse.access_token;
 		  if(authToken != "")
 		  {
 			GetFundusPhotographyScheduledPatient(authToken);
