@@ -49,16 +49,18 @@ function CreateCondition()
 	  "category": {
 	    "coding": [
 	      {
-		"system": "http://argonaut.hl7.org",
-		"code": "problem",
-		"display": "Problem"
+		"system": "http://hl7.org/fhir/condition-category",
+		"code": "diagnosis",
+		"display": "Diagnosis"
 	      }
 	    ],
-	    "text": "Problem"
+	    "text": "Diagnosis"
 	  },
-	  "clinicalStatus": "resolved",
-	  "verificationStatus": "125",
-	  "abatementDateTime": "2020-07-15T00:00:00Z"
+	  "clinicalStatus": "active",
+	  "verificationStatus": "145",
+	  "encounter": {
+	    "reference": "Encounter/2457909"
+	  }
 	}
 	
 	 $.ajax({
