@@ -41,7 +41,7 @@ function CreateCondition()
         {
 	  "resourceType": "Condition",
 	  "patient": {
-	    "reference": "Patient/1316024"
+	    "reference": "Patient/7586007"
 	  },
 	  "code": {
 	    "text": "Visual acuity - left eye"
@@ -57,7 +57,29 @@ function CreateCondition()
 	    "text": "Problem"
 	  },
 	  "clinicalStatus": "resolved",
-	  "verificationStatus": "differential",
+	  "verificationStatus": "125",
+	  "abatementDateTime": "2020-07-15T00:00:00Z"
+	},
+	{
+	  "resourceType": "Condition",
+	  "patient": {
+	    "reference": "Patient/7586007"
+	  },
+	  "code": {
+	    "text": "Visual acuity - right eye"
+	  },
+	  "category": {
+	    "coding": [
+	      {
+		"system": "http://argonaut.hl7.org",
+		"code": "problem",
+		"display": "Problem"
+	      }
+	    ],
+	    "text": "Problem"
+	  },
+	  "clinicalStatus": "resolved",
+	  "verificationStatus": "145",
 	  "abatementDateTime": "2020-07-15T00:00:00Z"
 	}
 	
