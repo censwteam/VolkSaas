@@ -40,10 +40,10 @@ function CreateCondition()
         {
 	  "resourceType": "Condition",
 	  "patient": {
-	    "reference": "Patient/1316020"
+	    "reference": "Patient/1316024"
 	  },
 	  "code": {
-	    "text": "Freetext Diagnosis"
+	    "text": "Systolic Blood Pressure"
 	  },
 	  "category": {
 	    "coding": [
@@ -56,7 +56,7 @@ function CreateCondition()
 	    "text": "Diagnosis"
 	  },
 	  "clinicalStatus": "active",
-	  "verificationStatus": "differential",
+	  "verificationStatus": "confirmed",
 	  "encounter": {
 	    "reference": "Encounter/2457909"
 	  }
