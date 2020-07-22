@@ -41,23 +41,24 @@ function CreateCondition()
         {
 	  "resourceType": "Condition",
 	  "patient": {
-	    "reference": "Patient/1316024"
+	    "reference": "Patient/1316020"
 	  },
 	  "code": {
-	    "text": "Systolic Blood Pressure"
+	    "text": "Freetext Condition"
 	  },
 	  "category": {
 	    "coding": [
 	      {
-		"system": "http://hl7.org/fhir/condition-category",
-		"code": "diagnosis",
-		"display": "Diagnosis"
+		"system": "http://argonaut.hl7.org",
+		"code": "problem",
+		"display": "Problem"
 	      }
 	    ],
-	    "text": "Diagnosis"
+	    "text": "Problem"
 	  },
-	  "clinicalStatus": "active",
-	  "verificationStatus": "confirmed"
+	  "clinicalStatus": "resolved",
+	  "verificationStatus": "differential",
+	  "abatementDateTime": "2020-07-22T00:00:00Z"
 	}
 	
 	 $.ajax({
