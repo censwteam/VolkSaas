@@ -79,7 +79,11 @@ function CreateCondition()
 	    data: JSON.stringify(_json),
             success: function (response) {
 		    console.log("response" + response);
+	    },
+	    complete: function () {
+		     $('#loadingimage').hide();
 	    }
+		 
 	 });
 }
 function Authenticate()
