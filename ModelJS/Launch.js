@@ -285,6 +285,7 @@ function GetFundusPhotographyScheduledPatient(authToken) {
                 $('#loadingimage').hide();
             },
 			 complete: function () {
+				 console.log("PatientID " + PatientID);
 				 if (PatientID > 0) {
 					$.ajax({
 						headers: {
