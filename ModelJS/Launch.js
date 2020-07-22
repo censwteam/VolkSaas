@@ -392,11 +392,11 @@ function GetFundusPhotographyScheduledPatient(authToken) {
 																	if(resourceInnerHeader == "component")
 																	{
 																		$.each(resourceInnerItems, function (componentHeader, componentItems) {
-																			if(componentItems.code.text == "Systolic Blood Pressure Sitting")
+																			if(componentItems.code.text == "Systolic Blood Pressure Sitting" || componentItems.code.text == "Systolic Blood Pressure")
 																			{
 																				SystolicBP= componentItems.valueQuantity.value;
 																			}
-																			if(componentItems.code.text == "Diastolic Blood Pressure Sitting")
+																			if(componentItems.code.text == "Diastolic Blood Pressure Sitting" || componentItems.code.text == "Diastolic Blood Pressure")
 																			{
 																				DiastolicBP = componentItems.valueQuantity.value;
 																			}
