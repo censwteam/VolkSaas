@@ -82,7 +82,7 @@ function CreateCondition()
 	    },
 	    complete: function () {
 		     $('#loadingimage').hide();
-		    GetFundusPhotographyScheduledPatient(authToken);
+		    //GetFundusPhotographyScheduledPatient(authToken);
 	    }
 		 
 	 });
