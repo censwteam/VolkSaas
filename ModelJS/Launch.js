@@ -312,10 +312,21 @@ function GetFundusPhotographyScheduledPatient(authToken) {
 							if (parsePatientInfo.entry != null) {
 								if (parsePatientInfo.entry[0].resource != null) {
 									//console.log("maritalstatus " + parsePatientInfo.entry[0].resource.identifier[0].type.text);
-									var mrnText = parsePatientInfo.entry[0].resource.identifier[1].type.text;
-									if (mrnText == "MRN") {
-										MRN = parsePatientInfo.entry[0].resource.identifier[1].value;
+									if(parsePatientInfo.entry[0].resource.identifier.length > 1)
+									{
+										var mrnText = parsePatientInfo.entry[0].resource.identifier[1].type.text;
+										if (mrnText == "MRN") {
+											MRN = parsePatientInfo.entry[0].resource.identifier[1].value;
+										}
 									}
+									else
+									{
+										var mrnText = parsePatientInfo.entry[0].resource.identifier[0].type.text;
+										if (mrnText == "MRN") {
+											MRN = parsePatientInfo.entry[0].resource.identifier[0].value;
+										}
+									}
+									
 									console.log("gender" + parsePatientInfo.entry[0].resource.gender);
 									Gender = parsePatientInfo.entry[0].resource.gender;
 									DOB = parsePatientInfo.entry[0].resource.birthDate;
