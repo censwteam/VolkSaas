@@ -57,11 +57,8 @@ function CreateCondition()
 	    "text": "Diagnosis"
 	  },
 	  "clinicalStatus": "active",
-	  "verificationStatus": "confirmed",
-	  "encounter": {
-	    "reference": "Encounter/2457909"
-	  }
-	};
+	  "verificationStatus": "confirmed"
+	}
 	
 	 $.ajax({
 	    type: "POST",	 
@@ -75,8 +72,8 @@ function CreateCondition()
             },
             //url: "https://fhir-ehr.sandboxcerner.com/dstu2/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/Appointment?practitioner=" + practitionerID + "&code=http://snomed.info/sct| 408443003" + "&date=ge" + fromFullFormat + "&date=lt" + toFullFormat  ,
             //url: "https://fhir-open.sandboxcerner.com/r4/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/Appointment?date=ge" + fromFullFormat + "&date=lt" + toFullFormat + "&practitioner=" + practitionerID + "&code=http://snomed.info/sct%7C408443003" ,
-	    url: "https://fhir-ehr.sandboxcerner.com/dstu2/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/Condition",	 
-            dataType: "json",
+	    url: "https://fhir-ehr.sandboxcerner.com/dstu2/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/Condition/",	 
+            //dataType: "json",
             //async: false,
 	    data: JSON.stringify(_json),
             success: function (response) {
