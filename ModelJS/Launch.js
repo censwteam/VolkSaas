@@ -41,10 +41,10 @@ function CreateCondition()
         {
 	  "resourceType": "Condition",
 	  "patient": {
-	    "reference": "Patient/1316024"
+	    "reference": "Patient/1316020"
 	  },
 	  "code": {
-	    "text": "Freetext Condition"
+	    "text": "Visual acuity - left eye"
 	  },
 	  "category": {
 	    "coding": [
@@ -58,7 +58,7 @@ function CreateCondition()
 	  },
 	  "clinicalStatus": "resolved",
 	  "verificationStatus": "differential",
-	  "abatementDateTime": "2020-07-22T00:00:00Z"
+	  "abatementDateTime": "2020-07-15T00:00:00Z"
 	}
 	
 	 $.ajax({
