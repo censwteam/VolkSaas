@@ -41,7 +41,7 @@ function CreateCondition()
         {
 	  "resourceType": "Condition",
 	  "patient": {
-	    "reference": "Patient/1316020"
+	    "reference": "Patient/1316024"
 	  },
 	  "code": {
 	    "text": "Freetext Condition"
