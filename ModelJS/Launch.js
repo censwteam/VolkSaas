@@ -39,64 +39,7 @@ function CreateCondition()
 {
 	var _json =
 //[
-        {
-	  "resourceType": "Condition",
-	  "patient": {
-	    "reference": "Patient/1316024"
-	  },
-	"code": {
-	    "coding": [
-		{
-		    "system": "http://snomed.info/sct",
-		    "code": "417555004",
-		    "display": "Problem"
-		}
-	    ],
-	    "text": "Intraocular pressure left eye"
-	},
-	"category": {
-	    "coding": [
-		{
-		    "system": "http://argonaut.hl7.org",
-		    "code": "problem",
-		    "display": "Problem"
-		}
-	    ],
-	    "text": "Problem"
-	},
-	  "clinicalStatus": "active",
-	  "verificationStatus": "confirmed",
-	  "abatementDateTime": "2020-07-23T00:00:00Z"
-	},
-	{
-	  "resourceType": "Condition",
-	  "patient": {
-	    "reference": "Patient/1316024"
-	  },
-	"code": {
-	    "coding": [
-		{
-		    "system": "http://snomed.info/sct",
-		    "code": "417723001",
-		    "display": "Problem"
-		}
-	    ],
-	    "text": "Intraocular pressure right eye"
-	},
-	"category": {
-	    "coding": [
-		{
-		    "system": "http://argonaut.hl7.org",
-		    "code": "problem",
-		    "display": "Problem"
-		}
-	    ],
-	    "text": "Problem"
-	},
-	  "clinicalStatus": "active",
-	  "verificationStatus": "confirmed",
-	  "abatementDateTime": "2020-07-23T00:00:00Z"
-	},
+       
 	{
 	  "resourceType": "Condition",
 	  "patient": {
@@ -111,64 +54,6 @@ function CreateCondition()
 		}
 	    ],
 	    "text": "Glaucoma"
-	},
-	"category": {
-	    "coding": [
-		{
-		    "system": "http://argonaut.hl7.org",
-		    "code": "problem",
-		    "display": "Problem"
-		}
-	    ],
-	    "text": "Problem"
-	},
-	  "clinicalStatus": "active",
-	  "verificationStatus": "confirmed",
-	  "abatementDateTime": "2020-07-23T00:00:00Z"
-	},
-	{
-	  "resourceType": "Condition",
-	  "patient": {
-	    "reference": "Patient/1316024"
-	  },
-	"code": {
-	    "coding": [
-		{
-		    "system": "http://snomed.info/sct",
-		    "code": "386708005",
-		    "display": "Problem"
-		}
-	    ],
-	    "text": "Visual acuity - left eye"
-	},
-	"category": {
-	    "coding": [
-		{
-		    "system": "http://argonaut.hl7.org",
-		    "code": "problem",
-		    "display": "Problem"
-		}
-	    ],
-	    "text": "Problem"
-	},
-	  "clinicalStatus": "active",
-	  "verificationStatus": "confirmed",
-	  "abatementDateTime": "2020-07-23T00:00:00Z"
-	},
-	{
-	  "resourceType": "Condition",
-	  "patient": {
-	    "reference": "Patient/1316024"
-	  },
-	"code": {
-	    "coding": [
-		{
-		    "system": "http://snomed.info/sct",
-		    "code": "386709002",
-		    "display": "Problem"
-		}
-	    ],
-	    "text": "Visual acuity - right eye"
 	},
 	"category": {
 	    "coding": [
