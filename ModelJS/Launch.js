@@ -42,6 +42,7 @@ function CreateCondition()
 	//var conditionText = $("#condition option:selected").innerText; 
 	var conditionText = $("#condition option:selected").html();
 	var currDateTime = new Date($.now());
+	var updatedOn = ""+currDateTime.getFullYear()+"-"+(currDateTime.getMonth() + 1)+"-"+currDateTime.getDate()+"T"+currDateTime.getHours()+":"+currDateTime.getMinutes()+":"+currDateTime.getSeconds()+"Z";	
 	//alert(currDateTime.getDate()+"-"+(currDateTime.getMonth() + 1)+"-"+currDateTime.getFullYear()+" "+currDateTime.getHours()+":"+currDateTime.getMinutes()+":"+currDateTime.getSeconds());
 	var _json =
 //[
@@ -74,7 +75,7 @@ function CreateCondition()
 	  "clinicalStatus": "active",
 	  "verificationStatus": "confirmed",
 	  //"abatementDateTime": "2020-07-23T00:00:00Z"
-	   "abatementDateTime": ""+currDateTime.getFullYear()+"-"+currDateTime.getMonth()+"-"+currDateTime.getDate()+"T"+currDateTime.getHours()+":"+currDateTime.getMinutes()+":"+currDateTime.getSeconds()+"Z"	
+	   "abatementDateTime": " + updatedOn + "
 	}
 	
 //]
