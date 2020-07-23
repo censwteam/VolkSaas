@@ -238,6 +238,7 @@ function GetFundusPhotographyScheduledPatient(authToken) {
                                                     }
                                                 });
                                                 //console.log("PatientID - " + PatientID+ " PatientName" + PatientName);
+						$('#patient').append($('<option/>', { value: value, text : value }));
                                             }
                                             else if (entryParticipantTypeItems.text == "Resource") {
                                                 $.each(entryCodingItems2.actor, function (entryCoding4, entryCodingItems4) {
