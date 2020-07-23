@@ -44,7 +44,7 @@ function CreateCondition()
 	    "reference": "Patient/1316024"
 	  },
 	  "code": {
-	    "text": "Visual acuity - right eye"
+	    "text": "Intraocular pressure left eye"
 	  },
 	  "category": {
 	    "coding": [
@@ -57,7 +57,7 @@ function CreateCondition()
 	    "text": "Problem"
 	  },
 	  "clinicalStatus": "resolved",
-	  "verificationStatus": "145",
+	  "verificationStatus": "122",
 	  "abatementDateTime": "2020-07-23T00:00:00Z"
 	}
 	
