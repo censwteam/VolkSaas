@@ -58,7 +58,7 @@ function CreateCondition()
 	    "text": "Diagnosis"
 	  },
 	  "clinicalStatus": "active",
-	  "verificationStatus": "145",
+	  "verificationStatus": "differential",
 	  "encounter": {
 	    "reference": "Encounter/2457909"
 	  }
