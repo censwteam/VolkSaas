@@ -90,35 +90,39 @@
             </div>
 		  </div>
 		<div class="col-md-4">
-			
-			<div class='col'>
-			  <form id='slot-search-form'>
-			    <div class='form-group row'>
-			      <label for='patient' class='col-sm-2 col-form-label'>Patient</label>
-			      <div class='col-sm-10'>
-			     <!--   <select class='form-control' id='practitioner' name='schedule.actor' required>
-				  <option value='Practitioner/605926'>Kristen Cerner Carter</option>
-				</select> -->
-				<select class='form-control' id='patient' name='patient'>				
-				</select>
-			      </div>
-			    </div>
-			    <div class='form-group row'>
-			      <label for='condition' class='col-sm-2 col-form-label'>Diagnosis</label>
-			      <div class='col-sm-10'>
-				<select class='form-control' id='condition' name='condition' required>
-				  <option value='417555004'>Intraocular Pressure left eye</option>
-				  <option value='417723001'>Intraocular pressure Right eye</option>
-				  <option value='23986001'>Glaucoma</option>
-				  <option value='386708005'>Visual acuity - left eye</option>
-				  <option value='386709002'>Visual acuity - right eye</option>
-				 </select>
-			      </div>
-			    </div>
+			<div class="card shadow mb-7">
+                                    <!-- Card Header - Accordion -->
+                                    <a href="#collapseCardExample11" class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseCardExample">
+                                        <h6 class="m-0 font-weight-bold text-primary">CREATE DIAGNOSIS :</h6>
+                                        <span id="ScheduleInformation" name="ScheduleInformation" class="Message"></span>
+                                    </a>
+                                    <div class="collapse show" id="collapseCardExample11">
+                                        <div class="card-body">
+                                            <div class="row p-xl-2">
+                                                <div class="col-md-3 mb-sm-0">
+                                                   <select class="form-control form-control-user" id='patient' name='patient' placeholder="patient">				
+													</select>
+                                                </div>
+                                                <div class="col-md-3 mb-sm-0">
+                                                   <select class="form-control form-control-user" class='form-control' id='condition' name='condition'>
+													  <option value='417555004'>Intraocular Pressure left eye</option>
+													  <option value='417723001'>Intraocular pressure Right eye</option>
+													  <option value='23986001'>Glaucoma</option>
+													  <option value='386708005'>Visual acuity - left eye</option>
+													  <option value='386709002'>Visual acuity - right eye</option>
+												   </select>
+                                                </div>
+                                                <div class="col-md-3 mb-sm-0" style="padding:3px;">
+                                                    <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" onclick="CreateCondition()"> CREATE CONDITION</a>	
+						  
+                                                </div>
+                                            </div>
 
-			  <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" onclick="CreateCondition()"> CREATE CONDITION</a>	
-			  </form>
-			</div>
+                                        </div>
+
+                                    </div>
+				</div>
+			
 		      </div>
 		  </div>  
 	  </div>
