@@ -37,23 +37,28 @@ $(function () {
 });
 function CreateCondition()
 {
+	var patientId = $("#patient").val();
+	var conditionCode = $("#condition").val();
+	var conditionText = $("#condition option:selected"); 
+	var currDateTime = new Date($.now());
+	alert(currDateTime.getDate()+"-"+(currDateTime.getMonth() + 1)+"-"+currDateTime.getFullYear()+" "+currDateTime.getHours()+":"+currDateTime.getMinutes()+":"+currDateTime.getSeconds());
 	var _json =
 //[
        
 	{
 	  "resourceType": "Condition",
 	  "patient": {
-	    "reference": "Patient/1316024"
+	    "reference": "Patient/" + patientId + ""
 	  },
 	"code": {
 	    "coding": [
 		{
 		    "system": "http://snomed.info/sct",
-		    "code": "23986001",
+		    "code": "" + conditionCode + "",
 		    "display": "Problem"
 		}
 	    ],
-	    "text": "Glaucoma"
+	    "text": "" + conditionText.text() + ""
 	},
 	"category": {
 	    "coding": [
@@ -67,7 +72,8 @@ function CreateCondition()
 	},
 	  "clinicalStatus": "active",
 	  "verificationStatus": "confirmed",
-	  "abatementDateTime": "2020-07-23T00:00:00Z"
+	  //"abatementDateTime": "2020-07-23T00:00:00Z"
+	   "abatementDateTime": ""+currDateTime.getFullYear()+"-"+currDateTime.getMonth()+"-"+currDateTime.getDate()+"T"+currDateTime.getHours()+":"+currDateTime.getMinutes()+":"+currDateTime.getSeconds()+"Z"	
 	}
 	
 //]
