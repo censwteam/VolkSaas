@@ -38,7 +38,7 @@ $(function () {
 function CreateCondition()
 {
 	var _json =
-[
+//[
         {
 	  "resourceType": "Condition",
 	  "patient": {
@@ -185,7 +185,7 @@ function CreateCondition()
 	  "abatementDateTime": "2020-07-23T00:00:00Z"
 	}
 	
-]
+//]
 	
 	 $.ajax({
 	    type: "POST",	 
