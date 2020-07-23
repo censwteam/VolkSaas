@@ -41,27 +41,24 @@ function CreateCondition()
         {
 	  "resourceType": "Condition",
 	  "patient": {
-	    //"reference": "Patient/7586007"
-		  "reference": "Patient/1316024"
+	    "reference": "Patient/1316024"
 	  },
 	  "code": {
-	    "text": "Freetext Diagnosis"
+	    "text": "Visual Acuity left"
 	  },
 	  "category": {
 	    "coding": [
 	      {
-		"system": "http://hl7.org/fhir/condition-category",
-		"code": "diagnosis",
-		"display": "Diagnosis"
+		"system": "http://argonaut.hl7.org",
+		"code": "problem",
+		"display": "Problem"
 	      }
 	    ],
-	    "text": "Diagnosis"
+	    "text": "Problem"
 	  },
-	  "clinicalStatus": "active",
+	  "clinicalStatus": "resolved",
 	  "verificationStatus": "differential",
-	  "encounter": {
-	    "reference": "Encounter/2457909"
-	  }
+	  "abatementDateTime": "2020-07-21T00:00:00Z"
 	}
 	
 	 $.ajax({
