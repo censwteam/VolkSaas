@@ -49,8 +49,8 @@ function CreateCondition()
 	  "category": {
 	    "coding": [
 	      {
-		"system": "http://argonaut.hl7.org",
-		"code": "problem",
+		"system": "http://snomed.info/sct",
+		"code": "417555004",
 		"display": "Problem"
 	      }
 	    ],
