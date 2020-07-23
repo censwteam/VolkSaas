@@ -1,4 +1,4 @@
-
+	
 var patientBasicInformation = {
     resourcePatientID: "",
     resourcePatientFullName: '',
@@ -44,7 +44,7 @@ function CreateCondition()
 	    "reference": "Patient/1316024"
 	  },
 	  "code": {
-	    "text": "Visual Acuity left"
+	    "text": "Visual acuity - right eye"
 	  },
 	  "category": {
 	    "coding": [
@@ -57,7 +57,7 @@ function CreateCondition()
 	    "text": "Problem"
 	  },
 	  "clinicalStatus": "resolved",
-	  "verificationStatus": "differential",
+	  "verificationStatus": "145",
 	  "abatementDateTime": "2020-07-21T00:00:00Z"
 	}
 	
