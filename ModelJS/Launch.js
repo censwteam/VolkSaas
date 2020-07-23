@@ -44,7 +44,7 @@ function CreateCondition()
 	    "reference": "Patient/7586007"
 	  },
 	  "code": {
-	    "text": "Visual acuity - left eye"
+	    "text": "Freetext Diagnosis"
 	  },
 	  "category": {
 	    "coding": [
