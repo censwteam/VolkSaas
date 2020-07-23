@@ -48,11 +48,10 @@ function CreateCondition()
 		{
 		    "system": "http://snomed.info/sct",
 		    "code": "417555004",
-		    "display": "Problem (finding)",
-		    "userSelected": false
+		    "display": "Problem"
 		}
 	    ],
-	    "text": "Problem"
+	    "text": "Intraocular pressure left eye"
 	},
 	"category": {
 	    "coding": [
