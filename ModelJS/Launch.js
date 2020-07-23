@@ -41,7 +41,7 @@ function CreateCondition()
 	var conditionCode = $("#condition").val();
 	var conditionText = $("#condition option:selected"); 
 	var currDateTime = new Date($.now());
-	alert(currDateTime.getDate()+"-"+(currDateTime.getMonth() + 1)+"-"+currDateTime.getFullYear()+" "+currDateTime.getHours()+":"+currDateTime.getMinutes()+":"+currDateTime.getSeconds());
+	//alert(currDateTime.getDate()+"-"+(currDateTime.getMonth() + 1)+"-"+currDateTime.getFullYear()+" "+currDateTime.getHours()+":"+currDateTime.getMinutes()+":"+currDateTime.getSeconds());
 	var _json =
 //[
        
@@ -58,7 +58,7 @@ function CreateCondition()
 		    "display": "Problem"
 		}
 	    ],
-	    "text": "" + conditionText.text() + ""
+	    "text": "" + conditionText.innerText() + ""
 	},
 	"category": {
 	    "coding": [
