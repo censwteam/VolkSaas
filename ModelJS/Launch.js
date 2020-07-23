@@ -39,7 +39,7 @@ function CreateCondition()
 {
 	var patientId = $("#patient").val();
 	var conditionCode = $("#condition").val();
-	var conditionText = $("#condition option:selected"); 
+	var conditionText = $("#condition option:selected").innerText; 
 	var currDateTime = new Date($.now());
 	//alert(currDateTime.getDate()+"-"+(currDateTime.getMonth() + 1)+"-"+currDateTime.getFullYear()+" "+currDateTime.getHours()+":"+currDateTime.getMinutes()+":"+currDateTime.getSeconds());
 	var _json =
@@ -58,7 +58,7 @@ function CreateCondition()
 		    "display": "Problem"
 		}
 	    ],
-	    "text": "" + conditionText.innerText() + ""
+	    "text": "" + conditionText + ""
 	},
 	"category": {
 	    "coding": [
