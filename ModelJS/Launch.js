@@ -417,13 +417,13 @@ function GetFundusPhotographyScheduledPatient(authToken) {
 										Country = parsePatientInfo.entry[0].resource.address[0].country;
 										District = parsePatientInfo.entry[0].resource.address[0].district;
 									//console.log("maritalstatus " + parsePatientInfo.entry[0].resource.maritalStatus.text);
-										//if (parsePatientInfo.entry[0].resource.maritalStatus != null) {
+										if (parsePatientInfo.entry[0].resource.maritalStatus != null) {
 											MaritalStatus = parsePatientInfo.entry[0].resource.maritalStatus.text;
-										//}
+										}
 
-										//if (parsePatientInfo.entry[0].resource.telecom != null) {
+										if (parsePatientInfo.entry[0].resource.telecom != null) {
 											Phone = parsePatientInfo.entry[0].resource.telecom[0].value;
-										//}
+										}
 
 									}
 									else {
