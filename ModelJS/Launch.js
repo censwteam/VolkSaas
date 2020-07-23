@@ -75,7 +75,7 @@ function CreateCondition()
 	  "clinicalStatus": "active",
 	  "verificationStatus": "confirmed",
 	  //"abatementDateTime": "2020-07-23T00:00:00Z"
-	   "abatementDateTime": " + updatedOn + "
+	   "abatementDateTime": "" + updatedOn + ""
 	}
 	
 //]
