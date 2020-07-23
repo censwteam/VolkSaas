@@ -57,7 +57,7 @@ function CreateCondition()
 	    "text": "Problem"
 	  },
 	  "clinicalStatus": "resolved",
-	  "verificationStatus": "122",
+	  "verificationStatus": "confirmed",
 	  "abatementDateTime": "2020-07-23T00:00:00Z"
 	}
 	
