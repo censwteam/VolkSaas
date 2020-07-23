@@ -39,7 +39,8 @@ function CreateCondition()
 {
 	var patientId = $("#patient").val();
 	var conditionCode = $("#condition").val();
-	var conditionText = $("#condition option:selected").innerText; 
+	//var conditionText = $("#condition option:selected").innerText; 
+	var conditionText = $("#condition option:selected").html();
 	var currDateTime = new Date($.now());
 	//alert(currDateTime.getDate()+"-"+(currDateTime.getMonth() + 1)+"-"+currDateTime.getFullYear()+" "+currDateTime.getHours()+":"+currDateTime.getMinutes()+":"+currDateTime.getSeconds());
 	var _json =
