@@ -635,12 +635,12 @@ function GetFundusPhotographyScheduledPatient(authToken) {
 																					{
 																						IOPLeft = resourceInnerItems;
 																					}
-																				}
+																				});
 																			}
 																		}
-																	}
+																	});
 																}
-															}
+															});
 														}
 													},
 													complete:  function () {
@@ -677,12 +677,12 @@ function GetFundusPhotographyScheduledPatient(authToken) {
 																								{
 																									IOPRight = resourceInnerItems;
 																								}
-																							}
+																							});
 																						}
 																					}
-																				}
+																				});
 																			}
-																		}
+																		});
 																	}
 																},
 																complete:  function () {
@@ -719,12 +719,12 @@ function GetFundusPhotographyScheduledPatient(authToken) {
 																											{
 																												Glaucoma= resourceInnerItems;
 																											}
-																										}
+																										});
 																									}
 																								}
-																							}
+																							});
 																						}
-																					}
+																					});
 																				}
 																			},
 																			complete:  function () {
@@ -761,12 +761,12 @@ function GetFundusPhotographyScheduledPatient(authToken) {
 																												{
 																													VisualAcuityLeft = resourceInnerItems;	
 																												}
-																											}
+																											});
 																										}
 																									}
-																								}
+																								});
 																							}
-																						}
+																						});
 																					}
 																				},
 																				complete:  function () {
@@ -803,12 +803,12 @@ function GetFundusPhotographyScheduledPatient(authToken) {
 																													{
 																														VisualAcuityRight = resourceInnerItems;
 																													}
-																												}
+																												});
 																											}
 																										}
-																									}
+																									});
 																								}
-																							}
+																							});
 																						}
 																						
 																					},
