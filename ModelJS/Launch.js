@@ -634,7 +634,7 @@ function GetFundusPhotographyScheduledPatient(authToken) {
 																					$.each(resourceItems, function (resourceInnerHeader, resourceInnerItems) {
 																						if(resourceInnerHeader == "verificationStatus")
 																						{
-																							//console.log("myvalue== " + resourceItems.code.text);
+																							console.log("myvalue== " + resourceItems.code.text);
 																							if(resourceItems.code.text == "Glaucoma")
 																							{
 																								Glaucoma= resourceInnerItems;																							
