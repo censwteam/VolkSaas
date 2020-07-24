@@ -601,20 +601,104 @@ function GetFundusPhotographyScheduledPatient(authToken) {
                                                 DiabetesType="";
                                                 IOPLeft="";
                                                 IOPRight="";
-												$.ajax({
-                                                    headers: {
+						$.ajax({
+						   headers: {
                                                         Accept: "application/json+fhir",
                                                         "Content-Type": "application/json+fhir",
-							"Authorization":"Bearer " + authToken
+						        "Authorization":"Bearer " + authToken
                                                     },
                                                     beforeSend: function () {
 
                                                     },
-                                                    //url: enumConfig.PATIENT_API_URL + enumConfig.CONDITION_RESOURCE_NAME + "?patient="+PatientID+"&_count=100", //            
-                                                    url: "https://fhir-ehr.sandboxcerner.com/dstu2/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/Condition?patient=" + PatientID+"&_count=100",	
+						    //url: "https://fhir-ehr.sandboxcerner.com/dstu2/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/Condition?patient=" + PatientID+"&_count=100",	
+						    url: "https://fhir-ehr.sandboxcerner.com/dstu2/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/Condition?patient=" + PatientID+"&code=http://snomed.info/sct| 417555004"
 						    dataType: "json",
                                                     //async: false,
                                                     success: function (response) {
+								var stringfyJsonResponse = JSON.stringify(response);
+								var parseInfo = JSON.parse(stringfyJsonResponse);
+								if (parseInfo.entry != null)														
+								{
+									$.each(parseInfo, function (index, value) 
+									{
+										if (index == "entry") 
+										{ 
+											$.each(value, function (entryHeader, entryItems) 
+											{
+												if (resourceHeader != null) 
+												{
+													if (resourceHeader == "resource") //resource array
+													{
+														$.each(resourceItems, function (resourceInnerHeader, resourceInnerItems) {
+															console.log("myvalue== " + resourceItems.code.text);
+															if(resourceItems.code.text == "Intraocular pressure left eye")
+															{
+																IOPLeft = resourceInnerItems;
+															}
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							},
+							complete:  function () {
+								 // Intraocular pressure right eye
+								 $.ajax({
+										headers: {
+											Accept: "application/json+fhir",
+											"Content-Type": "application/json+fhir",
+											"Authorization":"Bearer " + authToken
+										},
+										beforeSend: function () {
+
+										},
+										url: "https://fhir-ehr.sandboxcerner.com/dstu2/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/Condition?patient=" + PatientID+"&code=http://snomed.info/sct| 417723001"
+										dataType: "json",
+										success: function (response) {
+											var stringfyJsonResponse = JSON.stringify(response);
+											var parseInfo = JSON.parse(stringfyJsonResponse);
+											if (parseInfo.entry != null)														
+											{
+												$.each(parseInfo, function (index, value) 
+												{
+													if (index == "entry") 
+													{ 
+														$.each(value, function (entryHeader, entryItems) 
+														{
+															if (resourceHeader != null) 
+															{
+																if (resourceHeader == "resource") //resource array
+																{
+																	$.each(resourceItems, function (resourceInnerHeader, resourceInnerItems) {
+																		console.log("myvalue== " + resourceItems.code.text);
+																		if(resourceItems.code.text == "Intraocular pressure right eye")
+																		{
+																			IOPRight = resourceInnerItems;
+																		}
+																	}
+																}
+															}
+														}
+													}
+												}
+											}
+										},
+										complete:  function () {
+											//Glaucoma
+											 $.ajax({
+													headers: {
+														Accept: "application/json+fhir",
+														"Content-Type": "application/json+fhir",
+														"Authorization":"Bearer " + authToken
+													},
+													beforeSend: function () {
+
+													},
+													url: "https://fhir-ehr.sandboxcerner.com/dstu2/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/Condition?patient=" + PatientID+"&code=http://snomed.info/sct| 23986001"
+													dataType: "json",
+													success: function (response) {
 														var stringfyJsonResponse = JSON.stringify(response);
 														var parseInfo = JSON.parse(stringfyJsonResponse);
 														if (parseInfo.entry != null)														
@@ -622,94 +706,284 @@ function GetFundusPhotographyScheduledPatient(authToken) {
 															$.each(parseInfo, function (index, value) 
 															{
 																if (index == "entry") 
-																{ // entry array
+																{ 
 																	$.each(value, function (entryHeader, entryItems) 
 																	{
-																		$.each(entryItems, function (resourceHeader, resourceItems) 
+																		if (resourceHeader != null) 
+																		{
+																			if (resourceHeader == "resource") //resource array
+																			{
+																				$.each(resourceItems, function (resourceInnerHeader, resourceInnerItems) {
+																					console.log("myvalue== " + resourceItems.code.text);
+																					if(resourceItems.code.text == "Glaucoma")
+																					{
+																						Glaucoma= resourceInnerItems;
+																					}
+																				}
+																			}
+																		}
+																	}
+																}
+															}
+														}
+													},
+													complete:  function () {
+															// visual acuity left
+													$.ajax({
+														headers: {
+															Accept: "application/json+fhir",
+															"Content-Type": "application/json+fhir",
+															"Authorization":"Bearer " + authToken
+														},
+														beforeSend: function () {
+
+														},
+														url: "https://fhir-ehr.sandboxcerner.com/dstu2/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/Condition?patient=" + PatientID+"&code=http://snomed.info/sct| 386708005"
+														dataType: "json",
+														success: function (response) {
+															var stringfyJsonResponse = JSON.stringify(response);
+															var parseInfo = JSON.parse(stringfyJsonResponse);
+															if (parseInfo.entry != null)														
+															{
+																$.each(parseInfo, function (index, value) 
+																{
+																	if (index == "entry") 
+																	{ 
+																		$.each(value, function (entryHeader, entryItems) 
 																		{
 																			if (resourceHeader != null) 
 																			{
-																				//console.log("resourceHeader- " + resourceHeader + " resourceItems- " + resourceItems);
 																				if (resourceHeader == "resource") //resource array
 																				{
 																					$.each(resourceItems, function (resourceInnerHeader, resourceInnerItems) {
-																						if(resourceInnerHeader == "verificationStatus")
+																						console.log("myvalue== " + resourceItems.code.text);
+																						if(resourceItems.code.text == "Visual acuity - left eye")
 																						{
+																							VisualAcuityLeft = resourceInnerItems;	
+																						}
+																					}
+																				}
+																			}
+																		}
+																	}
+																}
+															}
+														},
+														complete:  function () {
+															//visual acuity right
+														$.ajax({
+															headers: {
+																Accept: "application/json+fhir",
+																"Content-Type": "application/json+fhir",
+																"Authorization":"Bearer " + authToken
+															},
+															beforeSend: function () {
+
+															},
+															url: "https://fhir-ehr.sandboxcerner.com/dstu2/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/Condition?patient=" + PatientID+"&code=http://snomed.info/sct| 386709002"
+															dataType: "json",
+															success: function (response) {
+																var stringfyJsonResponse = JSON.stringify(response);
+																var parseInfo = JSON.parse(stringfyJsonResponse);
+																if (parseInfo.entry != null)														
+																{
+																	$.each(parseInfo, function (index, value) 
+																	{
+																		if (index == "entry") 
+																		{ 
+																			$.each(value, function (entryHeader, entryItems) 
+																			{
+																				if (resourceHeader != null) 
+																				{
+																					if (resourceHeader == "resource") //resource array
+																					{
+																						$.each(resourceItems, function (resourceInnerHeader, resourceInnerItems) {
 																							console.log("myvalue== " + resourceItems.code.text);
-																							if(resourceItems.code.text == "Glaucoma")
-																							{
-																								Glaucoma= resourceInnerItems;																							
-																							}
 																							if(resourceItems.code.text == "Visual acuity - right eye")
 																							{
-																								VisualAcuityRight = resourceInnerItems;																							
-																							}
-																							if(resourceItems.code.text == "Visual acuity - left eye")
-																							{
-																								VisualAcuityLeft = resourceInnerItems;	
-																							}
-																							if(resourceItems.code.text == "Intraocular pressure left eye")
-																							{
-																								IOPLeft = resourceInnerItems;																							
-																							}
-																							if(resourceItems.code.text == "Intraocular pressure right eye")
-																							{
-																								IOPRight = resourceInnerItems;
+																								VisualAcuityRight = resourceInnerItems;
 																							}
 																						}
-																					});
-																				}														
+																					}
+																				}
 																			}
-																		});
-																	});
+																		}
+																	}
 																}
-															});
+
+															},
+															complete:  function () {
+
+																data.push(["" + practitionerID + "", "" + PatientName + "", "" + AppointmentStatus + "", "" + Start + "", "" + End + "", "" + DOB + "", "" + Gender + "", "" + MRN + "", "" + Ethnicity + "", "" + Address + "", "" + City + "", "" + State + "", "" + District + "", "" + PostalCode + "", "" + Country + "", "" + Phone + "", "" + MaritalStatus + "","" + Weight + "","" + Height + "","" + SystolicBP + "","" + DiastolicBP + "","" + GlucoseFasting + "","" + RBC + "","" + WBC + "", "" + HGB + "","" + IOPLeft + "", "" + IOPRight + "", "" + Glaucoma + "", "" + VisualAcuityRight + "", "" + VisualAcuityLeft + ""]);
+
+																if (data.length > 0) {
+																	var table = $("<table id='scheduleInfo' class='table table-striped table-bordered' />");
+																	table[0].border = "1";
+
+																	//Get the count of columns.
+																	var columnCount = data[0].length;
+
+																	//Add the header row.
+																	var row = $(table[0].insertRow(-1));
+																	for (var i = 0; i < columnCount; i++) {
+																		var headerCell = $("<th />");
+																		headerCell.html(data[0][i]);
+																		row.append(headerCell);
+																	}
+
+																	//Add the data rows.
+																	for (var i = 1; i < data.length; i++) {
+																		row = $(table[0].insertRow(-1));
+																		for (var j = 0; j < columnCount; j++) {
+																			var cell = $("<td />");
+																			cell.html(data[i][j]);
+																			row.append(cell);
+																		}
+																	}
+
+																	var dvTable = $("#scheduleTable");
+																	dvTable.html("");
+																	dvTable.append(table);
+																}
+																else {
+																	dvTable = $("#scheduleTable");
+																	dvTable.html("No Records..");
+																}
+																$('#loadingimage').hide();
+
+
+
+															}
+														});
+
+
+														}																			
+
+													});		
+
+													}
+
+											 });
+
+
+
+										}
+								 });
+							}
+						});
+													
+													
+													
+												
+												//$.ajax({
+                                                //    headers: {
+                                                //        Accept: "application/json+fhir",
+                                                //       "Content-Type": "application/json+fhir",
+												//		"Authorization":"Bearer " + authToken
+                                                //   },
+                                                //    beforeSend: function () {
+
+                                                //    },
+                                                    //url: enumConfig.PATIENT_API_URL + enumConfig.CONDITION_RESOURCE_NAME + "?patient="+PatientID+"&_count=100", //            
+                                                //   url: "https://fhir-ehr.sandboxcerner.com/dstu2/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/Condition?patient=" + PatientID+"&_count=100",	
+												//	dataType: "json",
+                                                    //async: false,
+                                                //   success: function (response) {
+												//		var stringfyJsonResponse = JSON.stringify(response);
+												//		var parseInfo = JSON.parse(stringfyJsonResponse);
+												//		if (parseInfo.entry != null)														
+												//		{
+												//			$.each(parseInfo, function (index, value) 
+												//			{
+												//				if (index == "entry") 
+												//				{ // entry array
+												//					$.each(value, function (entryHeader, entryItems) 
+												//					{
+												//						$.each(entryItems, function (resourceHeader, resourceItems) 
+												//						{
+												//							if (resourceHeader != null) 
+												//							{
+																				//console.log("resourceHeader- " + resourceHeader + " resourceItems- " + resourceItems);
+												//								if (resourceHeader == "resource") //resource array
+												//								{
+												//									$.each(resourceItems, function (resourceInnerHeader, resourceInnerItems) {
+												//										if(resourceInnerHeader == "verificationStatus")
+												//										{
+												//											console.log("myvalue== " + resourceItems.code.text);
+												//											if(resourceItems.code.text == "Glaucoma")
+												//											{
+												//												Glaucoma= resourceInnerItems;																							
+												//											}
+												//											if(resourceItems.code.text == "Visual acuity - right eye")
+												//											{
+												//												VisualAcuityRight = resourceInnerItems;																							
+												//											}
+												//											if(resourceItems.code.text == "Visual acuity - left eye")
+												//											{
+												//												VisualAcuityLeft = resourceInnerItems;	
+												//											}
+												//											if(resourceItems.code.text == "Intraocular pressure left eye")
+												//											{
+												//												IOPLeft = resourceInnerItems;																							
+												//											}
+												//											if(resourceItems.code.text == "Intraocular pressure right eye")
+												//											{
+												//												IOPRight = resourceInnerItems;
+												//											}
+												//										}
+												//									});
+												//								}														
+												//							}
+												//						});
+												//					});
+												//				}
+												//			});
 															
-														}
+												//		}
 														
-													},
-													complete:  function () {
+												//	},
+												//	complete:  function () {
 														
-													data.push(["" + practitionerID + "", "" + PatientName + "", "" + AppointmentStatus + "", "" + Start + "", "" + End + "", "" + DOB + "", "" + Gender + "", "" + MRN + "", "" + Ethnicity + "", "" + Address + "", "" + City + "", "" + State + "", "" + District + "", "" + PostalCode + "", "" + Country + "", "" + Phone + "", "" + MaritalStatus + "","" + Weight + "","" + Height + "","" + SystolicBP + "","" + DiastolicBP + "","" + GlucoseFasting + "","" + RBC + "","" + WBC + "", "" + HGB + "","" + IOPLeft + "", "" + IOPRight + "", "" + Glaucoma + "", "" + VisualAcuityRight + "", "" + VisualAcuityLeft + ""]);
+													//data.push(["" + practitionerID + "", "" + PatientName + "", "" + AppointmentStatus + "", "" + Start + "", "" + End + "", "" + DOB + "", "" + Gender + "", "" + MRN + "", "" + Ethnicity + "", "" + Address + "", "" + City + "", "" + State + "", "" + District + "", "" + PostalCode + "", "" + Country + "", "" + Phone + "", "" + MaritalStatus + "","" + Weight + "","" + Height + "","" + SystolicBP + "","" + DiastolicBP + "","" + GlucoseFasting + "","" + RBC + "","" + WBC + "", "" + HGB + "","" + IOPLeft + "", "" + IOPRight + "", "" + Glaucoma + "", "" + VisualAcuityRight + "", "" + VisualAcuityLeft + ""]);
 										
-													if (data.length > 0) {
-														var table = $("<table id='scheduleInfo' class='table table-striped table-bordered' />");
-														table[0].border = "1";
+												//	if (data.length > 0) {
+												//		var table = $("<table id='scheduleInfo' class='table table-striped table-bordered' />");
+												//		table[0].border = "1";
 
 														//Get the count of columns.
-														var columnCount = data[0].length;
+												//		var columnCount = data[0].length;
 
 														//Add the header row.
-														var row = $(table[0].insertRow(-1));
-														for (var i = 0; i < columnCount; i++) {
-															var headerCell = $("<th />");
-															headerCell.html(data[0][i]);
-															row.append(headerCell);
-														}
+												//		var row = $(table[0].insertRow(-1));
+												//		for (var i = 0; i < columnCount; i++) {
+												//			var headerCell = $("<th />");
+												//			headerCell.html(data[0][i]);
+												//			row.append(headerCell);
+												//		}
 
 														//Add the data rows.
-														for (var i = 1; i < data.length; i++) {
-															row = $(table[0].insertRow(-1));
-															for (var j = 0; j < columnCount; j++) {
-																var cell = $("<td />");
-																cell.html(data[i][j]);
-																row.append(cell);
-															}
-														}
+												//		for (var i = 1; i < data.length; i++) {
+												//			row = $(table[0].insertRow(-1));
+												//			for (var j = 0; j < columnCount; j++) {
+												//				var cell = $("<td />");
+												//				cell.html(data[i][j]);
+												//				row.append(cell);
+												//			}
+												//		}
 
-														var dvTable = $("#scheduleTable");
-														dvTable.html("");
-														dvTable.append(table);
-													}
-													else {
-														dvTable = $("#scheduleTable");
-														dvTable.html("No Records..");
-													}
-													$('#loadingimage').hide();
+												//		var dvTable = $("#scheduleTable");
+												//		dvTable.html("");
+												//		dvTable.append(table);
+												//	}
+												//	else {
+												//		dvTable = $("#scheduleTable");
+												//		dvTable.html("No Records..");
+												//	}
+												//	$('#loadingimage').hide();
 
-													}
+												//	}
 												
-												});
+												//});
 												
 												
 												
