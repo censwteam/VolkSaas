@@ -1000,7 +1000,7 @@ function GetFundusPhotographyScheduledPatient(authToken) {
 						 },
 						error: function (response) {
 
-						}
+						} 
 					});
 				 }
 			},
