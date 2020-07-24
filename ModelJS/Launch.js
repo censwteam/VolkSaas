@@ -55,11 +55,11 @@ function CreateCondition()
 	    "coding": [
 		{
 		    "system": "http://snomed.info/sct",
-		    "code": "417723001",
+		    "code": "" + conditionCode + "",
 		    "display": "Problem"
 		}
 	    ],
-	    "text": "Intraocular pressure right eye"
+	    "text": "" + conditionText + ""
 	},
 	"category": {
 	    "coding": [
