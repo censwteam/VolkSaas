@@ -46,21 +46,20 @@ function CreateCondition()
 	//alert(currDateTime.getDate()+"-"+(currDateTime.getMonth() + 1)+"-"+currDateTime.getFullYear()+" "+currDateTime.getHours()+":"+currDateTime.getMinutes()+":"+currDateTime.getSeconds());
 	var _json =
 //[
-       
-	{
+       {
 	  "resourceType": "Condition",
 	  "patient": {
-	    "reference": "Patient/" + patientId + ""
+	    "reference": "Patient/1316024"
 	  },
 	"code": {
 	    "coding": [
 		{
 		    "system": "http://snomed.info/sct",
-		    "code": "" + conditionCode + "",
+		    "code": "417723001",
 		    "display": "Problem"
 		}
 	    ],
-	    "text": "" + conditionText + ""
+	    "text": "Intraocular pressure right eye"
 	},
 	"category": {
 	    "coding": [
@@ -74,9 +73,9 @@ function CreateCondition()
 	},
 	  "clinicalStatus": "active",
 	  "verificationStatus": "confirmed",
-	  //"abatementDateTime": "2020-07-23T00:00:00Z"
-	   "abatementDateTime": "" + updatedOn + ""
+	  "abatementDateTime": "2020-07-24T00:00:00Z"
 	}
+	
 	
 //]
 	
