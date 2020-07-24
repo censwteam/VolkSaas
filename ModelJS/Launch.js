@@ -630,7 +630,7 @@ function GetFundusPhotographyScheduledPatient(authToken) {
 																		{
 																			if (resourceHeader == "resource") //resource array
 																			{
-																				$.each(resourceItems, function (resourceInnerHeader, resourceInnerItems) {
+																				$.each(resourceItems, function (resourceInnerHeader, resourceItems) {
 																					console.log("myvalue== " + resourceItems.code.text);
 																					if(resourceItems.code.text == "Intraocular pressure left eye")
 																					{
@@ -672,7 +672,7 @@ function GetFundusPhotographyScheduledPatient(authToken) {
 																					{
 																						if (resourceHeader == "resource") //resource array
 																						{
-																							$.each(resourceItems, function (resourceInnerHeader, resourceInnerItems) {
+																							$.each(resourceItems, function (resourceInnerHeader, resourceItems) {
 																								console.log("myvalue== " + resourceItems.code.text);
 																								if(resourceItems.code.text == "Intraocular pressure right eye")
 																								{
@@ -714,7 +714,7 @@ function GetFundusPhotographyScheduledPatient(authToken) {
 																								{
 																									if (resourceHeader == "resource") //resource array
 																									{
-																										$.each(resourceItems, function (resourceInnerHeader, resourceInnerItems) {
+																										$.each(resourceItems, function (resourceInnerHeader, resourceItems) {
 																											console.log("myvalue== " + resourceItems.code.text);
 																											if(resourceItems.code.text == "Glaucoma")
 																											{
@@ -756,7 +756,7 @@ function GetFundusPhotographyScheduledPatient(authToken) {
 																									{
 																										if (resourceHeader == "resource") //resource array
 																										{
-																											$.each(resourceItems, function (resourceInnerHeader, resourceInnerItems) {
+																											$.each(resourceItems, function (resourceInnerHeader, resourceItems) {
 																												console.log("myvalue== " + resourceItems.code.text);
 																												if(resourceItems.code.text == "Visual acuity - left eye")
 																												{
@@ -798,7 +798,7 @@ function GetFundusPhotographyScheduledPatient(authToken) {
 																										{
 																											if (resourceHeader == "resource") //resource array
 																											{
-																												$.each(resourceItems, function (resourceInnerHeader, resourceInnerItems) {
+																												$.each(resourceItems, function (resourceInnerHeader, resourceItems) {
 																													console.log("myvalue== " + resourceItems.code.text);
 																													if(resourceItems.code.text == "Visual acuity - right eye")
 																													{
