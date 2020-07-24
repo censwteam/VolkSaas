@@ -615,37 +615,42 @@ function GetFundusPhotographyScheduledPatient(authToken) {
 													dataType: "json",
                                                     //async: false,
                                                     success: function (response) {
-														var stringfyJsonResponse = JSON.stringify(response);
-							    							//console.log("IOP Left " + stringfyJsonResponse);
-														var parseInfo = JSON.parse(stringfyJsonResponse);
-														if (parseInfo.entry != null)														
+									var stringfyJsonResponse = JSON.stringify(response);
+									var parseInfo = JSON.parse(stringfyJsonResponse);
+									if (parseInfo.entry != null)														
+									{
+										$.each(parseInfo, function (index, value) 
+										{
+											if (index == "entry") 
+											{ // entry array
+												$.each(value, function (entryHeader, entryItems) 
+												{
+													$.each(entryItems, function (resourceHeader, resourceItems) 
+													{
+														if (resourceHeader != null) 
 														{
-															$.each(parseInfo, function (index, value) 
+															//console.log("resourceHeader- " + resourceHeader + " resourceItems- " + resourceItems);
+															if (resourceHeader == "resource") //resource array
 															{
-																if (index == "entry") 
-																{ 
-																	$.each(value, function (resourceHeader, resourceItems) 
+																$.each(resourceItems, function (resourceInnerHeader, resourceInnerItems) {
+																	if(resourceInnerHeader == "verificationStatus")
 																	{
-																		if (resourceHeader != null) 
+																		console.log("myvalue== " + resourceItems.code.text);
+																		if(resourceItems.code.text == "Intraocular pressure left eye")
 																		{
-																			if (resourceHeader == "resource") //resource array
-																			{
-																				$.each(resourceItems, function (resourceInnerHeader, resourceInnerItems) {
-																					console.log("myvalue== " + resourceItems.code.text);
-																					if(resourceInnerHeader == "verificationStatus")
-																					{
-																						if(resourceItems.code.text == "Intraocular pressure left eye")
-																						{
-																							IOPLeft = resourceInnerItems;
-																						}
-																					}
-																				});
-																			}
+																			IOPLeft = resourceInnerItems;																							
 																		}
-																	});
-																}
-															});
+																		
+																	}
+																});
+															}														
 														}
+													});
+												});
+											}
+										});
+
+									}
 													},
 													complete:  function () {
 														 // Intraocular pressure right eye
