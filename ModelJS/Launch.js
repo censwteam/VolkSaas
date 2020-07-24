@@ -228,7 +228,8 @@ function GetFundusPhotographyScheduledPatient(authToken) {
                                 End = endDate.getFullYear() + "-" + ((endDate.getMonth() + 1) < 10 ? "0" + (endDate.getMonth() + 1) : (endDate.getMonth() + 1)) + "-" + (endDate.getDate() < 10 ? "0" + endDate.getDate() : endDate.getDate()) + " " + (endDate.getHours() < 10 ? "0" + endDate.getHours() : endDate.getHours()) + ":" + (endDate.getMinutes() < 10 ? "0" + endDate.getMinutes() : endDate.getMinutes()) + ":" + (endDate.getSeconds() < 10 ? "0" + endDate.getSeconds() : endDate.getSeconds());  //endDate.getFullYear() + "-" + ((endDate.getMonth() + 1) < 10 ? "0" + (endDate.getMonth() + 1) : (endDate.getMonth() + 1)) + "-" + (endDate.getDate() < 10 ? "0" + endDate.getDate() : endDate.getDate()) + " " + endDate.getHours() + ":" + endDate.getMinutes() + ":" + endDate.getSeconds(); //endDate.getFullYear() + "-" + (endDate.getMonth() + 1) + "-" + endDate.getDate(); //entryResItems.end;
 
                                 DurationMin = entryResItems.minutesDuration;
-
+				//$('#patient').val('');
+				$('#patient'). empty(). append('<option>New Option</option>');
                                 if (entryResItems.participant != null) {
                                     $.each(entryResItems.participant, function (entryCoding2, entryCodingItems2) {
                                         //console.log("entryCoding2 - " + entryCoding2 + "entryCodingItems2 " + entryCodingItems2.type.text);  
