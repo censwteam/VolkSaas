@@ -630,11 +630,14 @@ function GetFundusPhotographyScheduledPatient(authToken) {
 																		{
 																			if (resourceHeader == "resource") //resource array
 																			{
-																				$.each(resourceItems, function (resourceInnerHeader, resourceItems) {
+																				$.each(resourceItems, function (resourceInnerHeader, resourceInnerItems) {
 																					console.log("myvalue== " + resourceItems.code.text);
-																					if(resourceItems.code.text == "Intraocular pressure left eye")
+																					if(resourceInnerHeader == "verificationStatus")
 																					{
-																						IOPLeft = resourceInnerItems;
+																						if(resourceItems.code.text == "Intraocular pressure left eye")
+																						{
+																							IOPLeft = resourceInnerItems;
+																						}
 																					}
 																				});
 																			}
@@ -672,11 +675,14 @@ function GetFundusPhotographyScheduledPatient(authToken) {
 																					{
 																						if (resourceHeader == "resource") //resource array
 																						{
-																							$.each(resourceItems, function (resourceInnerHeader, resourceItems) {
+																							$.each(resourceItems, function (resourceInnerHeader, resourceInnerItems) {
 																								console.log("myvalue== " + resourceItems.code.text);
+																								if(resourceInnerHeader == "verificationStatus")
+																								{
 																								if(resourceItems.code.text == "Intraocular pressure right eye")
 																								{
 																									IOPRight = resourceInnerItems;
+																								}
 																								}
 																							});
 																						}
@@ -714,11 +720,14 @@ function GetFundusPhotographyScheduledPatient(authToken) {
 																								{
 																									if (resourceHeader == "resource") //resource array
 																									{
-																										$.each(resourceItems, function (resourceInnerHeader, resourceItems) {
+																										$.each(resourceItems, function (resourceInnerHeader, resourceInnerItems) {
 																											console.log("myvalue== " + resourceItems.code.text);
+																											if(resourceInnerHeader == "verificationStatus")
+																											{
 																											if(resourceItems.code.text == "Glaucoma")
 																											{
 																												Glaucoma= resourceInnerItems;
+																											}
 																											}
 																										});
 																									}
@@ -756,11 +765,14 @@ function GetFundusPhotographyScheduledPatient(authToken) {
 																									{
 																										if (resourceHeader == "resource") //resource array
 																										{
-																											$.each(resourceItems, function (resourceInnerHeader, resourceItems) {
+																											$.each(resourceItems, function (resourceInnerHeader, resourceInnerItems) {
 																												console.log("myvalue== " + resourceItems.code.text);
+																												if(resourceInnerHeader == "verificationStatus")
+																												{
 																												if(resourceItems.code.text == "Visual acuity - left eye")
 																												{
 																													VisualAcuityLeft = resourceInnerItems;	
+																												}
 																												}
 																											});
 																										}
@@ -798,11 +810,14 @@ function GetFundusPhotographyScheduledPatient(authToken) {
 																										{
 																											if (resourceHeader == "resource") //resource array
 																											{
-																												$.each(resourceItems, function (resourceInnerHeader, resourceItems) {
+																												$.each(resourceItems, function (resourceInnerHeader, resourceInnerItems) {
 																													console.log("myvalue== " + resourceItems.code.text);
+																													if(resourceInnerHeader == "verificationStatus")
+																													{
 																													if(resourceItems.code.text == "Visual acuity - right eye")
 																													{
 																														VisualAcuityRight = resourceInnerItems;
+																													}
 																													}
 																												});
 																											}
