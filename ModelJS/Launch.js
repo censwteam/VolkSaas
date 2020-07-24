@@ -49,17 +49,17 @@ function CreateCondition()
        {
 	  "resourceType": "Condition",
 	  "patient": {
-	    "reference": patientId
+	    "reference": "Patient/4342012"
 	  },
 	"code": {
 	    "coding": [
 		{
 		    "system": "http://snomed.info/sct",
-		    "code": conditionCode,
+		    "code": "417723001",
 		    "display": "Problem"
 		}
 	    ],
-	    "text": conditionText
+	    "text": "Intraocular pressure right eye"
 	},
 	"category": {
 	    "coding": [
@@ -73,7 +73,7 @@ function CreateCondition()
 	},
 	  "clinicalStatus": "active",
 	  "verificationStatus": "confirmed",
-	  "abatementDateTime": updatedOn
+	  "abatementDateTime": "2020-07-24T00:00:00Z"
 	}
 	
 	
