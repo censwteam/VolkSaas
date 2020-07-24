@@ -49,7 +49,7 @@ function CreateCondition()
        {
 	  "resourceType": "Condition",
 	  "patient": {
-	    "reference": "Patient/4342012"
+	    "reference": "" + patientId + ""
 	  },
 	"code": {
 	    "coding": [
