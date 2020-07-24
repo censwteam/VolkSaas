@@ -623,7 +623,7 @@ function GetFundusPhotographyScheduledPatient(authToken) {
 															{
 																if (index == "entry") 
 																{ 
-																	$.each(value, function (entryHeader, entryItems) 
+																	$.each(value, function (resourceHeader, resourceItems) 
 																	{
 																		if (resourceHeader != null) 
 																		{
@@ -665,7 +665,7 @@ function GetFundusPhotographyScheduledPatient(authToken) {
 																		{
 																			if (index == "entry") 
 																			{ 
-																				$.each(value, function (entryHeader, entryItems) 
+																				$.each(value, function (resourceHeader, resourceItems) 
 																				{
 																					if (resourceHeader != null) 
 																					{
@@ -707,7 +707,7 @@ function GetFundusPhotographyScheduledPatient(authToken) {
 																					{
 																						if (index == "entry") 
 																						{ 
-																							$.each(value, function (entryHeader, entryItems) 
+																							$.each(value, function (resourceHeader, resourceItems) 
 																							{
 																								if (resourceHeader != null) 
 																								{
@@ -749,7 +749,7 @@ function GetFundusPhotographyScheduledPatient(authToken) {
 																						{
 																							if (index == "entry") 
 																							{ 
-																								$.each(value, function (entryHeader, entryItems) 
+																								$.each(value, function (resourceHeader, resourceItems) 
 																								{
 																									if (resourceHeader != null) 
 																									{
@@ -791,7 +791,7 @@ function GetFundusPhotographyScheduledPatient(authToken) {
 																							{
 																								if (index == "entry") 
 																								{ 
-																									$.each(value, function (entryHeader, entryItems) 
+																									$.each(value, function (resourceHeader, resourceItems) 
 																									{
 																										if (resourceHeader != null) 
 																										{
