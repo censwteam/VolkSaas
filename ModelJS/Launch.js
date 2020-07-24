@@ -37,7 +37,7 @@ $(function () {
 });
 function CreateCondition()
 {
-	var patientId = 1316024; //$("#patient").val();
+	var patientId = "Patient/" + $("#patient").val();
 	var conditionCode = $("#condition").val();
 	//var conditionText = $("#condition option:selected").innerText; 
 	var conditionText = $("#condition option:selected").html();
@@ -49,17 +49,17 @@ function CreateCondition()
        {
 	  "resourceType": "Condition",
 	  "patient": {
-	    "reference": "Patient/1316024"
+	    "reference": patientId
 	  },
 	"code": {
 	    "coding": [
 		{
 		    "system": "http://snomed.info/sct",
-		    "code": "417723001",
+		    "code": conditionCode,
 		    "display": "Problem"
 		}
 	    ],
-	    "text": "Intraocular pressure right eye"
+	    "text": conditionText
 	},
 	"category": {
 	    "coding": [
@@ -73,7 +73,7 @@ function CreateCondition()
 	},
 	  "clinicalStatus": "active",
 	  "verificationStatus": "confirmed",
-	  "abatementDateTime": "2020-07-24T00:00:00Z"
+	  "abatementDateTime": updatedOn
 	}
 	
 	
