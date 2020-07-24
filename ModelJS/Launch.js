@@ -37,7 +37,7 @@ $(function () {
 });
 function CreateCondition()
 {
-	var patientId = $("#patient").val();
+	var patientId = 1316024; //$("#patient").val();
 	var conditionCode = $("#condition").val();
 	//var conditionText = $("#condition option:selected").innerText; 
 	var conditionText = $("#condition option:selected").html();
