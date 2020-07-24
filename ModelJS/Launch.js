@@ -229,7 +229,7 @@ function GetFundusPhotographyScheduledPatient(authToken) {
 
                                 DurationMin = entryResItems.minutesDuration;
 				//$('#patient').val('');
-				$('#patient'). empty(). append('<option>New Option</option>');
+				$('#patient'). empty();
                                 if (entryResItems.participant != null) {
                                     $.each(entryResItems.participant, function (entryCoding2, entryCodingItems2) {
                                         //console.log("entryCoding2 - " + entryCoding2 + "entryCodingItems2 " + entryCodingItems2.type.text);  
