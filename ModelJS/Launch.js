@@ -616,7 +616,7 @@ function GetFundusPhotographyScheduledPatient(authToken) {
                                                     //async: false,
                                                     success: function (response) {
 														var stringfyJsonResponse = JSON.stringify(response);
-							    							console.log("IOP Left " + stringfyJsonResponse);
+							    							//console.log("IOP Left " + stringfyJsonResponse);
 														var parseInfo = JSON.parse(stringfyJsonResponse);
 														if (parseInfo.entry != null)														
 														{
