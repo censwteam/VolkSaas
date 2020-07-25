@@ -667,35 +667,41 @@ function GetFundusPhotographyScheduledPatient(authToken) {
 																dataType: "json",
 																success: function (response) {
 																	var stringfyJsonResponse = JSON.stringify(response);
-																	var parseInfo = JSON.parse(stringfyJsonResponse);
-																	if (parseInfo.entry != null)														
+									var parseInfo = JSON.parse(stringfyJsonResponse);
+									if (parseInfo.entry != null)														
+									{
+										$.each(parseInfo, function (index, value) 
+										{
+											if (index == "entry") 
+											{ // entry array
+												$.each(value, function (entryHeader, entryItems) 
+												{
+													$.each(entryItems, function (resourceHeader, resourceItems) 
+													{
+														if (resourceHeader != null) 
+														{
+															//console.log("resourceHeader- " + resourceHeader + " resourceItems- " + resourceItems);
+															if (resourceHeader == "resource") //resource array
+															{
+																$.each(resourceItems, function (resourceInnerHeader, resourceInnerItems) {
+																	if(resourceInnerHeader == "verificationStatus")
 																	{
-																		$.each(parseInfo, function (index, value) 
+																		console.log("myvalue== " + resourceItems.code.text);
+																		if(resourceItems.code.text == "Intraocular pressure right eye")
 																		{
-																			if (index == "entry") 
-																			{ 
-																				$.each(value, function (resourceHeader, resourceItems) 
-																				{
-																					if (resourceHeader != null) 
-																					{
-																						if (resourceHeader == "resource") //resource array
-																						{
-																							$.each(resourceItems, function (resourceInnerHeader, resourceInnerItems) {
-																								console.log("myvalue== " + resourceItems.code.text);
-																								if(resourceInnerHeader == "verificationStatus")
-																								{
-																								if(resourceItems.code.text == "Intraocular pressure right eye")
-																								{
-																									IOPRight = resourceInnerItems;
-																								}
-																								}
-																							});
-																						}
-																					}
-																				});
-																			}
-																		});
+																			IOPRight = resourceInnerItems;																							
+																		}
+																		
 																	}
+																});
+															}														
+														}
+													});
+												});
+											}
+										});
+
+									}
 																},
 																complete:  function () {
 																	//Glaucoma
