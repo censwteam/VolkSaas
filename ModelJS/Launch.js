@@ -100,7 +100,8 @@ function CreateCondition()
             success: function (response) {
 		    console.log("response" + response);
 	    },
-	    complete: function () {
+	    complete: function (response) {
+		     console.log("complete response" + response);
 		     $('#loadingimage').hide();
 		    //GetFundusPhotographyScheduledPatient(authToken);
 	    }
