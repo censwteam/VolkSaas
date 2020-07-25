@@ -417,7 +417,7 @@ function GetFundusPhotographyScheduledPatient(authToken) {
 										}
 									}
 									
-									console.log("gender" + parsePatientInfo.entry[0].resource.gender);
+									//console.log("gender" + parsePatientInfo.entry[0].resource.gender);
 									Gender = parsePatientInfo.entry[0].resource.gender;
 									DOB = parsePatientInfo.entry[0].resource.birthDate;
 
@@ -651,7 +651,7 @@ function GetFundusPhotographyScheduledPatient(authToken) {
 																$.each(resourceItems, function (resourceInnerHeader, resourceInnerItems) {
 																	if(resourceInnerHeader == "verificationStatus")
 																	{
-																		console.log("myvalue== " + resourceItems.code.text);
+																		//console.log("myvalue== " + resourceItems.code.text);
 																		if(resourceItems.code.text.toLowerCase() == "intraocular pressure left eye")
 																		{
 																			IOPLeft = resourceInnerItems;																							
