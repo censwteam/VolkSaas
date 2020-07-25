@@ -611,7 +611,7 @@ function GetFundusPhotographyScheduledPatient(authToken) {
 																							
 											},	
 											complete: function () {
-												Glaucoma =="";
+												Glaucoma ="";
                                                 VisualAcuityRight="";
                                                 VisualAcuityLeft="";
                                                 DiabetesType="";
