@@ -74,8 +74,8 @@ function CreateCondition()
 	    "text": "Problem"
 	},
 	  "clinicalStatus": "active",
-	  "verificationStatus": "confirmed",
-	  "abatementDateTime": "" + updatedOn + ""
+	  "verificationStatus": "confirmed"
+	  //"abatementDateTime": "" + updatedOn + ""
 	}
 	
 	
@@ -102,6 +102,8 @@ function CreateCondition()
 	    },
 	    complete: function (response) {
 		     console.log("complete response" + response);
+		    var parsePatientInfo = JSON.parse(response);
+
 		     $('#loadingimage').hide();
 		    //GetFundusPhotographyScheduledPatient(authToken);
 	    }
