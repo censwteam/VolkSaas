@@ -102,8 +102,18 @@ function CreateCondition()
 	    },
 	    complete: function (response) {
 		     console.log("complete response" + response);
-		    var parsePatientInfo = JSON.parse(response);
-
+		    if (response != null) {
+			if (response.statustext != "") {
+				if(response.statustext == "Created")
+				{
+					alert("Diagnosis Created Successfully.");	
+				}
+				else
+				{
+					alert("Diagnosis Failed to create.");	
+				}
+			}
+		    }
 		     $('#loadingimage').hide();
 		    //GetFundusPhotographyScheduledPatient(authToken);
 	    }
