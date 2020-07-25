@@ -652,7 +652,7 @@ function GetFundusPhotographyScheduledPatient(authToken) {
 																	if(resourceInnerHeader == "verificationStatus")
 																	{
 																		console.log("myvalue== " + resourceItems.code.text);
-																		if(resourceItems.code.text == "Intraocular Pressure left eye")
+																		if(resourceItems.code.text.toLowerCase() == "intraocular pressure left eye")
 																		{
 																			IOPLeft = resourceInnerItems;																							
 																		}
@@ -703,7 +703,7 @@ function GetFundusPhotographyScheduledPatient(authToken) {
 																	if(resourceInnerHeader == "verificationStatus")
 																	{
 																		console.log("myvalue== " + resourceItems.code.text);
-																		if(resourceItems.code.text == "Intraocular Pressure right eye")
+																		if(resourceItems.code.text.toLowerCase() == "intraocular pressure right eye")
 																		{
 																			IOPRight = resourceInnerItems;																							
 																		}
@@ -754,7 +754,7 @@ function GetFundusPhotographyScheduledPatient(authToken) {
 																	if(resourceInnerHeader == "verificationStatus")
 																	{
 																		console.log("myvalue== " + resourceItems.code.text);
-																		if(resourceItems.code.text == "Glaucoma")
+																		if(resourceItems.code.text.toLowerCase() == "glaucoma")
 																		{
 																			Glaucoma = resourceInnerItems;																							
 																		}
@@ -806,7 +806,7 @@ function GetFundusPhotographyScheduledPatient(authToken) {
 																	if(resourceInnerHeader == "verificationStatus")
 																	{
 																		console.log("myvalue== " + resourceItems.code.text);
-																		if(resourceItems.code.text == "Visual acuity - left eye")
+																		if(resourceItems.code.text.toLowerCase() == "visual acuity - left eye")
 																		{
 																			VisualAcuityLeft = resourceInnerItems;																							
 																		}
@@ -858,7 +858,7 @@ function GetFundusPhotographyScheduledPatient(authToken) {
 																	if(resourceInnerHeader == "verificationStatus")
 																	{
 																		console.log("myvalue== " + resourceItems.code.text);
-																		if(resourceItems.code.text == "Visual acuity - right eye")
+																		if(resourceItems.code.text.toLowerCase() == "visual acuity - right eye")
 																		{
 																			VisualAcuityRight = resourceInnerItems;																							
 																		}
