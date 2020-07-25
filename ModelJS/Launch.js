@@ -103,8 +103,9 @@ function CreateCondition()
 	    complete: function (response) {
 		     console.log("complete response" + response);
 		    if (response != null) {
-			if (response.statustext != "") {
-				if(response.statustext == "Created")
+			    console.log("response status " + response.Status);
+			if (response.statusText != "") {
+				if(response.statusText == "Created")
 				{
 					alert("Diagnosis Created Successfully.");	
 				}
