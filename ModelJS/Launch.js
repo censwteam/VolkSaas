@@ -101,9 +101,7 @@ function CreateCondition()
 		    console.log("response" + response);
 	    },
 	    complete: function (response) {
-		     console.log("complete response" + response);
 		    if (response != null) {
-			    console.log("response status " + response.Status);
 			if (response.statusText != "") {
 				if(response.statusText == "Created")
 				{
@@ -116,7 +114,6 @@ function CreateCondition()
 			}
 		    }
 		     $('#loadingimage').hide();
-		    //GetFundusPhotographyScheduledPatient(authToken);
 	    }
 		 
 	 });
@@ -211,7 +208,6 @@ function GetFundusPhotographyScheduledPatient(authToken) {
             dataType: "json",
             //async: false,
             success: function (response) {
-
                 var stringfyJsonResponse = JSON.stringify(response);
                 var parsePatientInfo = JSON.parse(stringfyJsonResponse);
                 if ( parsePatientInfo.entry !== undefined) {
@@ -267,7 +263,7 @@ function GetFundusPhotographyScheduledPatient(authToken) {
                                                     }
                                                 });
                                                 //console.log("PatientID - " + PatientID+ " PatientName" + PatientName);
-						$('#patient').append($('<option/>', { value: PatientID, text : PatientName }));
+						//$('#patient').append($('<option/>', { value: PatientID, text : PatientName }));
                                             }
                                             else if (entryParticipantTypeItems.text == "Resource") {
                                                 $.each(entryCodingItems2.actor, function (entryCoding4, entryCodingItems4) {
@@ -881,7 +877,7 @@ function GetFundusPhotographyScheduledPatient(authToken) {
 																						
 																					},
 																					complete:  function () {
-																						
+																						$('#patient').append($('<option/>', { value: PatientID, text : PatientName }));
 																						data.push(["" + practitionerID + "", "" + PatientName + "", "" + AppointmentStatus + "", "" + Start + "", "" + End + "", "" + DOB + "", "" + Gender + "", "" + MRN + "", "" + Ethnicity + "", "" + Address + "", "" + City + "", "" + State + "", "" + District + "", "" + PostalCode + "", "" + Country + "", "" + Phone + "", "" + MaritalStatus + "","" + Weight + "","" + Height + "","" + SystolicBP + "","" + DiastolicBP + "","" + GlucoseFasting + "","" + RBC + "","" + WBC + "", "" + HGB + "","" + IOPLeft + "", "" + IOPRight + "", "" + Glaucoma + "", "" + VisualAcuityRight + "", "" + VisualAcuityLeft + ""]);
 										
 																						if (data.length > 0) {
