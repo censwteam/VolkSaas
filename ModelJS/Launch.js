@@ -38,8 +38,10 @@ $(function () {
 function CreateCondition()
 {
 	var patientId = "Patient/" + $("#patient").val();
-	var conditionCode = $("#condition").val();
 	//var conditionText = $("#condition option:selected").innerText; 
+	var conditionarray = $("#condition").val().split('|');
+	var conditionCode = null; //$("#condition").val();
+	var conditionSystem = null;
 	var conditionText = $("#condition option:selected").html();
 	var currDateTime = new Date($.now());
 	//var updatedOn = ""+currDateTime.getFullYear()+"-"+(currDateTime.getMonth() + 1)+"-"+currDateTime.getDate()+"T"+currDateTime.getHours()+":"+currDateTime.getMinutes()+":"+currDateTime.getSeconds()+"Z";	
@@ -47,6 +49,11 @@ function CreateCondition()
 	//alert(currDateTime.getDate()+"-"+(currDateTime.getMonth() + 1)+"-"+currDateTime.getFullYear()+" "+currDateTime.getHours()+":"+currDateTime.getMinutes()+":"+currDateTime.getSeconds());
 	if(authToken != "")
 	{
+	  if(conditionarray.length > 0)
+	  {
+		  conditionSystem = conditionarray[0];
+		  conditionCode = conditionarray[1];
+	  }
 	var _json =
        {
 	  "resourceType": "Condition",
@@ -56,7 +63,7 @@ function CreateCondition()
 	"code": {
 	    "coding": [
 		{
-		    "system": "http://snomed.info/sct",
+		    "system": "" + conditionSystem + "",
 		    "code": "" + conditionCode + "",
 		    "display": "Problem"
 		}
