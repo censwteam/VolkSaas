@@ -919,11 +919,11 @@ function GetFundusPhotographyScheduledPatient(authToken) {
 														if(resourceInnerHeader == "verificationStatus")
 														{
 															console.log("Diabetic Retinopathy " + resourceItems.code.text);
-															if(resourceItems.code.text.toLowerCase() == "No retinopathy - Type1")
+															if(resourceItems.code.text.toLowerCase().trim() == "Noretinopathy-Type1")
 															{
 																DiabeticRetinopathy= "No retinopathy - Type1";	
 															}
-															else if(resourceItems.code.text.toLowerCase() == "No retinopathy - Type2")
+															else if(resourceItems.code.text.toLowerCase().trim() == "Noretinopathy-Type2")
 															{
 																DiabeticRetinopathy= "No retinopathy - Type2";
 															}
