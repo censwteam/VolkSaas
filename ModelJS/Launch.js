@@ -761,7 +761,7 @@ function GetFundusPhotographyScheduledPatient(authToken) {
 																$.each(resourceItems, function (resourceInnerHeader, resourceInnerItems) {
 																	if(resourceInnerHeader == "verificationStatus")
 																	{
-																		console.log("myvalue== " + resourceItems.code.text);
+																		console.log("myvalue= " + resourceItems.code.text);
 																		if(resourceItems.code.text.toLowerCase() == "glaucoma")
 																		{
 																			Glaucoma = resourceInnerItems;																							
@@ -918,6 +918,7 @@ function GetFundusPhotographyScheduledPatient(authToken) {
 													$.each(resourceItems, function (resourceInnerHeader, resourceInnerItems) {
 														if(resourceInnerHeader == "verificationStatus")
 														{
+															console.log("Diabetic Retinopathy " + resourceItems.code.text);
 															if(resourceItems.code.text.toLowerCase() == "No retinopathy - Type1")
 															{
 																DiabeticRetinopathy= "No retinopathy - Type1";	
