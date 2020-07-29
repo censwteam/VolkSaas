@@ -929,67 +929,67 @@ function GetFundusPhotographyScheduledPatient(authToken) {
 																console.log("inside Noretinopathy-Type2");
 																DiabeticRetinopathy= "No retinopathy - Type2";
 															}
-															if(resourceItems.code.text.toLowerCase() == "PDR and ME Type1")
+															if(resourceItems.code.text.toLowerCase() == "pdr and me type1")
 															{
 																DiabeticRetinopathy= "PDR and ME - Type1";
 															}
-															if(resourceItems.code.text.toLowerCase() == "PDR and ME - Type2")
+															if(resourceItems.code.text.toLowerCase() == "pdr and me type2")
 															{
 																DiabeticRetinopathy= "PDR and ME - Type2";
 															}
-															if(resourceItems.code.text.toLowerCase() == "PDR and No ME - Type1")
+															if(resourceItems.code.text.toLowerCase() == "pdr and no me type1")
 															{
 																DiabeticRetinopathy= "PDR and No ME - Type1";
 															}
-															if(resourceItems.code.text.toLowerCase() == "PDR and No ME - Type2")
+															if(resourceItems.code.text.toLowerCase() == "pdr and no me type2")
 															{
 																DiabeticRetinopathy= "PDR and No ME - Type2";
 															}
-															if(resourceItems.code.text.toLowerCase() == "Mild NPDR & ME - Type1")
+															if(resourceItems.code.text.toLowerCase() == "mild npdr & me type1")
 															{
 																DiabeticRetinopathy= "Mild NPDR & ME - Type1";
 															}
-															if(resourceItems.code.text.toLowerCase() == "Mild NPDR & ME - Type2")
+															if(resourceItems.code.text.toLowerCase() == "mild npdr & me type2")
 															{
 																DiabeticRetinopathy= "Mild NPDR & ME - Type2";
 															}
-															if(resourceItems.code.text.toLowerCase() == "Mild NPDR & No ME - Type1")
+															if(resourceItems.code.text.toLowerCase() == "mild npdr & no me type1")
 															{
 																DiabeticRetinopathy= "Mild NPDR & No ME - Type1";
 															}
-															if(resourceItems.code.text.toLowerCase() == "Mild NPDR & No ME - Type2")
+															if(resourceItems.code.text.toLowerCase() == "mild npdr & no me type2")
 															{
 																DiabeticRetinopathy= "Mild NPDR & No ME - Type2";
 															}
-															if(resourceItems.code.text.toLowerCase() == "Moderate NPDR & ME - Type1")
+															if(resourceItems.code.text.toLowerCase() == "moderate npdr & me type1")
 															{
 																DiabeticRetinopathy= "Moderate NPDR & ME - Type1";
 															}
-															if(resourceItems.code.text.toLowerCase() == "Moderate NPDR & ME - Type2")
+															if(resourceItems.code.text.toLowerCase() == "moderate npdr & me type2")
 															{
 																DiabeticRetinopathy= "Moderate NPDR & ME - Type2";
 															}
-															if(resourceItems.code.text.toLowerCase() == "Moderate NPDR & No ME - Type1")
+															if(resourceItems.code.text.toLowerCase() == "moderate npdr & no me type1")
 															{
 																DiabeticRetinopathy= "Moderate NPDR & No ME - Type1";
 															}
-															if(resourceItems.code.text.toLowerCase() == "Moderate NPDR & No ME - Type2")
+															if(resourceItems.code.text.toLowerCase() == "moderate npdr & no me type2")
 															{
 																DiabeticRetinopathy= "Moderate NPDR & No ME - Type2";
 															}
-															if(resourceItems.code.text.toLowerCase() == "Severe NPDR & ME - Type1")
+															if(resourceItems.code.text.toLowerCase() == "severe npdr & me type1")
 															{
 																DiabeticRetinopathy= "Severe NPDR & ME - Type1";
 															}
-															if(resourceItems.code.text.toLowerCase() == "Severe NPDR & ME - Type2")
+															if(resourceItems.code.text.toLowerCase() == "severe npdr & me type2")
 															{	
 																DiabeticRetinopathy= "Severe NPDR & ME - Type2";
 															}
-															if(resourceItems.code.text.toLowerCase() == "Severe NPDR & No ME - Type1")
+															if(resourceItems.code.text.toLowerCase() == "severe npdr & no me type1")
 															{
 																DiabeticRetinopathy= "Severe NPDR & No ME - Type1";
 															}
-															if(resourceItems.code.text.toLowerCase() == "Severe NPDR & No ME - Type2")
+															if(resourceItems.code.text.toLowerCase() == "severe npdr & no me type2")
 															{
 																DiabeticRetinopathy= "Severe NPDR & No ME - Type2";
 															}
