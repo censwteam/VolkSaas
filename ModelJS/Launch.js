@@ -942,6 +942,7 @@ function GetFundusPhotographyScheduledPatient(authToken) {
 																		{
 																			DiabeticRetinopathy= "Severe NPDR & No ME - Type2";
 																		}
+																		console.log("DiabeticRetinopathy== " + DiabeticRetinopathy);
 																	}
 																});
 															}														
