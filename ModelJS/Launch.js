@@ -919,17 +919,17 @@ function GetFundusPhotographyScheduledPatient(authToken) {
 														if(resourceInnerHeader == "verificationStatus")
 														{
 															console.log("Diabetic Retinopathy " + resourceItems.code.text);
-															if(resourceItems.code.text.toLowerCase().trim() == "Noretinopathy-Type1")
+															if(resourceItems.code.text.toLowerCase().trim() == "noretinopathy-type1")
 															{
 																console.log("inside Noretinopathy-Type1");
 																DiabeticRetinopathy= "No retinopathy - Type1";	
 															}
-															else if(resourceItems.code.text.toLowerCase().trim() == "Noretinopathy-Type2")
+															else if(resourceItems.code.text.toLowerCase().trim() == "noretinopathy-type2")
 															{
 																console.log("inside Noretinopathy-Type2");
 																DiabeticRetinopathy= "No retinopathy - Type2";
 															}
-															else if(resourceItems.code.text.toLowerCase() == "PDR and ME - Type1")
+															else if(resourceItems.code.text.toLowerCase().trim() == "pdrandme-type1")
 															{
 																DiabeticRetinopathy= "PDR and ME - Type1";
 															}
