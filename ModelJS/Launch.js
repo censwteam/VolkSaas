@@ -870,79 +870,7 @@ function GetFundusPhotographyScheduledPatient(authToken) {
 																		{
 																			VisualAcuityRight = resourceInnerItems;																							
 																		}
-																		if(resourceItems.code.text.toLowerCase() == "No retinopathy - Type1")
-																		{
-																			DiabeticRetinopathy= "No retinopathy - Type1";	
-																		}
-																		else if(resourceItems.code.text.toLowerCase() == "No retinopathy - Type2")
-																		{
-																			DiabeticRetinopathy= "No retinopathy - Type2";
-																		}
-																		else if(resourceItems.code.text.toLowerCase() == "PDR and ME - Type1")
-																		{
-																			DiabeticRetinopathy= "PDR and ME - Type1";
-																		}
-																		else if(resourceItems.code.text.toLowerCase() == "PDR and ME - Type2")
-																		{
-																			DiabeticRetinopathy= "PDR and ME - Type2";
-																		}
-																		else if(resourceItems.code.text.toLowerCase() == "PDR and No ME - Type1")
-																		{
-																			DiabeticRetinopathy= "PDR and No ME - Type1";
-																		}
-																		else if(resourceItems.code.text.toLowerCase() == "PDR and No ME - Type2")
-																		{
-																			DiabeticRetinopathy= "PDR and No ME - Type2";
-																		}
-																		else if(resourceItems.code.text.toLowerCase() == "Mild NPDR & ME - Type1")
-																		{
-																			DiabeticRetinopathy= "Mild NPDR & ME - Type1";
-																		}
-																		else if(resourceItems.code.text.toLowerCase() == "Mild NPDR & ME - Type2")
-																		{
-																			DiabeticRetinopathy= "Mild NPDR & ME - Type2";
-																		}
-																		else if(resourceItems.code.text.toLowerCase() == "Mild NPDR & No ME - Type1")
-																		{
-																			DiabeticRetinopathy= "Mild NPDR & No ME - Type1";
-																		}
-																		else if(resourceItems.code.text.toLowerCase() == "Mild NPDR & No ME - Type2")
-																		{
-																			DiabeticRetinopathy= "Mild NPDR & No ME - Type2";
-																		}
-																		else if(resourceItems.code.text.toLowerCase() == "Moderate NPDR & ME - Type1")
-																		{
-																			DiabeticRetinopathy= "Moderate NPDR & ME - Type1";
-																		}
-																		else if(resourceItems.code.text.toLowerCase() == "Moderate NPDR & ME - Type2")
-																		{
-																			DiabeticRetinopathy= "Moderate NPDR & ME - Type2";
-																		}
-																		else if(resourceItems.code.text.toLowerCase() == "Moderate NPDR & No ME - Type1")
-																		{
-																			DiabeticRetinopathy= "Moderate NPDR & No ME - Type1";
-																		}
-																		else if(resourceItems.code.text.toLowerCase() == "Moderate NPDR & No ME - Type2")
-																		{
-																			DiabeticRetinopathy= "Moderate NPDR & No ME - Type2";
-																		}
-																		else if(resourceItems.code.text.toLowerCase() == "Severe NPDR & ME - Type1")
-																		{
-																			DiabeticRetinopathy= "Severe NPDR & ME - Type1";
-																		}
-																		else if(resourceItems.code.text.toLowerCase() == "Severe NPDR & ME - Type2")
-																		{	
-																			DiabeticRetinopathy= "Severe NPDR & ME - Type2";
-																		}
-																		else if(resourceItems.code.text.toLowerCase() == "Severe NPDR & No ME - Type1")
-																		{
-																			DiabeticRetinopathy= "Severe NPDR & No ME - Type1";
-																		}
-																		else if(resourceItems.code.text.toLowerCase() == "Severe NPDR & No ME - Type2")
-																		{
-																			DiabeticRetinopathy= "Severe NPDR & No ME - Type2";
-																		}
-																		console.log("DiabeticRetinopathy== " + DiabeticRetinopathy);
+																		
 																	}
 																});
 															}														
@@ -955,45 +883,165 @@ function GetFundusPhotographyScheduledPatient(authToken) {
 									}
 																						
 																						
-																					},
-																					complete:  function () {
-																						$('#patient').append($('<option/>', { value: PatientID, text : PatientName }));
-																						data.push(["" + practitionerID + "", "" + PatientName + "", "" + AppointmentStatus + "", "" + Start + "", "" + End + "", "" + DOB + "", "" + Gender + "", "" + MRN + "", "" + Ethnicity + "", "" + Address + "", "" + City + "", "" + State + "", "" + District + "", "" + PostalCode + "", "" + Country + "", "" + Phone + "", "" + MaritalStatus + "","" + Weight + "","" + Height + "","" + SystolicBP + "","" + DiastolicBP + "","" + GlucoseFasting + "","" + RBC + "","" + WBC + "", "" + HGB + "","" + IOPLeft + "", "" + IOPRight + "", "" + Glaucoma + "", "" + VisualAcuityRight + "", "" + VisualAcuityLeft + "","" + DiabeticRetinopathy + ""]);
-										
-																						if (data.length > 0) {
-																							var table = $("<table id='scheduleInfo' class='table table-striped table-bordered' />");
-																							table[0].border = "1";
+						},
+						complete:  function () {
+															
+						$.ajax({
+						headers: {
+							Accept: "application/json+fhir",
+							"Content-Type": "application/json+fhir",
+							"Authorization":"Bearer " + authToken
+						},
+						beforeSend: function () {
 
-																							//Get the count of columns.
-																							var columnCount = data[0].length;
+						},
+						url: "https://fhir-ehr.sandboxcerner.com/dstu2/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/Condition?patient=" + PatientID+"&code=http://snomed.info/sct| 386709002",
+						dataType: "json",
+						success: function (response) {
+						var stringfyJsonResponse = JSON.stringify(response);
+						var parseInfo = JSON.parse(stringfyJsonResponse);
+						if (parseInfo.entry != null)														
+						{
+							$.each(parseInfo, function (index, value) 
+							{
+								if (index == "entry") 
+								{ // entry array
+									$.each(value, function (entryHeader, entryItems) 
+									{
+										$.each(entryItems, function (resourceHeader, resourceItems) 
+										{
+											if (resourceHeader != null) 
+											{
+												if (resourceHeader == "resource") //resource array
+												{
+													$.each(resourceItems, function (resourceInnerHeader, resourceInnerItems) {
+														if(resourceInnerHeader == "verificationStatus")
+														{
+															if(resourceItems.code.text.toLowerCase() == "No retinopathy - Type1")
+															{
+																DiabeticRetinopathy= "No retinopathy - Type1";	
+															}
+															else if(resourceItems.code.text.toLowerCase() == "No retinopathy - Type2")
+															{
+																DiabeticRetinopathy= "No retinopathy - Type2";
+															}
+															else if(resourceItems.code.text.toLowerCase() == "PDR and ME - Type1")
+															{
+																DiabeticRetinopathy= "PDR and ME - Type1";
+															}
+															else if(resourceItems.code.text.toLowerCase() == "PDR and ME - Type2")
+															{
+																DiabeticRetinopathy= "PDR and ME - Type2";
+															}
+															else if(resourceItems.code.text.toLowerCase() == "PDR and No ME - Type1")
+															{
+																DiabeticRetinopathy= "PDR and No ME - Type1";
+															}
+															else if(resourceItems.code.text.toLowerCase() == "PDR and No ME - Type2")
+															{
+																DiabeticRetinopathy= "PDR and No ME - Type2";
+															}
+															else if(resourceItems.code.text.toLowerCase() == "Mild NPDR & ME - Type1")
+															{
+																DiabeticRetinopathy= "Mild NPDR & ME - Type1";
+															}
+															else if(resourceItems.code.text.toLowerCase() == "Mild NPDR & ME - Type2")
+															{
+																DiabeticRetinopathy= "Mild NPDR & ME - Type2";
+															}
+															else if(resourceItems.code.text.toLowerCase() == "Mild NPDR & No ME - Type1")
+															{
+																DiabeticRetinopathy= "Mild NPDR & No ME - Type1";
+															}
+															else if(resourceItems.code.text.toLowerCase() == "Mild NPDR & No ME - Type2")
+															{
+																DiabeticRetinopathy= "Mild NPDR & No ME - Type2";
+															}
+															else if(resourceItems.code.text.toLowerCase() == "Moderate NPDR & ME - Type1")
+															{
+																DiabeticRetinopathy= "Moderate NPDR & ME - Type1";
+															}
+															else if(resourceItems.code.text.toLowerCase() == "Moderate NPDR & ME - Type2")
+															{
+																DiabeticRetinopathy= "Moderate NPDR & ME - Type2";
+															}
+															else if(resourceItems.code.text.toLowerCase() == "Moderate NPDR & No ME - Type1")
+															{
+																DiabeticRetinopathy= "Moderate NPDR & No ME - Type1";
+															}
+															else if(resourceItems.code.text.toLowerCase() == "Moderate NPDR & No ME - Type2")
+															{
+																DiabeticRetinopathy= "Moderate NPDR & No ME - Type2";
+															}
+															else if(resourceItems.code.text.toLowerCase() == "Severe NPDR & ME - Type1")
+															{
+																DiabeticRetinopathy= "Severe NPDR & ME - Type1";
+															}
+															else if(resourceItems.code.text.toLowerCase() == "Severe NPDR & ME - Type2")
+															{	
+																DiabeticRetinopathy= "Severe NPDR & ME - Type2";
+															}
+															else if(resourceItems.code.text.toLowerCase() == "Severe NPDR & No ME - Type1")
+															{
+																DiabeticRetinopathy= "Severe NPDR & No ME - Type1";
+															}
+															else if(resourceItems.code.text.toLowerCase() == "Severe NPDR & No ME - Type2")
+															{
+																DiabeticRetinopathy= "Severe NPDR & No ME - Type2";
+															}
+														}	
+													});
+												}
+											}	
+										});
+									});
+								}
+								
+								
+							});
+						}
+					},
+					complete:  function () {
+							$('#patient').append($('<option/>', { value: PatientID, text : PatientName }));
+							data.push(["" + practitionerID + "", "" + PatientName + "", "" + AppointmentStatus + "", "" + Start + "", "" + End + "", "" + DOB + "", "" + Gender + "", "" + MRN + "", "" + Ethnicity + "", "" + Address + "", "" + City + "", "" + State + "", "" + District + "", "" + PostalCode + "", "" + Country + "", "" + Phone + "", "" + MaritalStatus + "","" + Weight + "","" + Height + "","" + SystolicBP + "","" + DiastolicBP + "","" + GlucoseFasting + "","" + RBC + "","" + WBC + "", "" + HGB + "","" + IOPLeft + "", "" + IOPRight + "", "" + Glaucoma + "", "" + VisualAcuityRight + "", "" + VisualAcuityLeft + "","" + DiabeticRetinopathy + ""]);
 
-																							//Add the header row.
-																							var row = $(table[0].insertRow(-1));
-																							for (var i = 0; i < columnCount; i++) {
-																								var headerCell = $("<th />");
-																								headerCell.html(data[0][i]);
-																								row.append(headerCell);
-																							}
+							if (data.length > 0) {
+								var table = $("<table id='scheduleInfo' class='table table-striped table-bordered' />");
+								table[0].border = "1";
 
-																							//Add the data rows.
-																							for (var i = 1; i < data.length; i++) {
-																								row = $(table[0].insertRow(-1));
-																								for (var j = 0; j < columnCount; j++) {
-																									var cell = $("<td />");
-																									cell.html(data[i][j]);
-																									row.append(cell);
-																								}
-																							}
+								//Get the count of columns.
+								var columnCount = data[0].length;
 
-																							var dvTable = $("#scheduleTable");
-																							dvTable.html("");
-																							dvTable.append(table);
-																						}
-																						else {
-																							dvTable = $("#scheduleTable");
-																							dvTable.html("No Records..");
-																						}
-																						$('#loadingimage').hide();
+								//Add the header row.
+								var row = $(table[0].insertRow(-1));
+								for (var i = 0; i < columnCount; i++) {
+									var headerCell = $("<th />");
+									headerCell.html(data[0][i]);
+									row.append(headerCell);
+								}
+
+								//Add the data rows.
+								for (var i = 1; i < data.length; i++) {
+									row = $(table[0].insertRow(-1));
+									for (var j = 0; j < columnCount; j++) {
+										var cell = $("<td />");
+										cell.html(data[i][j]);
+										row.append(cell);
+									}
+								}
+
+								var dvTable = $("#scheduleTable");
+								dvTable.html("");
+								dvTable.append(table);
+							}
+							else {
+								dvTable = $("#scheduleTable");
+								dvTable.html("No Records..");
+							}
+							$('#loadingimage').hide();
+					}
+							
+					});
 																						
 																						
 																						
