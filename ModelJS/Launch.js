@@ -37,6 +37,7 @@ $(function () {
 });
 function CreateCondition()
 {
+	var DiabeticRetinopathyStatus = "";
 	var patientId = "Patient/" + $("#patient").val();
 	//var conditionText = $("#condition option:selected").innerText; 
 	var conditionarray = $("#condition").val().split('|');
@@ -86,44 +87,198 @@ function CreateCondition()
 	}
 	
 	
+	
+$.ajax({
+	headers: {
+		Accept: "application/json+fhir",
+		"Content-Type": "application/json+fhir",
+		"Authorization":"Bearer " + authToken
+	},
+	beforeSend: function () {
+
+	},
+	url: "https://fhir-ehr.sandboxcerner.com/dstu2/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/Condition?patient=" + PatientID,
+	dataType: "json",
+	success: function (response) {
+	var stringfyJsonResponse = JSON.stringify(response);
+	var parseInfo = JSON.parse(stringfyJsonResponse);
+	if (parseInfo.entry != null)														
+	{
+		$.each(parseInfo, function (index, value) 
+		{
+			if (index == "entry") 
+			{ // entry array
+				$.each(value, function (entryHeader, entryItems) 
+				{
+					$.each(entryItems, function (resourceHeader, resourceItems) 
+					{
+						if (resourceHeader != null) 
+						{
+							if (resourceHeader == "resource") //resource array
+							{
+								$.each(resourceItems, function (resourceInnerHeader, resourceInnerItems) {
+									if(resourceInnerHeader == "verificationStatus")
+									{
+
+										if(resourceItems.code.text.toLowerCase() == "no retinopathy type1")
+										{
+											DiabeticRetinopathyStatus= "No retinopathy - Type1";	
+										}
+										if(resourceItems.code.text.toLowerCase() == "no retinopathy type2")
+										{
+											DiabeticRetinopathyStatus= "No retinopathy - Type2";
+										}
+										if(resourceItems.code.text.toLowerCase() == "pdr and me type1")
+										{
+											DiabeticRetinopathyStatus= "PDR and ME - Type1";
+										}
+										if(resourceItems.code.text.toLowerCase() == "pdr and me type2")
+										{
+											DiabeticRetinopathyStatus= "PDR and ME - Type2";
+										}
+										if(resourceItems.code.text.toLowerCase() == "pdr and no me type1")
+										{
+											DiabeticRetinopathyStatus= "PDR and No ME - Type1";
+										}
+										if(resourceItems.code.text.toLowerCase() == "pdr and no me type2")
+										{
+											DiabeticRetinopathyStatus= "PDR and No ME - Type2";
+										}
+										if(resourceItems.code.text.toLowerCase() == "mild npdr & me type1")
+										{
+											DiabeticRetinopathyStatus= "Mild NPDR & ME - Type1";
+										}
+										if(resourceItems.code.text.toLowerCase() == "mild npdr & me type2")
+										{
+											DiabeticRetinopathyStatus= "Mild NPDR & ME - Type2";
+										}
+										if(resourceItems.code.text.toLowerCase() == "mild npdr & no me type1")
+										{
+											DiabeticRetinopathyStatus= "Mild NPDR & No ME - Type1";
+										}
+										if(resourceItems.code.text.toLowerCase() == "mild npdr & no me type2")
+										{
+											DiabeticRetinopathyStatus= "Mild NPDR & No ME - Type2";
+										}
+										if(resourceItems.code.text.toLowerCase() == "moderate npdr & me type1")
+										{
+											DiabeticRetinopathyStatus= "Moderate NPDR & ME - Type1";
+										}
+										if(resourceItems.code.text.toLowerCase() == "moderate npdr & me type2")
+										{
+											DiabeticRetinopathyStatus= "Moderate NPDR & ME - Type2";
+										}
+										if(resourceItems.code.text.toLowerCase() == "moderate npdr & no me type1")
+										{
+											DiabeticRetinopathyStatus= "Moderate NPDR & No ME - Type1";
+										}
+										if(resourceItems.code.text.toLowerCase() == "moderate npdr & no me type2")
+										{
+											DiabeticRetinopathyStatus= "Moderate NPDR & No ME - Type2";
+										}
+										if(resourceItems.code.text.toLowerCase() == "severe npdr & me type1")
+										{
+											DiabeticRetinopathyStatus= "Severe NPDR & ME - Type1";
+										}
+										if(resourceItems.code.text.toLowerCase() == "severe npdr & me type2")
+										{	
+											DiabeticRetinopathyStatus= "Severe NPDR & ME - Type2";
+										}
+										if(resourceItems.code.text.toLowerCase() == "severe npdr & no me type1")
+										{
+											DiabeticRetinopathyStatus= "Severe NPDR & No ME - Type1";
+										}
+										if(resourceItems.code.text.toLowerCase() == "severe npdr & no me type2")
+										{
+											DiabeticRetinopathyStatus= "Severe NPDR & No ME - Type2";
+										}
+									}	
+								});
+							}
+						}	
+					});
+				});
+			}
+
+
+		});
+	}
+},
+complete:  function () {
+		if(DiabeticRetinopathyStatus != "")
+		{
+			$.ajax({
+					type: "PUT",	 
+						headers: {
+							Accept: "application/json+fhir",
+							"Content-Type": "application/json+fhir",
+							"Authorization":"Bearer " + authToken
+						},
+						beforeSend: function () {
+							$('#loadingimage').show();
+						},
+					url: "https://fhir-ehr.sandboxcerner.com/dstu2/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/Condition",	 
+					data: JSON.stringify(_json),
+						success: function (response) {
+					},
+					complete: function (response) {
+						if (response != null) {
+						if (response.statusText != "") {
+							if(response.statusText == "Updated" || response.statusText == "OK")
+							{
+								alert("Diagnosis Updated Successfully.");	
+							}
+							else
+							{
+								alert("Diagnosis Failed to update.");	
+							}
+						}
+						}
+						 $('#loadingimage').hide();
+					}
+
+				 });
+		}
+		else
+		{
+			$.ajax({
+					type: "POST",	 
+						headers: {
+							Accept: "application/json+fhir",
+							"Content-Type": "application/json+fhir",
+							"Authorization":"Bearer " + authToken
+						},
+						beforeSend: function () {
+							$('#loadingimage').show();
+						},
+						url: "https://fhir-ehr.sandboxcerner.com/dstu2/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/Condition",	 
+						data: JSON.stringify(_json),
+							success: function (response) {
+						},
+						complete: function (response) {
+							if (response != null) {
+							if (response.statusText != "") {
+								if(response.statusText == "Created")
+								{
+									alert("Diagnosis Created Successfully.");	
+								}
+								else
+								{
+									alert("Diagnosis Failed to create.");	
+								}
+							}
+						}
+						 $('#loadingimage').hide();
+					}
+
+				 });
+		}
+}
+
+});			
 
 	
-	 $.ajax({
-	    type: "POST",	 
-            headers: {
-                Accept: "application/json+fhir",
-                "Content-Type": "application/json+fhir",
-		"Authorization":"Bearer " + authToken
-            },
-            beforeSend: function () {
-                $('#loadingimage').show();
-            },
-            //url: "https://fhir-ehr.sandboxcerner.com/dstu2/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/Appointment?practitioner=" + practitionerID + "&code=http://snomed.info/sct| 408443003" + "&date=ge" + fromFullFormat + "&date=lt" + toFullFormat  ,
-            //url: "https://fhir-open.sandboxcerner.com/r4/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/Appointment?date=ge" + fromFullFormat + "&date=lt" + toFullFormat + "&practitioner=" + practitionerID + "&code=http://snomed.info/sct%7C408443003" ,
-	    url: "https://fhir-ehr.sandboxcerner.com/dstu2/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/Condition",	 
-            //dataType: "json",
-            //async: false,
-	    data: JSON.stringify(_json),
-            success: function (response) {
-		    console.log("response" + response);
-	    },
-	    complete: function (response) {
-		    if (response != null) {
-			if (response.statusText != "") {
-				if(response.statusText == "Created")
-				{
-					alert("Diagnosis Created Successfully.");	
-				}
-				else
-				{
-					alert("Diagnosis Failed to create.");	
-				}
-			}
-		    }
-		     $('#loadingimage').hide();
-	    }
-		 
-	 });
+	 
 	}
 	else
 	{
