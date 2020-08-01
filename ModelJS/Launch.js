@@ -38,6 +38,7 @@ $(function () {
 function CreateCondition()
 {
 	var DiabeticRetinopathyStatus = "";
+	var DiabeticRetinopathyConditionId = "";
 	var patientId = "Patient/" + $("#patient").val();
 	//var conditionText = $("#condition option:selected").innerText; 
 	var conditionarray = $("#condition").val().split('|');
@@ -119,78 +120,96 @@ $.ajax({
 								$.each(resourceItems, function (resourceInnerHeader, resourceInnerItems) {
 									if(resourceInnerHeader == "verificationStatus")
 									{
-										console.log("condition ID -" + resourceItems.id);
+										//console.log("condition ID -" + resourceItems.id);
 										if(resourceItems.code.text.toLowerCase() == "no retinopathy type1")
 										{
 											DiabeticRetinopathyStatus= "No retinopathy - Type1";	
+											DiabeticRetinopathyConditionId = resourceItems.id;
 										}
 										if(resourceItems.code.text.toLowerCase() == "no retinopathy type2")
 										{
 											DiabeticRetinopathyStatus= "No retinopathy - Type2";
+											DiabeticRetinopathyConditionId = resourceItems.id;
 										}
 										if(resourceItems.code.text.toLowerCase() == "pdr and me type1")
 										{
 											DiabeticRetinopathyStatus= "PDR and ME - Type1";
+											DiabeticRetinopathyConditionId = resourceItems.id;
 										}
 										if(resourceItems.code.text.toLowerCase() == "pdr and me type2")
 										{
 											DiabeticRetinopathyStatus= "PDR and ME - Type2";
+											DiabeticRetinopathyConditionId = resourceItems.id;
 										}
 										if(resourceItems.code.text.toLowerCase() == "pdr and no me type1")
 										{
 											DiabeticRetinopathyStatus= "PDR and No ME - Type1";
+											DiabeticRetinopathyConditionId = resourceItems.id;
 										}
 										if(resourceItems.code.text.toLowerCase() == "pdr and no me type2")
 										{
 											DiabeticRetinopathyStatus= "PDR and No ME - Type2";
+											DiabeticRetinopathyConditionId = resourceItems.id;
 										}
 										if(resourceItems.code.text.toLowerCase() == "mild npdr & me type1")
 										{
 											DiabeticRetinopathyStatus= "Mild NPDR & ME - Type1";
+											DiabeticRetinopathyConditionId = resourceItems.id;
 										}
 										if(resourceItems.code.text.toLowerCase() == "mild npdr & me type2")
 										{
 											DiabeticRetinopathyStatus= "Mild NPDR & ME - Type2";
+											DiabeticRetinopathyConditionId = resourceItems.id;
 										}
 										if(resourceItems.code.text.toLowerCase() == "mild npdr & no me type1")
 										{
 											DiabeticRetinopathyStatus= "Mild NPDR & No ME - Type1";
+											DiabeticRetinopathyConditionId = resourceItems.id;
 										}
 										if(resourceItems.code.text.toLowerCase() == "mild npdr & no me type2")
 										{
 											DiabeticRetinopathyStatus= "Mild NPDR & No ME - Type2";
+											DiabeticRetinopathyConditionId = resourceItems.id;
 										}
 										if(resourceItems.code.text.toLowerCase() == "moderate npdr & me type1")
 										{
 											DiabeticRetinopathyStatus= "Moderate NPDR & ME - Type1";
+											DiabeticRetinopathyConditionId = resourceItems.id;
 										}
 										if(resourceItems.code.text.toLowerCase() == "moderate npdr & me type2")
 										{
 											DiabeticRetinopathyStatus= "Moderate NPDR & ME - Type2";
+											DiabeticRetinopathyConditionId = resourceItems.id;
 										}
 										if(resourceItems.code.text.toLowerCase() == "moderate npdr & no me type1")
 										{
 											DiabeticRetinopathyStatus= "Moderate NPDR & No ME - Type1";
+											DiabeticRetinopathyConditionId = resourceItems.id;
 										}
 										if(resourceItems.code.text.toLowerCase() == "moderate npdr & no me type2")
 										{
 											DiabeticRetinopathyStatus= "Moderate NPDR & No ME - Type2";
+											DiabeticRetinopathyConditionId = resourceItems.id;
 										}
 										if(resourceItems.code.text.toLowerCase() == "severe npdr & me type1")
 										{
 											DiabeticRetinopathyStatus= "Severe NPDR & ME - Type1";
+											DiabeticRetinopathyConditionId = resourceItems.id;
 										}
 										if(resourceItems.code.text.toLowerCase() == "severe npdr & me type2")
 										{	
 											DiabeticRetinopathyStatus= "Severe NPDR & ME - Type2";
+											DiabeticRetinopathyConditionId = resourceItems.id;
 										}
 										if(resourceItems.code.text.toLowerCase() == "severe npdr & no me type1")
 										{
 											DiabeticRetinopathyStatus= "Severe NPDR & No ME - Type1";
+											DiabeticRetinopathyConditionId = resourceItems.id;
 										}
 										if(resourceItems.code.text.toLowerCase() == "severe npdr & no me type2")
 										{
 											DiabeticRetinopathyStatus= "Severe NPDR & No ME - Type2";
+											DiabeticRetinopathyConditionId = resourceItems.id;
 										}
 									}	
 								});
@@ -205,8 +224,40 @@ $.ajax({
 	}
 },
 complete:  function () {
-		if(DiabeticRetinopathyStatus != "")
+		if(DiabeticRetinopathyStatus != "" && DiabeticRetinopathyConditionId != "")
 		{
+			_json =
+			       {
+				  "resourceType": "Condition",
+				  "id": "" + DiabeticRetinopathyConditionId + "",	
+				  "patient": {
+				    "reference": "" + patientId + ""
+				  },
+				"code": {
+				    "coding": [
+					{
+					    "system": "" + conditionSystem + "",
+					    "code": "" + conditionCode + "",
+					    "display": "Problem"
+					}
+				    ],
+				    "text": "" + conditionText + ""
+				},
+				"category": {
+				    "coding": [
+					{
+					    "system": "http://argonaut.hl7.org",
+					    "code": "problem",
+					    "display": "Problem"
+					}
+				    ],
+				    "text": "Problem"
+				},
+				  "clinicalStatus": "active",
+				  "verificationStatus": "confirmed"
+				  //"abatementDateTime": "" + updatedOn + ""
+				}
+			
 			$.ajax({
 					type: "PUT",	 
 						headers: {
