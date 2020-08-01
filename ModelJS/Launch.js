@@ -119,7 +119,7 @@ $.ajax({
 								$.each(resourceItems, function (resourceInnerHeader, resourceInnerItems) {
 									if(resourceInnerHeader == "verificationStatus")
 									{
-
+										console.log("condition ID -" + resourceItems.id);
 										if(resourceItems.code.text.toLowerCase() == "no retinopathy type1")
 										{
 											DiabeticRetinopathyStatus= "No retinopathy - Type1";	
