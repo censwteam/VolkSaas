@@ -95,7 +95,7 @@ $.ajax({
 		"Authorization":"Bearer " + authToken
 	},
 	beforeSend: function () {
-
+		$('#loadingimage').show();
 	},
 	url: "https://fhir-ehr.sandboxcerner.com/dstu2/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/Condition?patient=" + $("#patient").val(),
 	dataType: "json",
@@ -224,6 +224,7 @@ complete:  function () {
 					complete: function (response) {
 						if (response != null) {
 						if (response.statusText != "") {
+							console.log("response.statusText" + response.statusText);
 							if(response.statusText == "Updated" || response.statusText == "OK")
 							{
 								alert("Diagnosis Updated Successfully.");	
