@@ -48,7 +48,8 @@ function CreateCondition()
 	var conditionText = $("#condition option:selected").html();
 	var currDateTime = new Date($.now());
 	//var updatedOn = ""+currDateTime.getFullYear()+"-"+(currDateTime.getMonth() + 1)+"-"+currDateTime.getDate()+"T"+currDateTime.getHours()+":"+currDateTime.getMinutes()+":"+currDateTime.getSeconds()+"Z";	
-	var updatedOn = currDateTime.getFullYear() + "-" + ((currDateTime.getMonth() + 1) < 10 ? "0" + (currDateTime.getMonth() + 1) : (currDateTime.getMonth() + 1)) + "-" + (currDateTime.getDate() < 10 ? "0" + currDateTime.getDate() : currDateTime.getDate()) + "T" + (currDateTime.getHours() < 10 ? "0" + currDateTime.getHours() : currDateTime.getHours()) + ":" + (currDateTime.getMinutes() < 10 ? "0" + currDateTime.getMinutes() : currDateTime.getMinutes()) + ":" + (currDateTime.getSeconds() < 10 ? "0" + currDateTime.getSeconds() : currDateTime.getSeconds()+ "Z");;	
+	var updatedOn = currDateTime.getFullYear() + "-" + ((currDateTime.getMonth() + 1) < 10 ? "0" + (currDateTime.getMonth() + 1) : (currDateTime.getMonth() + 1)) + "-" + (currDateTime.getDate() < 10 ? "0" + currDateTime.getDate() : currDateTime.getDate()) + "T" + (currDateTime.getHours() < 10 ? "0" + currDateTime.getHours() : currDateTime.getHours()) + ":" + (currDateTime.getMinutes() < 10 ? "0" + currDateTime.getMinutes() : currDateTime.getMinutes()) + ":" + (currDateTime.getSeconds() < 10 ? "0" + currDateTime.getSeconds() : currDateTime.getSeconds()+ "Z");
+	var EditedOn = currDateTime.getFullYear() + "-" + ((currDateTime.getMonth() + 1) < 10 ? "0" + (currDateTime.getMonth() + 1) : (currDateTime.getMonth() + 1)) + "-" + (currDateTime.getDate() < 10 ? "0" + currDateTime.getDate() : currDateTime.getDate());	
 	//alert(currDateTime.getDate()+"-"+(currDateTime.getMonth() + 1)+"-"+currDateTime.getFullYear()+" "+currDateTime.getHours()+":"+currDateTime.getMinutes()+":"+currDateTime.getSeconds());
 	if(authToken != "")
 	{
@@ -237,6 +238,7 @@ complete:  function () {
 				 "asserter": {
     					"reference": "" + practitionerId + ""
   				},
+				 "dateRecorded": "2019-11-14",
 				"code": {
 				    "coding": [
 					{
