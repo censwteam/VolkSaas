@@ -51,6 +51,7 @@ function CreateCondition()
 	var updatedOn = currDateTime.getFullYear() + "-" + ((currDateTime.getMonth() + 1) < 10 ? "0" + (currDateTime.getMonth() + 1) : (currDateTime.getMonth() + 1)) + "-" + (currDateTime.getDate() < 10 ? "0" + currDateTime.getDate() : currDateTime.getDate()) + "T" + (currDateTime.getHours() < 10 ? "0" + currDateTime.getHours() : currDateTime.getHours()) + ":" + (currDateTime.getMinutes() < 10 ? "0" + currDateTime.getMinutes() : currDateTime.getMinutes()) + ":" + (currDateTime.getSeconds() < 10 ? "0" + currDateTime.getSeconds() : currDateTime.getSeconds()+ "Z");
 	var EditedOn = currDateTime.getFullYear() + "-" + ((currDateTime.getMonth() + 1) < 10 ? "0" + (currDateTime.getMonth() + 1) : (currDateTime.getMonth() + 1)) + "-" + (currDateTime.getDate() < 10 ? "0" + currDateTime.getDate() : currDateTime.getDate());	
 	//alert(currDateTime.getDate()+"-"+(currDateTime.getMonth() + 1)+"-"+currDateTime.getFullYear()+" "+currDateTime.getHours()+":"+currDateTime.getMinutes()+":"+currDateTime.getSeconds());
+	var _json ="";
 	if(authToken != "")
 	{
 	  if(conditionarray.length > 0)
@@ -58,36 +59,7 @@ function CreateCondition()
 		  conditionSystem = conditionarray[0];
 		  conditionCode = conditionarray[1];
 	  }
-	var _json =
-       {
-	  "resourceType": "Condition",
-	  "patient": {
-	    "reference": "" + patientId + ""
-	  },
-	"code": {
-	    "coding": [
-		{
-		    "system": "" + conditionSystem + "",
-		    "code": "" + conditionCode + "",
-		    "display": "Problem"
-		}
-	    ],
-	    "text": "" + conditionText + ""
-	},
-	"category": {
-	    "coding": [
-		{
-		    "system": "http://argonaut.hl7.org",
-		    "code": "problem",
-		    "display": "Problem"
-		}
-	    ],
-	    "text": "Problem"
-	},
-	  "clinicalStatus": "active",
-	  "verificationStatus": "confirmed"
-	  //"abatementDateTime": "" + updatedOn + ""
-	}
+	
 	
 	
 	
@@ -301,6 +273,36 @@ complete:  function () {
 		}
 		else
 		{
+			_json =
+		       {
+			  "resourceType": "Condition",
+			  "patient": {
+			    "reference": "" + patientId + ""
+			  },
+			"code": {
+			    "coding": [
+				{
+				    "system": "" + conditionSystem + "",
+				    "code": "" + conditionCode + "",
+				    "display": "Problem"
+				}
+			    ],
+			    "text": "" + conditionText + ""
+			},
+			"category": {
+			    "coding": [
+				{
+				    "system": "http://argonaut.hl7.org",
+				    "code": "problem",
+				    "display": "Problem"
+				}
+			    ],
+			    "text": "Problem"
+			},
+			  "clinicalStatus": "active",
+			  "verificationStatus": "confirmed"
+			  //"abatementDateTime": "" + updatedOn + ""
+			}
 			$.ajax({
 					type: "POST",	 
 						headers: {
