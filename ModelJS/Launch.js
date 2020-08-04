@@ -233,6 +233,9 @@ complete:  function () {
 				  "patient": {
 				    "reference": "" + patientId + ""
 				  },
+				 "asserter": {
+    					"reference": "Practitioner/"" + $("#searchPractitionerID").val() + """
+  				},
 				"code": {
 				    "coding": [
 					{
