@@ -40,6 +40,7 @@ function CreateCondition()
 	var DiabeticRetinopathyStatus = "";
 	var DiabeticRetinopathyConditionId = "";
 	var patientId = "Patient/" + $("#patient").val();
+	var practitionerId = "Practitioner/" + $("#searchPractitionerID").val();
 	//var conditionText = $("#condition option:selected").innerText; 
 	var conditionarray = $("#condition").val().split('|');
 	var conditionCode = null; //$("#condition").val();
@@ -234,7 +235,7 @@ complete:  function () {
 				    "reference": "" + patientId + ""
 				  },
 				 "asserter": {
-    					"reference": "Practitioner/"" + $("#searchPractitionerID").val() + """
+    					"reference": "" + practitionerId + ""
   				},
 				"code": {
 				    "coding": [
