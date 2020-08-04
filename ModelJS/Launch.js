@@ -40,7 +40,7 @@ function CreateCondition()
 	var DiabeticRetinopathyStatus = "";
 	var DiabeticRetinopathyConditionId = "";
 	var patientId = "Patient/" + $("#patient").val();
-	var practitionerId = "Practitioner/" + $("#searchPractitionerID").val();
+	var EditedPractitionerId = "Practitioner/" + $("#searchPractitionerID").val();
 	//var conditionText = $("#condition option:selected").innerText; 
 	var conditionarray = $("#condition").val().split('|');
 	var conditionCode = null; //$("#condition").val();
@@ -227,7 +227,7 @@ $.ajax({
 },
 complete:  function () {
 		console.log("DiabeticRetinopathyStatus- " + DiabeticRetinopathyStatus + " DiabeticRetinopathyConditionId- " + DiabeticRetinopathyConditionId);
-		console.log("practitioner " + practitionerId);
+		console.log("practitioner " + EditedPractitionerId);
 		if(DiabeticRetinopathyStatus != "" && DiabeticRetinopathyConditionId != "")
 		{
 			_json =
@@ -238,7 +238,7 @@ complete:  function () {
 				    "reference": "" + patientId + ""
 				  },
 				 "asserter": {
-    					"reference": "" + practitionerId + ""
+    					"reference": "" + EditedPractitionerId + ""
   				},
 				 "dateRecorded": "" + EditedOn + "",
 				"code": {
