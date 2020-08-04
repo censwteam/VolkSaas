@@ -227,6 +227,7 @@ $.ajax({
 },
 complete:  function () {
 		console.log("DiabeticRetinopathyStatus- " + DiabeticRetinopathyStatus + " DiabeticRetinopathyConditionId- " + DiabeticRetinopathyConditionId);
+		console.log("practitioner " + practitionerId);
 		if(DiabeticRetinopathyStatus != "" && DiabeticRetinopathyConditionId != "")
 		{
 			_json =
