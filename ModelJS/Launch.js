@@ -219,8 +219,11 @@ complete:  function () {
 						success: function (response) {
 						},
 						complete: function (response) {
-						
-							// create new condition
+						var stringfyJsonResponse = JSON.stringify(response);
+							console.log("delete response " + stringfyJsonResponse);
+							if (response != null) {
+								if (response.statusText != "" && response.statusText == "200") {
+									// create new condition
 							_json =
 								   {
 								  "resourceType": "Condition",
@@ -282,6 +285,11 @@ complete:  function () {
 										}
 
 									 });
+									
+								}
+								
+							}
+							
 							 $('#loadingimage').hide();
 						}
 				
