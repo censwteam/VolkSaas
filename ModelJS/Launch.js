@@ -35,6 +35,7 @@ $(function () {
         "format": "YYYY-MM-DD"
     });
 });
+
 function CreateCondition()
 {
 	var DiabeticRetinopathyStatus = "";
@@ -202,44 +203,10 @@ complete:  function () {
 		console.log("practitioner " + EditedPractitionerId);
 		if(DiabeticRetinopathyStatus != "" && DiabeticRetinopathyConditionId != "")
 		{
-			_json =
-			       {
-				  "resourceType": "Condition",
-				  "id": "" + DiabeticRetinopathyConditionId + "",	
-				  "patient": {
-				    "reference": "" + patientId + ""
-				  },
-				 "asserter": {
-    					"reference": "" + EditedPractitionerId + ""
-  				},
-				 "dateRecorded": "" + EditedOn + "",
-				"code": {
-				    "coding": [
-					{
-					    "system": "" + conditionSystem + "",
-					    "code": "" + conditionCode + "",
-					    "display": "Problem"
-					}
-				    ],
-				    "text": "" + conditionText + ""
-				},
-				"category": {
-				    "coding": [
-					{
-					    "system": "http://argonaut.hl7.org",
-					    "code": "problem",
-					    "display": "Problem"
-					}
-				    ],
-				    "text": "Problem"
-				},
-				  "clinicalStatus": "active",
-				  "verificationStatus": "confirmed"
-				  //"abatementDateTime": "" + updatedOn + ""
-				}
-			
-			$.ajax({
-					type: "PUT",	 
+		
+			//Delete existing condition first
+				$.ajax({
+						type: "DELETE",	 
 						headers: {
 							Accept: "application/json+fhir",
 							"Content-Type": "application/json+fhir",
@@ -248,93 +215,84 @@ complete:  function () {
 						beforeSend: function () {
 							$('#loadingimage').show();
 						},
-					url: "https://fhir-ehr.sandboxcerner.com/dstu2/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/Condition/" + DiabeticRetinopathyConditionId + "",	 
-					//url: "https://fhir-ehr.sandboxcerner.com/dstu2/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/Condition/",	 
-					data: JSON.stringify(_json),
+						url: "https://fhir-ehr.sandboxcerner.com/dstu2/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/Condition/" + DiabeticRetinopathyConditionId + "",
 						success: function (response) {
-					},
-					complete: function (response) {
-						if (response != null) {
-						if (response.statusText != "") {
-							console.log("response.statusText" + response.statusText);
-							if(response.statusText == "Updated" || response.statusText == "OK")
-							{
-								alert("Diagnosis Updated Successfully.");	
-							}
-							else
-							{
-								alert("Diagnosis Failed to update.");	
-							}
-						}
-						}
-						 $('#loadingimage').hide();
-					}
+						},
+						complete: function (response) {
+						
+							// create new condition
+							_json =
+								   {
+								  "resourceType": "Condition",
+								  "patient": {
+									"reference": "" + patientId + ""
+								  },
+								"code": {
+									"coding": [
+									{
+										"system": "" + conditionSystem + "",
+										"code": "" + conditionCode + "",
+										"display": "Problem"
+									}
+									],
+									"text": "" + conditionText + ""
+								},
+								"category": {
+									"coding": [
+									{
+										"system": "http://argonaut.hl7.org",
+										"code": "problem",
+										"display": "Problem"
+									}
+									],
+									"text": "Problem"
+								},
+								  "clinicalStatus": "active",
+								  "verificationStatus": "confirmed"
+								  //"abatementDateTime": "" + updatedOn + ""
+								}
+								$.ajax({
+										type: "POST",	 
+											headers: {
+												Accept: "application/json+fhir",
+												"Content-Type": "application/json+fhir",
+												"Authorization":"Bearer " + authToken
+											},
+											beforeSend: function () {
+												$('#loadingimage').show();
+											},
+											url: "https://fhir-ehr.sandboxcerner.com/dstu2/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/Condition",	 
+											data: JSON.stringify(_json),
+												success: function (response) {
+											},
+											complete: function (response) {
+												if (response != null) {
+												if (response.statusText != "") {
+													if(response.statusText == "Created")
+													{
+														alert("Diagnosis Created Successfully.");	
+													}
+													else
+													{
+														alert("Diagnosis Failed to create.");	
+													}
+												}
+											}
+											 $('#loadingimage').hide();
+										}
 
-				 });
+									 });
+							 $('#loadingimage').hide();
+						}
+				
+				});
+		
+		
+			
 		}
 		else
 		{
-			_json =
-		       {
-			  "resourceType": "Condition",
-			  "patient": {
-			    "reference": "" + patientId + ""
-			  },
-			"code": {
-			    "coding": [
-				{
-				    "system": "" + conditionSystem + "",
-				    "code": "" + conditionCode + "",
-				    "display": "Problem"
-				}
-			    ],
-			    "text": "" + conditionText + ""
-			},
-			"category": {
-			    "coding": [
-				{
-				    "system": "http://argonaut.hl7.org",
-				    "code": "problem",
-				    "display": "Problem"
-				}
-			    ],
-			    "text": "Problem"
-			},
-			  "clinicalStatus": "active",
-			  "verificationStatus": "confirmed"
-			  //"abatementDateTime": "" + updatedOn + ""
-			}
-			$.ajax({
-					type: "POST",	 
-						headers: {
-							Accept: "application/json+fhir",
-							"Content-Type": "application/json+fhir",
-							"Authorization":"Bearer " + authToken
-						},
-						beforeSend: function () {
-							$('#loadingimage').show();
-						},
-						url: "https://fhir-ehr.sandboxcerner.com/dstu2/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/Condition",	 
-						data: JSON.stringify(_json),
-							success: function (response) {
-						},
-						complete: function (response) {
-							if (response != null) {
-							if (response.statusText != "") {
-								if(response.statusText == "Created")
-								{
-									alert("Diagnosis Created Successfully.");	
-								}
-								else
-								{
-									alert("Diagnosis Failed to create.");	
-								}
-							}
-						}
-						 $('#loadingimage').hide();
-					}
-
-				 });
+			
 		}
 }
 
@@ -348,6 +306,7 @@ complete:  function () {
 		alert("App session ends / not yet Authenticated. Please click to Authenticate / refresh the session.")	
 	}
 }
+
 function Authenticate()
 {
 	FHIR.oauth2.authorize({
