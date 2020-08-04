@@ -238,7 +238,7 @@ complete:  function () {
 				 "asserter": {
     					"reference": "" + practitionerId + ""
   				},
-				 "dateRecorded": "2019-11-14",
+				 "dateRecorded": "" + EditedOn + "",
 				"code": {
 				    "coding": [
 					{
