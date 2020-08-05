@@ -924,6 +924,7 @@ function GetFundusPhotographyScheduledPatient(authToken) {
 														if(resourceInnerHeader == "verificationStatus")
 														{
 															console.log("Diabetic Retinopathy " + resourceItems.code.text);
+															console.log("dateRecorded " + resourceItems.dateRecorded);
 															if(resourceItems.code.text.toLowerCase() == "no retinopathy type1")
 															{
 																console.log("inside Noretinopathy-Type1");
