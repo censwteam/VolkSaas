@@ -921,7 +921,7 @@ function GetFundusPhotographyScheduledPatient(authToken) {
 												if (resourceHeader == "resource") //resource array
 												{
 													$.each(resourceItems, function (resourceInnerHeader, resourceInnerItems) {
-														if(resourceInnerHeader == "verificationStatus")
+														if(resourceInnerHeader == "verificationStatus" && resourceItems.dateRecorded == $("#searchStartDate").val())
 														{
 															console.log("Diabetic Retinopathy " + resourceItems.code.text);
 															console.log("dateRecorded " + resourceItems.dateRecorded);
