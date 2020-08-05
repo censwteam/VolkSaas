@@ -79,8 +79,8 @@ function CreateCondition()
 				"text": "Problem"
 			    },
 			  "clinicalStatus": "active",
-			  "verificationStatus": "confirmed"
-			  //"onsetDateTime": "" + updatedOn + ""
+			  "verificationStatus": "confirmed",
+			  "onsetDateTime": "" + updatedOn + ""
 			}
 	if(authToken != "")
 	{
