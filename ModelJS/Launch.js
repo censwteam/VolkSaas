@@ -52,7 +52,36 @@ function CreateCondition()
 	var updatedOn = currDateTime.getFullYear() + "-" + ((currDateTime.getMonth() + 1) < 10 ? "0" + (currDateTime.getMonth() + 1) : (currDateTime.getMonth() + 1)) + "-" + (currDateTime.getDate() < 10 ? "0" + currDateTime.getDate() : currDateTime.getDate()) + "T" + (currDateTime.getHours() < 10 ? "0" + currDateTime.getHours() : currDateTime.getHours()) + ":" + (currDateTime.getMinutes() < 10 ? "0" + currDateTime.getMinutes() : currDateTime.getMinutes()) + ":" + (currDateTime.getSeconds() < 10 ? "0" + currDateTime.getSeconds() : currDateTime.getSeconds()+ "Z");
 	var EditedOn = currDateTime.getFullYear() + "-" + ((currDateTime.getMonth() + 1) < 10 ? "0" + (currDateTime.getMonth() + 1) : (currDateTime.getMonth() + 1)) + "-" + (currDateTime.getDate() < 10 ? "0" + currDateTime.getDate() : currDateTime.getDate());	
 	//alert(currDateTime.getDate()+"-"+(currDateTime.getMonth() + 1)+"-"+currDateTime.getFullYear()+" "+currDateTime.getHours()+":"+currDateTime.getMinutes()+":"+currDateTime.getSeconds());
-	var _json ="";
+	var _json =
+			   {
+			  "resourceType": "Condition",
+			  "patient": {
+				"reference": "" + patientId + ""
+			  },
+			  "code": {
+				"coding": [
+				{
+					"system": "" + conditionSystem + "",
+					"code": "" + conditionCode + "",
+					"display": "Problem"
+				}
+				],
+				"text": "" + conditionText + ""
+			   },
+			   "category": {
+				"coding": [
+				{
+					"system": "http://argonaut.hl7.org",
+					"code": "problem",
+					"display": "Problem"
+				}
+				],
+				"text": "Problem"
+			    },
+			  "clinicalStatus": "active",
+			  "verificationStatus": "confirmed"
+			  "onsetDateTime": "" + updatedOn + ""
+			}
 	if(authToken != "")
 	{
 	  if(conditionarray.length > 0)
@@ -60,253 +89,41 @@ function CreateCondition()
 		  conditionSystem = conditionarray[0];
 		  conditionCode = conditionarray[1];
 	  }
-	
-	
-	
-	
-$.ajax({
-	headers: {
-		Accept: "application/json+fhir",
-		"Content-Type": "application/json+fhir",
-		"Authorization":"Bearer " + authToken
-	},
-	beforeSend: function () {
-		$('#loadingimage').show();
-	},
-	url: "https://fhir-ehr.sandboxcerner.com/dstu2/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/Condition?patient=" + $("#patient").val(),
-	dataType: "json",
-	success: function (response) {
-	var stringfyJsonResponse = JSON.stringify(response);
-	var parseInfo = JSON.parse(stringfyJsonResponse);
-	if (parseInfo.entry != null)														
-	{
-		$.each(parseInfo, function (index, value) 
-		{
-			if (index == "entry") 
-			{ // entry array
-				$.each(value, function (entryHeader, entryItems) 
+	  
+	  $.ajax({
+				type: "POST",	 
+				headers: 
 				{
-					$.each(entryItems, function (resourceHeader, resourceItems) 
-					{
-						if (resourceHeader != null) 
+					Accept: "application/json+fhir",
+					"Content-Type": "application/json+fhir",
+					"Authorization":"Bearer " + authToken
+				},
+				beforeSend: function () 
+				{
+					$('#loadingimage').show();
+				},
+				url: "https://fhir-ehr.sandboxcerner.com/dstu2/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/Condition",	 
+				data: JSON.stringify(_json),
+				success: function (response) 
+				{
+				},
+				complete: function (response) 
+				{
+					if (response != null) {
+					if (response.statusText != "") {
+						if(response.statusText == "Created")
 						{
-							if (resourceHeader == "resource") //resource array
-							{
-								$.each(resourceItems, function (resourceInnerHeader, resourceInnerItems) {
-									if(resourceInnerHeader == "verificationStatus")
-									{
-										//console.log("condition ID -" + resourceItems.id);
-										if(resourceItems.code.text.toLowerCase() == "no retinopathy type1")
-										{
-											DiabeticRetinopathyStatus= "No retinopathy - Type1";	
-											DiabeticRetinopathyConditionId = resourceItems.id;
-										}
-										if(resourceItems.code.text.toLowerCase() == "no retinopathy type2")
-										{
-											DiabeticRetinopathyStatus= "No retinopathy - Type2";
-											DiabeticRetinopathyConditionId = resourceItems.id;
-										}
-										if(resourceItems.code.text.toLowerCase() == "pdr and me type1")
-										{
-											DiabeticRetinopathyStatus= "PDR and ME - Type1";
-											DiabeticRetinopathyConditionId = resourceItems.id;
-										}
-										if(resourceItems.code.text.toLowerCase() == "pdr and me type2")
-										{
-											DiabeticRetinopathyStatus= "PDR and ME - Type2";
-											DiabeticRetinopathyConditionId = resourceItems.id;
-										}
-										if(resourceItems.code.text.toLowerCase() == "pdr and no me type1")
-										{
-											DiabeticRetinopathyStatus= "PDR and No ME - Type1";
-											DiabeticRetinopathyConditionId = resourceItems.id;
-										}
-										if(resourceItems.code.text.toLowerCase() == "pdr and no me type2")
-										{
-											DiabeticRetinopathyStatus= "PDR and No ME - Type2";
-											DiabeticRetinopathyConditionId = resourceItems.id;
-										}
-										if(resourceItems.code.text.toLowerCase() == "mild npdr & me type1")
-										{
-											DiabeticRetinopathyStatus= "Mild NPDR & ME - Type1";
-											DiabeticRetinopathyConditionId = resourceItems.id;
-										}
-										if(resourceItems.code.text.toLowerCase() == "mild npdr & me type2")
-										{
-											DiabeticRetinopathyStatus= "Mild NPDR & ME - Type2";
-											DiabeticRetinopathyConditionId = resourceItems.id;
-										}
-										if(resourceItems.code.text.toLowerCase() == "mild npdr & no me type1")
-										{
-											DiabeticRetinopathyStatus= "Mild NPDR & No ME - Type1";
-											DiabeticRetinopathyConditionId = resourceItems.id;
-										}
-										if(resourceItems.code.text.toLowerCase() == "mild npdr & no me type2")
-										{
-											DiabeticRetinopathyStatus= "Mild NPDR & No ME - Type2";
-											DiabeticRetinopathyConditionId = resourceItems.id;
-										}
-										if(resourceItems.code.text.toLowerCase() == "moderate npdr & me type1")
-										{
-											DiabeticRetinopathyStatus= "Moderate NPDR & ME - Type1";
-											DiabeticRetinopathyConditionId = resourceItems.id;
-										}
-										if(resourceItems.code.text.toLowerCase() == "moderate npdr & me type2")
-										{
-											DiabeticRetinopathyStatus= "Moderate NPDR & ME - Type2";
-											DiabeticRetinopathyConditionId = resourceItems.id;
-										}
-										if(resourceItems.code.text.toLowerCase() == "moderate npdr & no me type1")
-										{
-											DiabeticRetinopathyStatus= "Moderate NPDR & No ME - Type1";
-											DiabeticRetinopathyConditionId = resourceItems.id;
-										}
-										if(resourceItems.code.text.toLowerCase() == "moderate npdr & no me type2")
-										{
-											DiabeticRetinopathyStatus= "Moderate NPDR & No ME - Type2";
-											DiabeticRetinopathyConditionId = resourceItems.id;
-										}
-										if(resourceItems.code.text.toLowerCase() == "severe npdr & me type1")
-										{
-											DiabeticRetinopathyStatus= "Severe NPDR & ME - Type1";
-											DiabeticRetinopathyConditionId = resourceItems.id;
-										}
-										if(resourceItems.code.text.toLowerCase() == "severe npdr & me type2")
-										{	
-											DiabeticRetinopathyStatus= "Severe NPDR & ME - Type2";
-											DiabeticRetinopathyConditionId = resourceItems.id;
-										}
-										if(resourceItems.code.text.toLowerCase() == "severe npdr & no me type1")
-										{
-											DiabeticRetinopathyStatus= "Severe NPDR & No ME - Type1";
-											DiabeticRetinopathyConditionId = resourceItems.id;
-										}
-										if(resourceItems.code.text.toLowerCase() == "severe npdr & no me type2")
-										{
-											DiabeticRetinopathyStatus= "Severe NPDR & No ME - Type2";
-											DiabeticRetinopathyConditionId = resourceItems.id;
-										}
-									}	
-								});
-							}
-						}	
-					});
-				});
-			}
-
-
-		});
-	}
-},
-complete:  function () {
-		console.log("DiabeticRetinopathyStatus- " + DiabeticRetinopathyStatus + " DiabeticRetinopathyConditionId- " + DiabeticRetinopathyConditionId);
-		console.log("practitioner " + EditedPractitionerId);
-		if(DiabeticRetinopathyStatus != "" && DiabeticRetinopathyConditionId != "")
-		{
-		
-			//Delete existing condition first
-				$.ajax({
-						type: "DELETE",	 
-						headers: {
-							Accept: "application/json+fhir",
-							"Content-Type": "application/json+fhir",
-							"Authorization":"Bearer " + authToken
-						},
-						beforeSend: function () {
-							$('#loadingimage').show();
-						},
-						url: "https://fhir-ehr.sandboxcerner.com/dstu2/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/Condition/" + DiabeticRetinopathyConditionId + "",
-						success: function (response) {
-						},
-						complete: function (response) {
-						var stringfyJsonResponse = JSON.stringify(response);
-							console.log("delete response " + stringfyJsonResponse);
-							if (response != null) {
-								if (response.statusText != "" && response.statusText == "200") {
-									// create new condition
-							_json =
-								   {
-								  "resourceType": "Condition",
-								  "patient": {
-									"reference": "" + patientId + ""
-								  },
-								"code": {
-									"coding": [
-									{
-										"system": "" + conditionSystem + "",
-										"code": "" + conditionCode + "",
-										"display": "Problem"
-									}
-									],
-									"text": "" + conditionText + ""
-								},
-								"category": {
-									"coding": [
-									{
-										"system": "http://argonaut.hl7.org",
-										"code": "problem",
-										"display": "Problem"
-									}
-									],
-									"text": "Problem"
-								},
-								  "clinicalStatus": "active",
-								  "verificationStatus": "confirmed"
-								  //"abatementDateTime": "" + updatedOn + ""
-								}
-								$.ajax({
-										type: "POST",	 
-											headers: {
-												Accept: "application/json+fhir",
-												"Content-Type": "application/json+fhir",
-												"Authorization":"Bearer " + authToken
-											},
-											beforeSend: function () {
-												$('#loadingimage').show();
-											},
-											url: "https://fhir-ehr.sandboxcerner.com/dstu2/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/Condition",	 
-											data: JSON.stringify(_json),
-												success: function (response) {
-											},
-											complete: function (response) {
-												if (response != null) {
-												if (response.statusText != "") {
-													if(response.statusText == "Created")
-													{
-														alert("Diagnosis Created Successfully.");	
-													}
-													else
-													{
-														alert("Diagnosis Failed to create.");	
-													}
-												}
-											}
-											 $('#loadingimage').hide();
-										}
-
-									 });
-									
-								}
-								
-							}
-							
-							 $('#loadingimage').hide();
+							alert("Diagnosis Created Successfully.");	
 						}
-				
-				});
-		
-		
-			
-		}
-		else
-		{
-			
-		}
-}
-
-});			
-
-	
+						else
+						{
+							alert("Diagnosis Failed to create.");	
+						}
+					}
+					}
+					$('#loadingimage').hide();
+			    }
+		 });
 	 
 	}
 	else
