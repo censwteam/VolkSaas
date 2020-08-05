@@ -81,7 +81,7 @@ function CreateCondition()
 			  "clinicalStatus": "active",
 			  "verificationStatus": "confirmed",
 			  //"dateRecorded": "" + EditedOn + ""
-			  "onsetDateTime": "" + EditedOn + ""
+			  "onsetDateTime": "" + $("#searchStartDate").val() + ""
 			}
 	if(authToken != "")
 	{
