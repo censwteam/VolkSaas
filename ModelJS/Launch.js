@@ -80,8 +80,8 @@ function CreateCondition()
 			    },
 			  "clinicalStatus": "active",
 			  "verificationStatus": "confirmed",
-			  "dateRecorded": "" + EditedOn + ""
-			  //"onsetDateTime": "" + updatedOn + ""
+			  //"dateRecorded": "" + EditedOn + ""
+			  "onsetDateTime": "" + updatedOn + ""
 			}
 	if(authToken != "")
 	{
