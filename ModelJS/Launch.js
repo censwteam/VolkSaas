@@ -715,7 +715,7 @@ function GetFundusPhotographyScheduledPatient(authToken) {
 																$.each(resourceItems, function (resourceInnerHeader, resourceInnerItems) {
 																	if(resourceInnerHeader == "verificationStatus")
 																	{
-																		console.log("myvalue== " + resourceItems.code.text);
+																		//console.log("myvalue== " + resourceItems.code.text);
 																		if(resourceItems.code.text.toLowerCase() == "intraocular pressure right eye")
 																		{
 																			IOPRight = resourceInnerItems;																							
@@ -766,7 +766,7 @@ function GetFundusPhotographyScheduledPatient(authToken) {
 																$.each(resourceItems, function (resourceInnerHeader, resourceInnerItems) {
 																	if(resourceInnerHeader == "verificationStatus")
 																	{
-																		console.log("myvalue= " + resourceItems.code.text);
+																		//console.log("myvalue= " + resourceItems.code.text);
 																		if(resourceItems.code.text.toLowerCase() == "glaucoma")
 																		{
 																			Glaucoma = resourceInnerItems;																							
@@ -818,7 +818,7 @@ function GetFundusPhotographyScheduledPatient(authToken) {
 																$.each(resourceItems, function (resourceInnerHeader, resourceInnerItems) {
 																	if(resourceInnerHeader == "verificationStatus")
 																	{
-																		console.log("myvalue== " + resourceItems.code.text);
+																		//console.log("myvalue== " + resourceItems.code.text);
 																		if(resourceItems.code.text.toLowerCase() == "visual acuity - left eye")
 																		{
 																			VisualAcuityLeft = resourceInnerItems;																							
@@ -870,7 +870,7 @@ function GetFundusPhotographyScheduledPatient(authToken) {
 																$.each(resourceItems, function (resourceInnerHeader, resourceInnerItems) {
 																	if(resourceInnerHeader == "verificationStatus")
 																	{
-																		console.log("myvalue== " + resourceItems.code.text);
+																		//console.log("myvalue== " + resourceItems.code.text);
 																		if(resourceItems.code.text.toLowerCase() == "visual acuity - right eye")
 																		{
 																			VisualAcuityRight = resourceInnerItems;																							
