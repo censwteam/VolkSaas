@@ -911,19 +911,19 @@ function GetFundusPhotographyScheduledPatient(authToken) {
 						},
 						//url: "https://fhir-ehr.sandboxcerner.com/dstu2/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/Condition?patient=" + PatientID+"&code=http://snomed.info/sct| 386709002",
 						//url: "https://fhir-ehr.sandboxcerner.com/dstu2/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/Condition?patient=" + PatientID +"&_count=100&date=ge" + fromFullFormat + "&date=lt" + toFullFormat,
-						url: "https://fhir-ehr.sandboxcerner.com/dstu2/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/Condition?patient=" + PatientID +"&date=ge" + fromFullFormat + "&date=lt" + toFullFormat,
+						url: "https://fhir-ehr.sandboxcerner.com/dstu2/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/Condition?patient=" + PatientID +"&date=ge" + fromFullFormat + "&date=lt" + toFullFormat + "&_sort=dateRecorded",
 						dataType: "json",
 						success: function (response) {
 						var stringfyJsonResponse = JSON.stringify(response);
 						var parseInfo = JSON.parse(stringfyJsonResponse);
-						var ParsedList = {};
+						//var ParsedList = {};
 						//var parsedArrayInfo =  parseInfo + "]";
 						//var parseInfo = parsedArrayInfo.sort(GetSortOrder("lastUpdated"));
 						console.log("Diabetic Retinopathy stringfyJsonResponse" + stringfyJsonResponse);
-						Object.keys(parseInfo).sort().forEach(a=>ParsedList[a.dateRecorded]=parseInfo[a.dateRecorded]);
-						if (ParsedList.entry != null)														
+						//Object.keys(parseInfo).sort().forEach(a=>ParsedList[a]=parseInfo[a]);
+						if (parseInfo.entry != null)														
 						{
-							$.each(ParsedList, function (index, value) 
+							$.each(parseInfo, function (index, value) 
 							{
 								if (index == "entry") 
 								{ // entry array
