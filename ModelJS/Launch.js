@@ -911,7 +911,7 @@ function GetFundusPhotographyScheduledPatient(authToken) {
 						},
 						//url: "https://fhir-ehr.sandboxcerner.com/dstu2/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/Condition?patient=" + PatientID+"&code=http://snomed.info/sct| 386709002",
 						//url: "https://fhir-ehr.sandboxcerner.com/dstu2/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/Condition?patient=" + PatientID +"&_count=100&date=ge" + fromFullFormat + "&date=lt" + toFullFormat,
-						url: "https://fhir-ehr.sandboxcerner.com/dstu2/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/Condition?patient=" + PatientID +"&date=ge" + fromFullFormat + "&date=lt" + toFullFormat + "&_sort=lastUpdated",
+						url: "https://fhir-ehr.sandboxcerner.com/dstu2/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/Condition?patient=" + PatientID +"&date=ge" + $("#searchStartDate").val() + "&date=lt" + $("#searchEndDate").val() + "&_sort=lastUpdated",
 						dataType: "json",
 						success: function (response) {
 						var stringfyJsonResponse = JSON.stringify(response);
