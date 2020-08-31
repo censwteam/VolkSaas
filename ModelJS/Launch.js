@@ -924,10 +924,11 @@ function GetFundusPhotographyScheduledPatient(authToken) {
 												{
 													$.each(resourceItems, function (resourceInnerHeader, resourceInnerItems) {
 														//if(resourceInnerHeader == "verificationStatus" && resourceItems.dateRecorded == $("#searchStartDate").val())
+														console.log("onsetDateTime " + resourceItems.onsetDateTime);
 														if(resourceInnerHeader == "code" && resourceItems.onsetDateTime == $("#searchStartDate").val())
 														{
 															console.log("Diabetic Retinopathy " + resourceItems.code.text);
-															console.log("onsetDateTime " + resourceItems.onsetDateTime);
+															
 															if(resourceItems.code.text.toLowerCase() == "no retinopathy type1")
 															{
 																console.log("inside Noretinopathy-Type1");
