@@ -916,14 +916,14 @@ function GetFundusPhotographyScheduledPatient(authToken) {
 						success: function (response) {
 						var stringfyJsonResponse = JSON.stringify(response);
 						var parseInfo = JSON.parse(stringfyJsonResponse);
-						var ParsedList_ = {};
+						var ParsedList = {};
 						//var parsedArrayInfo =  parseInfo + "]";
 						//var parseInfo = parsedArrayInfo.sort(GetSortOrder("lastUpdated"));
 						console.log("Diabetic Retinopathy stringfyJsonResponse" + stringfyJsonResponse);
-						Object.keys(parseInfo).sort().forEach(a=>ParsedList_[a]=parseInfo[a]);
-						if (parseInfo.entry != null)														
+						Object.keys(parseInfo).sort().forEach(a=>ParsedList[a.dateRecorded]=parseInfo[a.dateRecorded]);
+						if (ParsedList.entry != null)														
 						{
-							$.each(parseInfo, function (index, value) 
+							$.each(ParsedList, function (index, value) 
 							{
 								if (index == "entry") 
 								{ // entry array
