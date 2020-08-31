@@ -35,7 +35,16 @@ $(function () {
         "format": "YYYY-MM-DD"
     });
 });
-
+function GetSortOrder(prop) {    
+    return function(a, b) {    
+        if (a[prop] > b[prop]) {    
+            return 1;    
+        } else if (a[prop] < b[prop]) {    
+            return -1;    
+        }    
+        return 0;    
+    }    
+}    
 function CreateCondition()
 {
 	var DiabeticRetinopathyStatus = "";
@@ -906,8 +915,10 @@ function GetFundusPhotographyScheduledPatient(authToken) {
 						dataType: "json",
 						success: function (response) {
 						var stringfyJsonResponse = JSON.stringify(response);
-						var parseInfo = JSON.parse(stringfyJsonResponse);
+						var parsedInfo = JSON.parse(stringfyJsonResponse);
+						var parseInfo = parsedInfo.sort(GetSortOrder("lastUpdated"));
 						console.log("Diabetic Retinopathy stringfyJsonResponse" + stringfyJsonResponse);
+						
 						if (parseInfo.entry != null)														
 						{
 							$.each(parseInfo, function (index, value) 
