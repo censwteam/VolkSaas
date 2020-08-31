@@ -942,7 +942,10 @@ function GetFundusPhotographyScheduledPatient(authToken) {
 														if(resourceInnerHeader == "code" && resourceItems.onsetDateTime == $("#searchStartDate").val())
 														{
 															console.log("Diabetic Retinopathy " + resourceItems.code.text);
-															
+															if(DiabeticRetinopathy.length > 0)
+															{
+																return false;
+															}
 															if(resourceItems.code.text.toLowerCase() == "no retinopathy type1")
 															{
 																console.log("inside Noretinopathy-Type1");
@@ -969,51 +972,51 @@ function GetFundusPhotographyScheduledPatient(authToken) {
 															{
 																DiabeticRetinopathy= "PDR and No ME - Type2";
 															}
-															if(resourceItems.code.text.toLowerCase() == "mild npdr & me type1")
+															if(resourceItems.code.text.toLowerCase() == "mild npdr &amp; me type1")
 															{
 																DiabeticRetinopathy= "Mild NPDR & ME - Type1";
 															}
-															if(resourceItems.code.text.toLowerCase() == "mild npdr & me type2")
+															if(resourceItems.code.text.toLowerCase() == "mild npdr &amp; me type2")
 															{
 																DiabeticRetinopathy= "Mild NPDR & ME - Type2";
 															}
-															if(resourceItems.code.text.toLowerCase() == "mild npdr & no me type1")
+															if(resourceItems.code.text.toLowerCase() == "mild npdr &amp; no me type1")
 															{
 																DiabeticRetinopathy= "Mild NPDR & No ME - Type1";
 															}
-															if(resourceItems.code.text.toLowerCase() == "mild npdr & no me type2")
+															if(resourceItems.code.text.toLowerCase() == "mild npdr &amp; no me type2")
 															{
 																DiabeticRetinopathy= "Mild NPDR & No ME - Type2";
 															}
-															if(resourceItems.code.text.toLowerCase() == "moderate npdr & me type1")
+															if(resourceItems.code.text.toLowerCase() == "moderate npdr &amp; me type1")
 															{
 																DiabeticRetinopathy= "Moderate NPDR & ME - Type1";
 															}
-															if(resourceItems.code.text.toLowerCase() == "moderate npdr & me type2")
+															if(resourceItems.code.text.toLowerCase() == "moderate npdr &amp; me type2")
 															{
 																DiabeticRetinopathy= "Moderate NPDR & ME - Type2";
 															}
-															if(resourceItems.code.text.toLowerCase() == "moderate npdr & no me type1")
+															if(resourceItems.code.text.toLowerCase() == "moderate npdr &amp; no me type1")
 															{
 																DiabeticRetinopathy= "Moderate NPDR & No ME - Type1";
 															}
-															if(resourceItems.code.text.toLowerCase() == "moderate npdr & no me type2")
+															if(resourceItems.code.text.toLowerCase() == "moderate npdr &amp; no me type2")
 															{
 																DiabeticRetinopathy= "Moderate NPDR & No ME - Type2";
 															}
-															if(resourceItems.code.text.toLowerCase() == "severe npdr & me type1")
+															if(resourceItems.code.text.toLowerCase() == "severe npdr &amp; me type1")
 															{
 																DiabeticRetinopathy= "Severe NPDR & ME - Type1";
 															}
-															if(resourceItems.code.text.toLowerCase() == "severe npdr & me type2")
+															if(resourceItems.code.text.toLowerCase() == "severe npdr &amp; me type2")
 															{	
 																DiabeticRetinopathy= "Severe NPDR & ME - Type2";
 															}
-															if(resourceItems.code.text.toLowerCase() == "severe npdr & no me type1")
+															if(resourceItems.code.text.toLowerCase() == "severe npdr &amp; no me type1")
 															{
 																DiabeticRetinopathy= "Severe NPDR & No ME - Type1";
 															}
-															if(resourceItems.code.text.toLowerCase() == "severe npdr & no me type2")
+															if(resourceItems.code.text.toLowerCase() == "severe npdr &amp; no me type2")
 															{
 																DiabeticRetinopathy= "Severe NPDR & No ME - Type2";
 															}
