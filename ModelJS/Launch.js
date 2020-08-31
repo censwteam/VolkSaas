@@ -916,7 +916,8 @@ function GetFundusPhotographyScheduledPatient(authToken) {
 						success: function (response) {
 						var stringfyJsonResponse = JSON.stringify(response);
 						var parseInfo = JSON.parse(stringfyJsonResponse);
-						//var parseInfo = parsedInfo.sort(GetSortOrder("lastUpdated"));
+						var parsedArrayInfo = "[" + parseInfo + "]";
+						var parseInfo = parsedArrayInfo.sort(GetSortOrder("lastUpdated"));
 						console.log("Diabetic Retinopathy stringfyJsonResponse" + stringfyJsonResponse);
 						
 						if (parseInfo.entry != null)														
