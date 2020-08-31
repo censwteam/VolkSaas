@@ -938,7 +938,7 @@ function GetFundusPhotographyScheduledPatient(authToken) {
 													//var sortedItems = resourceItems.sort(GetSortOrder("dateRecorded"));
 													$.each(resourceItems, function (resourceInnerHeader, resourceInnerItems) {
 														//if(resourceInnerHeader == "verificationStatus" && resourceItems.dateRecorded == $("#searchStartDate").val())
-														console.log("onsetDateTime " + resourceItems.onsetDateTime);
+														console.log("dateRecorded " + resourceItems.dateRecorded);
 														if(resourceInnerHeader == "code" && resourceItems.onsetDateTime == $("#searchStartDate").val())
 														{
 															console.log("Diabetic Retinopathy " + resourceItems.code.text);
