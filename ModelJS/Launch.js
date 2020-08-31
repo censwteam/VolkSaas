@@ -916,10 +916,11 @@ function GetFundusPhotographyScheduledPatient(authToken) {
 						success: function (response) {
 						var stringfyJsonResponse = JSON.stringify(response);
 						var parseInfo = JSON.parse(stringfyJsonResponse);
+						var ParsedList_ = {};
 						//var parsedArrayInfo =  parseInfo + "]";
 						//var parseInfo = parsedArrayInfo.sort(GetSortOrder("lastUpdated"));
 						console.log("Diabetic Retinopathy stringfyJsonResponse" + stringfyJsonResponse);
-						
+						Object.keys(parseInfo).sort().forEach(a=>ParsedList_[a]=parseInfo[a]);
 						if (parseInfo.entry != null)														
 						{
 							$.each(parseInfo, function (index, value) 
@@ -934,8 +935,8 @@ function GetFundusPhotographyScheduledPatient(authToken) {
 											{
 												if (resourceHeader == "resource") //resource array
 												{
-													var sortedItems = resourceItems.sort(GetSortOrder("dateRecorded"));
-													$.each(sortedItems, function (resourceInnerHeader, resourceInnerItems) {
+													//var sortedItems = resourceItems.sort(GetSortOrder("dateRecorded"));
+													$.each(resourceItems, function (resourceInnerHeader, resourceInnerItems) {
 														//if(resourceInnerHeader == "verificationStatus" && resourceItems.dateRecorded == $("#searchStartDate").val())
 														console.log("onsetDateTime " + resourceItems.onsetDateTime);
 														if(resourceInnerHeader == "code" && resourceItems.onsetDateTime == $("#searchStartDate").val())
