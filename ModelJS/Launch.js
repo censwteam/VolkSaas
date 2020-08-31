@@ -934,7 +934,8 @@ function GetFundusPhotographyScheduledPatient(authToken) {
 											{
 												if (resourceHeader == "resource") //resource array
 												{
-													$.each(resourceItems, function (resourceInnerHeader, resourceInnerItems) {
+													var sortedItems = resourceInnerItems.sort(GetSortOrder("dateRecorded"));
+													$.each(resourceItems, function (resourceInnerHeader, sortedItems) {
 														//if(resourceInnerHeader == "verificationStatus" && resourceItems.dateRecorded == $("#searchStartDate").val())
 														console.log("onsetDateTime " + resourceItems.onsetDateTime);
 														if(resourceInnerHeader == "code" && resourceItems.onsetDateTime == $("#searchStartDate").val())
