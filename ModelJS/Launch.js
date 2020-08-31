@@ -927,7 +927,7 @@ function GetFundusPhotographyScheduledPatient(authToken) {
 														if(resourceInnerHeader == "code" && resourceItems.onsetDateTime == $("#searchStartDate").val())
 														{
 															console.log("Diabetic Retinopathy " + resourceItems.code.text);
-															console.log("dateRecorded " + resourceItems.dateRecorded);
+															console.log("onsetDateTime " + resourceItems.onsetDateTime);
 															if(resourceItems.code.text.toLowerCase() == "no retinopathy type1")
 															{
 																console.log("inside Noretinopathy-Type1");
