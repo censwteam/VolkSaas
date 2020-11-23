@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <link rel='stylesheet' type='text/css' href='./src/css/example-smart-app.css'>
     
-    <title>Example-SMART-App</title>
+    <title>Cerner-SMART-App</title>
   </head>
   <body>
    
@@ -14,10 +14,11 @@
    
     <script>
       FHIR.oauth2.authorize({
-        'client_id': '421c9059-3bd6-4007-836d-2435c347e313',
+        'client_id': '6643c401-bf12-4535-b879-fbf7b5cb6a5e',
 	'redirect_uri':'https://censwteam.github.io/VolkSaas/index.html',
-	'iss': 'https://fhir-ehr.sandboxcerner.com/dstu2/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/metadata/',      
-        'scope':  'patient/Patient.read patient/Observation.read patient/MedicationStatement.read patient/Coverage.read patient/Condition.read launch online_access openid profile'
+	'iss': 'https://fhir-ehr-code.cerner.com/dstu2/ec2458f2-1e24-41c8-b71b-0e701af7583d/metadata/',      
+        //'scope':  'patient/Patient.read patient/Observation.read patient/MedicationStatement.read patient/Coverage.read patient/Condition.read launch online_access openid profile'
+	'scope':'user/Appointment.read user/Condition.read user/Observation.read user/Patient.read user/Schedule.read user/Slot.read user/Appointment.write user/Condition.write user/Patient.write launch online_access openid profile'      
       });
     </script>
     <div class="spinner">
