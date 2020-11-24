@@ -9,11 +9,7 @@
   </head>
   <body>
    
-    <!-- FHIR Client JS Library -->
-    <script src='https://cdn.jsdelivr.net/npm/fhirclient/build/fhir-client.js'></script>
-	  <script src='./lib/js/fhir-client-cerner-additions-1.0.0.js'></script>
-	   <script src='https://cdnjs.cloudflare.com/ajax/libs/babel-polyfill/6.26.0/polyfill.min.js'></script>
-    <script src='./lib/js/cerner-smart-embeddable-lib-1.0.0.min.js'></script>
+   
    
     <script>
       FHIR.oauth2.authorize({
@@ -28,10 +24,17 @@
 	'scope':'user/Appointment.read user/Condition.read user/Observation.read user/Patient.read user/Schedule.read user/Slot.read user/Appointment.write user/Condition.write user/Patient.write launch online_access openid profile'      
       });
     </script>
+	  
     <div class="spinner">
       <div class="bounce1"></div>
       <div class="bounce2"></div>
       <div class="bounce3"></div>
     </div>
+	   <!-- FHIR Client JS Library -->
+	  <script src='./lib/js/fhir-client-cerner-additions-1.0.0.js'></script>
+	   <script src='https://cdnjs.cloudflare.com/ajax/libs/babel-polyfill/6.26.0/polyfill.min.js'></script>
+    <script src='./lib/js/cerner-smart-embeddable-lib-1.0.0.min.js'></script>
+    <script src='https://cdn.jsdelivr.net/npm/fhirclient/build/fhir-client.js'></script>
+	  
   </body>
 </html>
