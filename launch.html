@@ -17,6 +17,10 @@
    
     <script>
       FHIR.oauth2.authorize({
+	target: "_self",
+	width: 400,
+	height: 450,
+	completeInTarget: true,      
         'client_id': 'eafa06cd-897f-4e38-9305-dc695b7d9ccb',
 	'redirect_uri':'https://censwteam.github.io/VolkSaas/IndexEHR.html',
 	//'iss': 'https://fhir-ehr-code.cerner.com/dstu2/ec2458f2-1e24-41c8-b71b-0e701af7583d/metadata/',      
